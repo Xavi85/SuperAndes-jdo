@@ -77,23 +77,41 @@ class SQLUtil
 	 */
 	public long [] limpiarSuperAndes (PersistenceManager pm)
 	{
-        Query qGustan = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaGustan ());          
-        Query qSirven = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSirven ());
-        Query qVisitan = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaVisitan ());
-        Query qBebida = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBebida ());
-        Query qTipoBebida = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaTipoBebida ());
-        Query qBebedor = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBebedor ());
-        Query qBar = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBar ());
+        Query qBodega = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBodega());          
+        Query qEstante = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaEstante());
+        Query qFacturaElectronica = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaFacturaElectronica());
+        Query qOrdenPedido = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaOrdenPedido());
+        Query qOrdenPedidoProducto = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaOrdenPedidoProducto());
+        Query qProducto = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaProducto());
+        Query qPromocion = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaPromocion());
+        Query qPromocionProducto = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaPromocionProducto());
+        Query qProveedor = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaProveedor());
+        Query qSucursal = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSucursal());
+        Query qSupermercado = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSupermercado());
+        Query qTipoProducto = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaTipoProducto());
+        Query qUsuario = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaUsuario());
+        Query qVenta = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaVenta());
+        Query qVentaProducto = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaVentaProducto());
 
-        long gustanEliminados = (long) qGustan.executeUnique ();
-        long sirvenEliminados = (long) qSirven.executeUnique ();
-        long visitanEliminadas = (long) qVisitan.executeUnique ();
-        long bebidasEliminadas = (long) qBebida.executeUnique ();
-        long tiposBebidaEliminados = (long) qTipoBebida.executeUnique ();
-        long bebedoresEliminados = (long) qBebedor.executeUnique ();
-        long baresEliminados = (long) qBar.executeUnique ();
-        return new long[] {gustanEliminados, sirvenEliminados, visitanEliminadas, bebidasEliminadas, 
-        		tiposBebidaEliminados, bebedoresEliminados, baresEliminados};
+        long bodegaEliminados = (long) qBodega.executeUnique ();
+        long estanteEliminados = (long) qEstante.executeUnique ();
+        long facturaElectronicaEliminadas = (long) qFacturaElectronica.executeUnique ();
+        long ordenPedidoEliminadas = (long) qOrdenPedido.executeUnique ();
+        long ordenPedidoProductoEliminados = (long) qOrdenPedidoProducto.executeUnique ();
+        long productoEliminados = (long) qProducto.executeUnique ();
+        long promocionEliminados = (long) qPromocion.executeUnique ();
+        long promocionProductoEliminados = (long) qPromocionProducto.executeUnique ();
+        long proveedorEliminados = (long) qProveedor.executeUnique ();
+        long sucursalEliminados = (long) qSucursal.executeUnique ();
+        long supermercadoEliminados = (long) qSupermercado.executeUnique ();
+        long tipoProductoEliminados = (long) qTipoProducto.executeUnique ();
+        long usuarioEliminados = (long) qUsuario.executeUnique ();
+        long ventaEliminados = (long) qVenta.executeUnique ();
+        long ventaProductoEliminados = (long) qVentaProducto.executeUnique ();
+        return new long[] {bodegaEliminados, estanteEliminados, facturaElectronicaEliminadas, ordenPedidoEliminadas, 
+        		ordenPedidoProductoEliminados, productoEliminados, promocionEliminados, promocionProductoEliminados, 
+        		proveedorEliminados, sucursalEliminados, supermercadoEliminados, tipoProductoEliminados, usuarioEliminados, 
+        		ventaEliminados, ventaProductoEliminados};
 	}
 
 }

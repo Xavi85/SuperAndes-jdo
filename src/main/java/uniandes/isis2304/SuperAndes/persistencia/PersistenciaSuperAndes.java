@@ -90,39 +90,79 @@ public class PersistenciaSuperAndes
 	private SQLUtil sqlUtil;
 	
 	/**
-	 * Atributo para el acceso a la tabla TIPOBEBIDA de la base de datos
+	 * Atributo para el acceso a la tabla BODEGA de la base de datos
 	 */
-	private SQLTipoBebida sqlTipoBebida;
+	private SQLBodega sqlBodega;
 	
 	/**
-	 * Atributo para el acceso a la tabla BEBIDA de la base de datos
+	 * Atributo para el acceso a la tabla ESTANTE de la base de datos
 	 */
-	private SQLBebida sqlBebida;
+	private SQLEstante sqlEstante;
 	
 	/**
-	 * Atributo para el acceso a la tabla BAR de la base de datos
+	 * Atributo para el acceso a la tabla FACTURA_ELECTRONICA de la base de datos
 	 */
-	private SQLBar sqlBar;
+	private SQLFacturaElectronica sqlFacturaElectronica;
 	
 	/**
-	 * Atributo para el acceso a la tabla BEBIDA de la base de datos
+	 * Atributo para el acceso a la tabla ORDEN_PEDIDO de la base de datos
 	 */
-	private SQLBebedor sqlBebedor;
+	private SQLOrdenPedido sqlOrdenPedido;
 	
 	/**
-	 * Atributo para el acceso a la tabla GUSTAN de la base de datos
+	 * Atributo para el acceso a la tabla ORDEN_PEDIDO_PRODUCTO de la base de datos
 	 */
-	private SQLGustan sqlGustan;
+	private SQLOrdenPedidoProducto sqlOrdenPedidoProducto;
 	
 	/**
-	 * Atributo para el acceso a la tabla SIRVEN de la base de datos
+	 * Atributo para el acceso a la tabla PRODUCTO de la base de datos
 	 */
-	private SQLSirven sqlSirven;
+	private SQLProducto sqlProducto;
 	
 	/**
-	 * Atributo para el acceso a la tabla VISITAN de la base de datos
+	 * Atributo para el acceso a la tabla PROMOCION de la base de datos
 	 */
-	private SQLVisitan sqlVisitan;
+	private SQLPromocion sqlPromocion;
+	
+	/**
+	 * Atributo para el acceso a la tabla PROMOCION_PRODUCTO de la base de datos
+	 */
+	private SQLPromocionProducto sqlPromocionProducto;
+	
+	/**
+	 * Atributo para el acceso a la tabla PROVEEDOR de la base de datos
+	 */
+	private SQLProveedor sqlProveedor;
+	
+	/**
+	 * Atributo para el acceso a la tabla SUCURSAL de la base de datos
+	 */
+	private SQLSucursal sqlSucursal;
+	
+	/**
+	 * Atributo para el acceso a la tabla SUPERMERCADO de la base de datos
+	 */
+	private SQLSupermercado sqlSupermercado;
+	
+	/**
+	 * Atributo para el acceso a la tabla TIPO_PRODUCTO de la base de datos
+	 */
+	private SQLTipoProducto sqlTipoProducto;
+	
+	/**
+	 * Atributo para el acceso a la tabla USUARIO de la base de datos
+	 */
+	private SQLUsuario sqlUsuario;
+	
+	/**
+	 * Atributo para el acceso a la tabla VENTA de la base de datos
+	 */
+	private SQLVenta sqlVenta;
+	
+	/**
+	 * Atributo para el acceso a la tabla VENTA_PRODUCTO de la base de datos
+	 */
+	private SQLVentaProducto sqlVentaProducto;
 	
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
@@ -139,13 +179,21 @@ public class PersistenciaSuperAndes
 		// Define los nombres por defecto de las tablas de la base de datos
 		tablas = new LinkedList<String> ();
 		tablas.add ("SuperAndes_sequence");
-		tablas.add ("TIPOBEBIDA");
-		tablas.add ("BEBIDA");
-		tablas.add ("BAR");
-		tablas.add ("BEBEDOR");
-		tablas.add ("GUSTAN");
-		tablas.add ("SIRVEN");
-		tablas.add ("VISITAN");
+		tablas.add ("BODEGA");
+		tablas.add ("ESTANTE");
+		tablas.add ("FACTURA_ELECTRONICA");
+		tablas.add ("ORDEN_PEDIDO");
+		tablas.add ("ORDEN_PEDIDO_PRODUCTO");
+		tablas.add ("PRODUCTO");
+		tablas.add ("PROMOCION");
+		tablas.add ("PROMOCION_PRODUCTO");
+		tablas.add ("PROVEEDOR");
+		tablas.add ("SUCURSAL");
+		tablas.add ("SUPERMERCADO");
+		tablas.add ("TIPO_PRODUCTO");
+		tablas.add ("USUARIO");
+		tablas.add ("VENTA");
+		tablas.add ("VENTA_PRODUCTO");
 }
 
 	/**
@@ -220,78 +268,151 @@ public class PersistenciaSuperAndes
 	 */
 	private void crearClasesSQL ()
 	{
-		sqlTipoBebida = new SQLTipoBebida(this);
-		sqlBebida = new SQLBebida(this);
-		sqlBar = new SQLBar(this);
-		sqlBebedor = new SQLBebedor(this);
-		sqlGustan = new SQLGustan(this);
-		sqlSirven = new SQLSirven (this);
-		sqlVisitan = new SQLVisitan(this);		
+		
+		sqlBodega = new SQLBodega(this);
+		sqlEstante = new SQLEstante(this);
+		sqlFacturaElectronica = new SQLFacturaElectronica(this);
+		sqlOrdenPedido = new SQLOrdenPedido(this);
+		sqlOrdenPedidoProducto = new SQLOrdenPedidoProducto(this);
+		sqlProducto = new SQLProducto(this);
+		sqlPromocion = new SQLPromocion(this);
+		sqlPromocionProducto = new SQLPromocionProducto(this);
+		sqlProveedor = new SQLProveedor(this);
+		sqlSucursal = new SQLSucursal(this);
+		sqlSupermercado = new SQLSupermercado(this);
+		sqlTipoProducto = new SQLTipoProducto(this);
+		sqlUsuario = new SQLUsuario(this);
+		sqlVenta = new SQLVenta(this);
+		sqlVentaProducto = new SQLVentaProducto(this);	
 		sqlUtil = new SQLUtil(this);
 	}
 
 	/**
 	 * @return La cadena de caracteres con el nombre del secuenciador de SuperAndes
 	 */
-	public String darSeqSuperAndes ()
+	public String darSeqSuperAndes()
 	{
-		return tablas.get (0);
+		return tablas.get(0);
 	}
 
 	/**
-	 * @return La cadena de caracteres con el nombre de la tabla de TipoBebida de SuperAndes
+	 * @return La cadena de caracteres con el nombre de la tabla de Bodega de SuperAndes
 	 */
-	public String darTablaTipoBebida ()
+	public String darTablaBodega()
 	{
-		return tablas.get (1);
+		return tablas.get(1);
 	}
 
 	/**
-	 * @return La cadena de caracteres con el nombre de la tabla de Bebida de SuperAndes
+	 * @return La cadena de caracteres con el nombre de la tabla de Estante de SuperAndes
 	 */
-	public String darTablaBebida ()
+	public String darTablaEstante()
 	{
-		return tablas.get (2);
+		return tablas.get(2);
 	}
 
 	/**
-	 * @return La cadena de caracteres con el nombre de la tabla de Bar de SuperAndes
+	 * @return La cadena de caracteres con el nombre de la tabla de FacturaElectronica de SuperAndes
 	 */
-	public String darTablaBar ()
+	public String darTablaFacturaElectronica()
 	{
-		return tablas.get (3);
+		return tablas.get(3);
 	}
 
 	/**
-	 * @return La cadena de caracteres con el nombre de la tabla de Bebedor de SuperAndes
+	 * @return La cadena de caracteres con el nombre de la tabla de OrdenPedido de SuperAndes
 	 */
-	public String darTablaBebedor ()
+	public String darTablaOrdenPedido()
 	{
-		return tablas.get (4);
+		return tablas.get(4);
 	}
 
 	/**
-	 * @return La cadena de caracteres con el nombre de la tabla de Gustan de SuperAndes
+	 * @return La cadena de caracteres con el nombre de la tabla de OrdenPedidoProducto de SuperAndes
 	 */
-	public String darTablaGustan ()
+	public String darTablaOrdenPedidoProducto()
 	{
-		return tablas.get (5);
+		return tablas.get(5);
 	}
 
 	/**
-	 * @return La cadena de caracteres con el nombre de la tabla de Sirven de SuperAndes
+	 * @return La cadena de caracteres con el nombre de la tabla de Producto de SuperAndes
 	 */
-	public String darTablaSirven ()
+	public String darTablaProducto()
 	{
-		return tablas.get (6);
+		return tablas.get(6);
 	}
 
 	/**
-	 * @return La cadena de caracteres con el nombre de la tabla de Visitan de SuperAndes
+	 * @return La cadena de caracteres con el nombre de la tabla de Promocion de SuperAndes
 	 */
-	public String darTablaVisitan ()
+	public String darTablaPromocion()
 	{
-		return tablas.get (7);
+		return tablas.get(7);
+	}
+	
+	/**
+	 * @return La cadena de caracteres con el nombre de la tabla de PromocionProduct de SuperAndes
+	 */
+	public String darTablaPromocionProducto()
+	{
+		return tablas.get(8);
+	}
+	
+	/**
+	 * @return La cadena de caracteres con el nombre de la tabla de Proveedor de SuperAndes
+	 */
+	public String darTablaProveedor()
+	{
+		return tablas.get(9);
+	}
+	
+	/**
+	 * @return La cadena de caracteres con el nombre de la tabla de Sucursal de SuperAndes
+	 */
+	public String darTablaSucursal()
+	{
+		return tablas.get(10);
+	}
+	
+	/**
+	 * @return La cadena de caracteres con el nombre de la tabla de Supermercado de SuperAndes
+	 */
+	public String darTablaSupermercado()
+	{
+		return tablas.get(11);
+	}
+	
+	/**
+	 * @return La cadena de caracteres con el nombre de la tabla de TipoProducto de SuperAndes
+	 */
+	public String darTablaTipoProducto()
+	{
+		return tablas.get(12);
+	}
+	
+	/**
+	 * @return La cadena de caracteres con el nombre de la tabla de Usuario de SuperAndes
+	 */
+	public String darTablaUsuario()
+	{
+		return tablas.get(13);
+	}
+	
+	/**
+	 * @return La cadena de caracteres con el nombre de la tabla de Venta de SuperAndes
+	 */
+	public String darTablaVenta()
+	{
+		return tablas.get(14);
+	}
+	
+	/**
+	 * @return La cadena de caracteres con el nombre de la tabla de VentaProducto de SuperAndes
+	 */
+	public String darTablaVentaProducto()
+	{
+		return tablas.get(15);
 	}
 	
 	/**

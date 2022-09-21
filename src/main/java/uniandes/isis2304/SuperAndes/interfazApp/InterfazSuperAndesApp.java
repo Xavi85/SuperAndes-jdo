@@ -430,13 +430,21 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			
 			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
 			String resultado = "\n\n************ Limpiando la base de datos ************ \n";
-			resultado += eliminados [0] + " Gustan eliminados\n";
-			resultado += eliminados [1] + " Sirven eliminados\n";
-			resultado += eliminados [2] + " Visitan eliminados\n";
-			resultado += eliminados [3] + " Bebidas eliminadas\n";
-			resultado += eliminados [4] + " Tipos de bebida eliminados\n";
-			resultado += eliminados [5] + " Bebedores eliminados\n";
-			resultado += eliminados [6] + " Bares eliminados\n";
+			resultado += eliminados [0] + " Bodegas eliminadas\n";
+			resultado += eliminados [1] + " Estantes eliminados\n";
+			resultado += eliminados [2] + " Facturas Electronicas eliminadas\n";
+			resultado += eliminados [3] + " Ordenes de Pedidos eliminados\n";
+			resultado += eliminados [4] + " Ordenes de Pedidos y Productos eliminados\n";
+			resultado += eliminados [5] + " Productos eliminados\n";
+			resultado += eliminados [6] + " Promociones eliminadas\n";
+			resultado += eliminados [7] + " Promociones y Productos eliminados\n";
+			resultado += eliminados [8] + " Proveedores eliminados\n";
+			resultado += eliminados [9] + " Sucursales eliminadas\n";
+			resultado += eliminados [10] + " Supermercados eliminados\n";
+			resultado += eliminados [11] + " Tipos de Productos eliminados\n";
+			resultado += eliminados [12] + " Usuarios eliminados\n";
+			resultado += eliminados [13] + " Ventas eliminadas\n";
+			resultado += eliminados [14] + " Ventas y Porductos eliminados\n";
 			resultado += "\nLimpieza terminada";
    
 			panelDatos.actualizarInterfaz(resultado);
