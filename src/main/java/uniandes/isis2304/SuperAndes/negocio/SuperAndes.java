@@ -85,6 +85,8 @@ public class SuperAndes
 	 * @param nombre - El nombre del tipo de bebida
 	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
 	 */
+	
+
 	public TipoBebida adicionarTipoBebida (String nombre)
 	{
         log.info ("Adicionando Tipo de bebida: " + nombre);
@@ -106,7 +108,6 @@ public class SuperAndes
         log.info ("Eliminando Tipo de bebida por nombre: " + resp + " tuplas eliminadas");
         return resp;
 	}
-	
 	/**
 	 * Elimina un tipo de bebida por su identificador
 	 * Adiciona entradas al log de la aplicación
