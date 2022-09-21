@@ -46,5 +46,4 @@ class SQLBodega {
 		q.setResultClass(Bodega.class);
 		return (List<Bodega>) q.executeList();
 	}
-	
 }
