@@ -25,18 +25,18 @@ class SQLVentaProducto {
         return (long) q.executeUnique();
 	}
 
-	public long eliminarVentaProductoPorId (PersistenceManager pm, long id)
+	public long eliminarVentaProductoPorIdVenta (PersistenceManager pm, long id_Venta)
 	{
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaVentaProducto () + " WHERE id = ?");
-        q.setParameters(id);
+        q.setParameters(id_Venta);
         return (long) q.executeUnique();
 	}
 
-	public VentaProducto darVentaProductoPorId (PersistenceManager pm, long id) 
+	public VentaProducto darVentaProductoPorIdVenta (PersistenceManager pm, long id_Venta) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaVentaProducto () + " WHERE id = ?");
 		q.setResultClass(VentaProducto.class);
-		q.setParameters(id);
+		q.setParameters(id_Venta);
 		return (VentaProducto) q.executeUnique();
 	}
 

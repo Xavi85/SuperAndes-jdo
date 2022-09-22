@@ -40,7 +40,7 @@ class SQLFacturaElectronica {
 		return (FacturaElectronica) q.executeUnique();
 	}
 
-	public List<FacturaElectronica> darFacturaElectronicas (PersistenceManager pm)
+	public List<FacturaElectronica> darFacturasElectronicas (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaFacturaElectronica ());
 		q.setResultClass(FacturaElectronica.class);
