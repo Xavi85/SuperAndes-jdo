@@ -5,24 +5,16 @@
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
-		{ "menuTitle": "TipoBebida",
+		{ "menuTitle": "Listar",
 		  "options":
 			[
 				{
-					"label": "Adicionar",
-					"event": "adicionarTipoBebida"
+					"label": "Listar Proveedor",
+					"event": "listarProveedor"
 				},
 				{
-					"label": "Listar",
-					"event": "listarTipoBebida"
-				},
-				{
-					"label": "Borrar por Id",
-					"event": "eliminarTipoBebidaPorId"
-				},
-				{
-					"label": "Buscar por Nombre",
-					"event": "buscarTipoBebidaPorNombre"
+					"label": "Listar Tipos de Productos",
+					"event": "listarTipoProducto"
 				}
 			]
 		},

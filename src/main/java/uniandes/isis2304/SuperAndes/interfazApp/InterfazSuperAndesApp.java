@@ -32,7 +32,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.SuperAndes.negocio.SuperAndes;
-import uniandes.isis2304.SuperAndes.negocio.VOBodega;
+import uniandes.isis2304.SuperAndes.negocio.VOProveedor;
+import uniandes.isis2304.SuperAndes.negocio.VOTipoProducto;
 
 @SuppressWarnings("serial")
 public class InterfazSuperAndesApp extends JFrame implements ActionListener {
@@ -165,15 +166,15 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     
     
 	/* ****************************************************************
-	 * 			CRUD de Bodega
+	 * 			CRUD de Proveedor
 	 *****************************************************************/
 
-    public void listarBodega() {
+    public void listarProveedor() {
     	
     	try {
-			List <VOBodega> lista = SuperAndes.darVOBodegas();
+			List <VOProveedor> lista = SuperAndes.darVOProveedores();
 			String resultado = "En listar Bodega";
-			resultado +=  "\n" + listarBodegas (lista);
+			resultado +=  "\n" + listarProveedores (lista);
 			panelDatos.actualizarInterfaz(resultado);
 			resultado += "\n Operación terminada";
 		} 
@@ -184,17 +185,17 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 		}
     }
 
-    public void eliminarBodegaPorId() {
+    public void eliminarProveedorPorId() {
     	
     	try {
-    		String idBodegaStr = JOptionPane.showInputDialog (this, "Id de la Bodega?", "Borrar la Bodega por Id", JOptionPane.QUESTION_MESSAGE);
-    		if (idBodegaStr != null) {
+    		String idProveedorStr = JOptionPane.showInputDialog (this, "Id del Proveedor?", "Borrar el Proveedor por Id", JOptionPane.QUESTION_MESSAGE);
+    		if (idProveedorStr != null) {
     			
-    			long idBodega = Long.valueOf (idBodegaStr);
-    			long tbEliminados = SuperAndes.eliminarBodegaPorId (idBodega);
+    			long idProveedor = Long.valueOf (idProveedorStr);
+    			long tbEliminados = SuperAndes.eliminarBodegaPorId (idProveedor);
 
-    			String resultado = "En eliminar Bodega\n\n";
-    			resultado += tbEliminados + " Bodega eliminada\n";
+    			String resultado = "En eliminar Proveedor\n\n";
+    			resultado += tbEliminados + " Proveedor eliminado\n";
     			resultado += "\n Operación terminada";
     			panelDatos.actualizarInterfaz(resultado);
     		}
@@ -208,7 +209,29 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    
+    
+	/* ****************************************************************
+	 * 			CRUD de Tipo de Productos
+	 *****************************************************************/
 
+    public void listarTipoProducto() {
+    	
+    	try {
+			List <VOTipoProducto> lista = SuperAndes.darVOTiposProductos();
+			String resultado = "En listar Bodega";
+			resultado +=  "\n" + listarTiposProductos (lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) {
+    		
+    		String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+    
 	/* ****************************************************************
 	 * 			Métodos administrativos
 	 *****************************************************************/
@@ -381,11 +404,22 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
      * @param lista - La lista con los tipos de bebida
      * @return La cadena con una líea para cada tipo de bebida recibido
      */
-	private String listarBodegas(List<VOBodega> lista) 
+	private String listarProveedores(List<VOProveedor> lista) 
     {
-    	String resp = "Los tipos de bebida existentes son:\n";
+    	String resp = "Los proveedores existentes son:\n";
     	int i = 1;
-        for (VOBodega tb : lista)
+        for (VOProveedor tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+	
+	private String listarTiposProductos(List<VOTipoProducto> lista) 
+    {
+    	String resp = "Los tipos de productos existentes son:\n";
+    	int i = 1;
+        for (VOTipoProducto tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }
