@@ -261,7 +261,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar los Estantes
 	 *****************************************************************/
 
-	public Estante adicionarPromocion(int volMax, int pesoMax, String tipoAlmacen, int nAbastecimiento, long id_Sucursal, long id_TipoProducto) {
+	public Estante adicionarEstante(int volMax, int pesoMax, String tipoAlmacen, int nAbastecimiento, long id_Sucursal, long id_TipoProducto) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -748,7 +748,7 @@ public class PersistenciaSuperAndes {
 	
 	
 	/* ****************************************************************
-	 * 			Métodos para manejar las Proveedores
+	 * 			Métodos para manejar los Proveedores
 	 *****************************************************************/
 
 	public Proveedor adicionarProveedor(long nit, String nombre, int calificacion) {
@@ -874,19 +874,19 @@ public class PersistenciaSuperAndes {
         }
 	}
 	
-	public Producto darSucursalPorId (long id) {
+	public Sucursal darSucursalPorId (long id) {
 		
-		return sqlProducto.darProductoPorId (pmf.getPersistenceManager(), id);
+		return sqlSucursal.darSucursalPorId (pmf.getPersistenceManager(), id);
 	}
 
-	public List<Producto> darSucursales () {
+	public List<Sucursal> darSucursales () {
 		
-		return sqlProducto.darProductos (pmf.getPersistenceManager());
+		return sqlSucursal.darSucursales (pmf.getPersistenceManager());
 	}
 
 	
 	/* ****************************************************************
-	 * 			Métodos para manejar las Supermercados
+	 * 			Métodos para manejar los Supermercados
 	 *****************************************************************/
 
 	public Supermercado adicionarSupermercado(long nit, String nombre) {
@@ -943,19 +943,19 @@ public class PersistenciaSuperAndes {
         }
 	}
 	
-	public Producto darSupermercadoPorId (long id) {
+	public Supermercado darSupermercadoPorId (long id) {
 		
-		return sqlProducto.darProductoPorId (pmf.getPersistenceManager(), id);
+		return sqlSupermercado.darSupermercadoPorId (pmf.getPersistenceManager(), id);
 	}
 
-	public List<Producto> darSupermercados () {
+	public List<Supermercado> darSupermercados () {
 		
-		return sqlProducto.darProductos (pmf.getPersistenceManager());
+		return sqlSupermercado.darSupermercados (pmf.getPersistenceManager());
 	}
 
 	
 	/* ****************************************************************
-	 * 			Métodos para manejar las TiposProductos
+	 * 			Métodos para manejar los TiposProductos
 	 *****************************************************************/
 
 	public TipoProducto adicionarTipoProducto(String nombre, String tipoAlmacen, String categoria, String subCategoria) {
@@ -1012,19 +1012,19 @@ public class PersistenciaSuperAndes {
         }
 	}
 	
-	public Producto darTipoProductoPorId (long id) {
+	public TipoProducto darTipoProductoPorId (long id) {
 		
-		return sqlProducto.darProductoPorId (pmf.getPersistenceManager(), id);
+		return sqlTipoProducto.darTipoProductoPorId (pmf.getPersistenceManager(), id);
 	}
 
-	public List<Producto> darTiposProductos () {
+	public List<TipoProducto> darTiposProductos () {
 		
-		return sqlProducto.darProductos (pmf.getPersistenceManager());
+		return sqlTipoProducto.darTiposProductos (pmf.getPersistenceManager());
 	}
 
 	
 	/* ****************************************************************
-	 * 			Métodos para manejar las Usuarios
+	 * 			Métodos para manejar los Usuarios
 	 *****************************************************************/
 
 	public Usuario adicionarUsuario(long nDocumento, String tipoDocumento, String tipoUsuario, String nombre, String correo,
@@ -1166,7 +1166,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las VentasProductos
 	 *****************************************************************/
 
-	public VentaProducto adicionarVenta(long id_Venta, long id_Producto, int pVentaH, int cantidad) {
+	public VentaProducto adicionarVentaProducto(long id_Venta, long id_Producto, int pVentaH, int cantidad) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -1228,4 +1228,36 @@ public class PersistenciaSuperAndes {
 		
 		return sqlVentaProducto.darVentasProductos (pmf.getPersistenceManager());
 	}
+	
+	
+	/* ****************************************************************
+	 * 			  Fin métodos para manejadores
+	 *****************************************************************/
+	
+	public long [] limpiarSuperAndes ()
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long [] resp = sqlUtil.limpiarSuperAndes (pm);
+            tx.commit ();
+            log.info ("Borrada la base de datos");
+            return resp;
+        }
+        catch (Exception e)
+        {
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return new long[] {-1, -1, -1, -1, -1, -1, -1};
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}	
  }

@@ -24,8 +24,7 @@ class SQLPromocion {
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaPromocion () + "(id, nombre, fInicio, fFin, descripcion, tipoPromocion,\r\n"
         		+ "lleve, pague, descuento, pVenta, id_Sucursal) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        q.setParameters(id, nombre, fInicio, fFin, descripcion, tipoPromocion,
-        		lleve, pague, descuento, pVenta, id_Sucursal);
+        q.setParameters(id, nombre, fInicio, fFin, descripcion, tipoPromocion, lleve, pague, descuento, pVenta, id_Sucursal);
         return (long) q.executeUnique();
 	}
 
