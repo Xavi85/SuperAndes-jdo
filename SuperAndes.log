@@ -40,3 +40,6 @@
 14:00:53,262 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
 14:00:53,263 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
 14:00:53,297 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:13:15,829 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:13:15,830 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:13:15,846 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
