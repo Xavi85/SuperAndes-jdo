@@ -52,7 +52,7 @@ public class ConexionTest
     /**
      * Objeto JSON con los nombres de las tablas de la base de datos que se quieren utilizar
      */
-    private JsonObject tableConfig;
+    //private JsonObject tableConfig;
     
 	/**
 	 * La clase que se quiere probar
