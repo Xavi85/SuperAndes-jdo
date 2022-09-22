@@ -1,6 +1,6 @@
 package uniandes.isis2304.SuperAndes.persistencia;
 
-class SQLAAA {
+class AAASql {
 /*
 	private final static String SQL = PersistenciaSuperAndes.SQL;
 
