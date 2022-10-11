@@ -22,16 +22,16 @@
 		  "options":
 			[
 				{
-					"label": "Mostrar log Parranderos",
-					"event": "mostrarLogParranderos"
+					"label": "Mostrar log SuperAndes",
+					"event": "mostrarLogSuperAndes"
 				},
 				{
 					"label": "Mostrar log datanucleus",
 					"event": "mostrarLogDatanuecleus"
 				},
 				{
-					"label": "Limpiar log de parranderos",
-					"event": "limpiarLogParranderos"
+					"label": "Limpiar log SuperAndes",
+					"event": "limpiarLogSuperAndes"
 				},
 				{
 					"label": "Limpiar log de datanucleus",
@@ -47,10 +47,6 @@
 		  "options":
 			[
 				{
-					"label": "Presentación general",
-					"event": "mostrarPresentacionGeneral"
-				},
-				{
 					"label": "Modelo conceptual",
 					"event": "mostrarModeloConceptual"
 				},
@@ -63,12 +59,8 @@
 					"event": "mostrarScriptBD"
 				},
 				{
-					"label": "Arquitectura de referencia",
-					"event": "mostrarArqRef"
-				},
-				{
-					"label": "Javadoc Parranderos",
-					"event": "mostrarJavadoc"
+					"label": "Script Limpieza de la BD",
+					"event": "mostrarScriptLimpiezaBD"
 				}
 			]
 		},		

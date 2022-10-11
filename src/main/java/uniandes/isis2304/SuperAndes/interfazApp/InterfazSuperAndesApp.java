@@ -326,14 +326,6 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * Muestra la presentación general del proyecto
-	 */
-	public void mostrarPresentacionGeneral ()
-	{
-		mostrarArchivo ("data/00-ST-SuperAndesJDO.pdf");
-	}
-	
-	/**
 	 * Muestra el modelo conceptual de SuperAndes
 	 */
 	public void mostrarModeloConceptual ()
@@ -358,19 +350,11 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * Muestra la arquitectura de referencia para SuperAndes
+	 * Muestra el script de creación de la base de datos
 	 */
-	public void mostrarArqRef ()
+	public void mostrarScriptLimpiezaBD ()
 	{
-		mostrarArchivo ("data/ArquitecturaReferencia.pdf");
-	}
-	
-	/**
-	 * Muestra la documentación Javadoc del proyectp
-	 */
-	public void mostrarJavadoc ()
-	{
-		mostrarArchivo ("doc/index.html");
+		mostrarArchivo ("data/LimpiezaSuperAndes.sql");
 	}
 	
 	/**
