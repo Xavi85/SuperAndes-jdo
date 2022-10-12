@@ -54,4 +54,10 @@ class SQLTipoUsuario {
 		q.setResultClass(TipoUsuario.class);
 		return (List<TipoUsuario>) q.executeList();
 	}
+	
+	public List<Object> darNombreTiposUsuario (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT tipo FROM " + pp.darTablaTipoUsuario ());
+		return q.executeList();
+	}
 }

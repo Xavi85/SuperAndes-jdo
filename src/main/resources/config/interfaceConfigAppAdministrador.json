@@ -17,7 +17,7 @@
 					"event": "adicionarSucursal"
 				},
 				{
-					"label": "RF3 - Registar Usuarios,
+					"label": "RF3 - Registar Usuarios",
 					"event": "adicionarUsuario"
 				}
 			]

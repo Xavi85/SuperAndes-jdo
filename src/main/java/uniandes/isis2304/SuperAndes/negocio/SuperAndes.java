@@ -69,9 +69,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de las Bodegas");       
         List<VOBodega> voBodegas = new LinkedList<VOBodega> ();
-        for (Bodega beb : pp.darBodegas ())
+        for (Bodega bod : pp.darBodegas ())
         {
-        	voBodegas.add (beb);
+        	voBodegas.add (bod);
         }
         log.info ("Generando los VO de las Bodegas: " + voBodegas.size() + " existentes");
         return voBodegas;
@@ -118,9 +118,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de los Estantes");       
         List<VOEstante> voEstantes = new LinkedList<VOEstante> ();
-        for (Estante beb : pp.darEstantes ())
+        for (Estante est : pp.darEstantes ())
         {
-        	voEstantes.add (beb);
+        	voEstantes.add (est);
         }
         log.info ("Generando los VO de los Estantes: " + voEstantes.size() + " existentes");
         return voEstantes;
@@ -167,9 +167,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de las Facturas Electronicas");       
         List<VOFacturaElectronica> voFacturasElectronicas = new LinkedList<VOFacturaElectronica> ();
-        for (FacturaElectronica beb : pp.darFacturasElectronicas ())
+        for (FacturaElectronica fe : pp.darFacturasElectronicas ())
         {
-        	voFacturasElectronicas.add (beb);
+        	voFacturasElectronicas.add (fe);
         }
         log.info ("Generando los VO de las Facturas Electronicas: " + voFacturasElectronicas.size() + " existentes");
         return voFacturasElectronicas;
@@ -216,9 +216,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de las Ordenes de Pedidos");       
         List<VOOrdenPedido> voOrdenesPedidos = new LinkedList<VOOrdenPedido> ();
-        for (OrdenPedido beb : pp.darOrdenesPedidos ())
+        for (OrdenPedido op : pp.darOrdenesPedidos ())
         {
-        	voOrdenesPedidos.add (beb);
+        	voOrdenesPedidos.add (op);
         }
         log.info ("Generando los VO de las Ordenes de Pedidos: " + voOrdenesPedidos.size() + " existentes");
         return voOrdenesPedidos;
@@ -265,9 +265,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de las Ordenes de Pedidos de Productos");       
         List<VOOrdenPedidoProducto> voOrdenesPedidosProductos = new LinkedList<VOOrdenPedidoProducto> ();
-        for (OrdenPedidoProducto beb : pp.darOrdenesPedidosProductos ())
+        for (OrdenPedidoProducto opp : pp.darOrdenesPedidosProductos ())
         {
-        	voOrdenesPedidosProductos.add (beb);
+        	voOrdenesPedidosProductos.add (opp);
         }
         log.info ("Generando los VO de las Ordenes de Pedidos de Productos: " + voOrdenesPedidosProductos.size() + " existentes");
         return voOrdenesPedidosProductos;
@@ -318,9 +318,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de los Productos");       
         List<VOProducto> voProductos = new LinkedList<VOProducto> ();
-        for (Producto beb : pp.darProductos ())
+        for (Producto prod : pp.darProductos ())
         {
-        	voProductos.add (beb);
+        	voProductos.add (prod);
         }
         log.info ("Generando los VO de los Productos: " + voProductos.size() + " existentes");
         return voProductos;
@@ -368,9 +368,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de las Promociones");       
         List<VOPromocion> voPromociones = new LinkedList<VOPromocion> ();
-        for (Promocion beb : pp.darPromociones ())
+        for (Promocion prom : pp.darPromociones ())
         {
-        	voPromociones.add (beb);
+        	voPromociones.add (prom);
         }
         log.info ("Generando los VO de las Promociones: " + voPromociones.size() + " existentes");
         return voPromociones;
@@ -417,9 +417,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de las Promociones de Productos");       
         List<VOPromocionProducto> voPromocionesProductos = new LinkedList<VOPromocionProducto> ();
-        for (PromocionProducto beb : pp.darPromocionesProductos ())
+        for (PromocionProducto promp : pp.darPromocionesProductos ())
         {
-        	voPromocionesProductos.add (beb);
+        	voPromocionesProductos.add (promp);
         }
         log.info ("Generando los VO de las Promociones de Productos: " + voPromocionesProductos.size() + " existentes");
         return voPromocionesProductos;
@@ -466,9 +466,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de los Proveedores");       
         List<VOProveedor> voProveedores = new LinkedList<VOProveedor> ();
-        for (Proveedor beb : pp.darProveedores ())
+        for (Proveedor prov : pp.darProveedores ())
         {
-        	voProveedores.add (beb);
+        	voProveedores.add (prov);
         }
         log.info ("Generando los VO de los Proveedores: " + voProveedores.size() + " existentes");
         return voProveedores;
@@ -523,12 +523,20 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de las Sucursales");       
         List<VOSucursal> voSucursales = new LinkedList<VOSucursal> ();
-        for (Sucursal beb : pp.darSucursales ())
+        for (Sucursal suc : pp.darSucursales ())
         {
-        	voSucursales.add (beb);
+        	voSucursales.add (suc);
         }
         log.info ("Generando los VO de las Sucursales: " + voSucursales.size() + " existentes");
         return voSucursales;
+	}
+	
+	public List<Object> darNombreSucursales () {
+		
+        log.info ("Consultando Nombres de Sucursales");
+        List<Object> nombreSucursales = pp.darNombreSucursales ();	
+        log.info ("Consultando Nombres de Sucursales: " + nombreSucursales.size() + " NombreSucursales existentes");
+        return nombreSucursales;
 	}
 
 	
@@ -572,9 +580,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de los Supermercados");       
         List<VOSupermercado> voSupermercados = new LinkedList<VOSupermercado> ();
-        for (Supermercado beb : pp.darSupermercados ())
+        for (Supermercado sup : pp.darSupermercados ())
         {
-        	voSupermercados.add (beb);
+        	voSupermercados.add (sup);
         }
         log.info ("Generando los VO de los Supermercados: " + voSupermercados.size() + " existentes");
         return voSupermercados;
@@ -621,9 +629,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de los Tipos de Productos");       
         List<VOTipoProducto> voTiposProductos = new LinkedList<VOTipoProducto> ();
-        for (TipoProducto beb : pp.darTiposProductos ())
+        for (TipoProducto tprod : pp.darTiposProductos ())
         {
-        	voTiposProductos.add (beb);
+        	voTiposProductos.add (tprod);
         }
         log.info ("Generando los VO de los Tipos de Productos: " + voTiposProductos.size() + " existentes");
         return voTiposProductos;
@@ -669,21 +677,29 @@ public class SuperAndes {
 	public List<TipoUsuario> darTiposUsuario () {
 		
         log.info ("Consultando Tipos de Usuario");
-        List<TipoUsuario> tipoProducto = pp.darTiposUsuario ();	
-        log.info ("Consultando Tipos de Usuario: " + tipoProducto.size() + " TiposUsuario existentes");
-        return tipoProducto;
+        List<TipoUsuario> tipoUsuario = pp.darTiposUsuario ();	
+        log.info ("Consultando Tipos de Usuario: " + tipoUsuario.size() + " TiposUsuario existentes");
+        return tipoUsuario;
 	}
 
 	public List<VOTipoUsuario> darVOTiposUsuario () {
 		
 		log.info ("Generando los VO de los Tipos de Usuario");       
         List<VOTipoUsuario> voTiposUsuario = new LinkedList<VOTipoUsuario> ();
-        for (TipoUsuario beb : pp.darTiposUsuario ())
+        for (TipoUsuario tusu : pp.darTiposUsuario ())
         {
-        	voTiposUsuario.add (beb);
+        	voTiposUsuario.add (tusu);
         }
         log.info ("Generando los VO de los Tipos de Usuario: " + voTiposUsuario.size() + " existentes");
         return voTiposUsuario;
+	}
+	
+	public List<Object> darNombreTiposUsuario () {
+		
+        log.info ("Consultando Nombres de Tipos de Usuario");
+        List<Object> nombreTipoProducto = pp.darNombreTiposUsuario ();	
+        log.info ("Consultando Nombres de Tipos de Usuario: " + nombreTipoProducto.size() + " NombreTiposUsuario existentes");
+        return nombreTipoProducto;
 	}
 	
 	
@@ -692,7 +708,7 @@ public class SuperAndes {
 	 *****************************************************************/
 
 	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo,
-			String pais, String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) {
+			String pais, String ciudad, String direccion, Integer puntos, Long id_TipoUsuario, Long id_Sucursal, long id_Supermercado) {
 		
 		log.info ("Adicionando Usuario: " + nombre);
 		Usuario usuario = pp.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado);
@@ -728,9 +744,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de los Usuarios");       
         List<VOUsuario> voUsuarios = new LinkedList<VOUsuario> ();
-        for (Usuario beb : pp.darUsuarios ())
+        for (Usuario usu : pp.darUsuarios ())
         {
-        	voUsuarios.add (beb);
+        	voUsuarios.add (usu);
         }
         log.info ("Generando los VO de los Usuarios: " + voUsuarios.size() + " existentes");
         return voUsuarios;
@@ -777,9 +793,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de las Ventas");       
         List<VOVenta> voVentas = new LinkedList<VOVenta> ();
-        for (Venta beb : pp.darVentas ())
+        for (Venta vent : pp.darVentas ())
         {
-        	voVentas.add (beb);
+        	voVentas.add (vent);
         }
         log.info ("Generando los VO de las Ventas: " + voVentas.size() + " existentes");
         return voVentas;
@@ -826,9 +842,9 @@ public class SuperAndes {
 		
 		log.info ("Generando los VO de las Ventas de Productos");       
         List<VOVentaProducto> voVentasProductos = new LinkedList<VOVentaProducto> ();
-        for (VentaProducto beb : pp.darVentasProductos ())
+        for (VentaProducto ventp : pp.darVentasProductos ())
         {
-        	voVentasProductos.add (beb);
+        	voVentasProductos.add (ventp);
         }
         log.info ("Generando los VO de las Ventas de Productos: " + voVentasProductos.size() + " existentes");
         return voVentasProductos;

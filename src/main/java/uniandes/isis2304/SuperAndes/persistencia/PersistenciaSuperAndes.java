@@ -893,6 +893,11 @@ public class PersistenciaSuperAndes {
 		
 		return sqlSucursal.darSucursales (pmf.getPersistenceManager());
 	}
+	
+	public List<Object> darNombreSucursales () {
+		
+		return sqlSucursal.darNombreSucursales (pmf.getPersistenceManager());
+	}
 
 	
 	/* ****************************************************************
@@ -1106,13 +1111,18 @@ public class PersistenciaSuperAndes {
 		return sqlTipoUsuario.darTiposUsuario (pmf.getPersistenceManager());
 	}
 	
+	public List<Object> darNombreTiposUsuario () {
+		
+		return sqlTipoUsuario.darNombreTiposUsuario (pmf.getPersistenceManager());
+	}
+	
 	
 	/* ****************************************************************
 	 * 			Métodos para manejar los Usuarios
 	 *****************************************************************/
 
 	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo,
-			String pais, String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) {
+			String pais, String ciudad, String direccion, Integer puntos, Long id_TipoUsuario, Long id_Sucursal, long id_Supermercado) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();

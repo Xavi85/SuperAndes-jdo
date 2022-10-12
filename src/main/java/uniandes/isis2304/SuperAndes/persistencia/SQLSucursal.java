@@ -6,7 +6,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.SuperAndes.negocio.Sucursal;
-import uniandes.isis2304.SuperAndes.negocio.TipoUsuario;
 
 class SQLSucursal {
 	
@@ -43,8 +42,8 @@ class SQLSucursal {
 	
 	public Sucursal darIdPorSucursal (PersistenceManager pm, String nombre) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaTipoUsuario () + " WHERE nombre = ?");
-		q.setResultClass(TipoUsuario.class);
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSucursal () + " WHERE nombre = ?");
+		q.setResultClass(Sucursal.class);
 		q.setParameters(nombre);
 		return (Sucursal) q.executeUnique();
 	}
@@ -54,5 +53,11 @@ class SQLSucursal {
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSucursal ());
 		q.setResultClass(Sucursal.class);
 		return (List<Sucursal>) q.executeList();
+	}
+	
+	public List<Object> darNombreSucursales (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT nombre FROM " + pp.darTablaSucursal ());
+		return q.executeList();
 	}
 }
