@@ -24,7 +24,6 @@ import uniandes.isis2304.SuperAndes.negocio.Supermercado;
 import uniandes.isis2304.SuperAndes.negocio.TipoProducto;
 import uniandes.isis2304.SuperAndes.negocio.TipoUsuario;
 import uniandes.isis2304.SuperAndes.negocio.Usuario;
-import uniandes.isis2304.SuperAndes.negocio.UsuarioTipoUsuario;
 import uniandes.isis2304.SuperAndes.negocio.Venta;
 import uniandes.isis2304.SuperAndes.negocio.VentaProducto;
 import uniandes.isis2304.SuperAndes.negocio.FacturaElectronica;
@@ -55,7 +54,6 @@ public class PersistenciaSuperAndes {
 	private SQLTipoProducto sqlTipoProducto;
 	private SQLTipoUsuario sqlTipoUsuario;
 	private SQLUsuario sqlUsuario;
-	private SQLUsuarioTipoUsuario sqlUsuarioTipoUsuario;
 	private SQLVenta sqlVenta;
 	private SQLVentaProducto sqlVentaProducto;
 	
@@ -86,7 +84,6 @@ public class PersistenciaSuperAndes {
 		tablas.add ("TIPO_PRODUCTO");
 		tablas.add ("TIPO_USUARIO");
 		tablas.add ("USUARIO");
-		tablas.add ("USUARIO_TIPO_USUARIO");
 		tablas.add ("VENTA");
 		tablas.add ("VENTA_PRODUCTO");
 	}
@@ -154,7 +151,6 @@ public class PersistenciaSuperAndes {
 		sqlTipoProducto = new SQLTipoProducto(this);
 		sqlTipoUsuario = new SQLTipoUsuario(this);
 		sqlUsuario = new SQLUsuario(this);
-		sqlUsuarioTipoUsuario = new SQLUsuarioTipoUsuario(this);
 		sqlVenta = new SQLVenta(this);
 		sqlVentaProducto = new SQLVentaProducto(this);	
 		sqlUtil = new SQLUtil(this);
@@ -175,9 +171,8 @@ public class PersistenciaSuperAndes {
 	public String darTablaTipoProducto() { return tablas.get(12); }
 	public String darTablaTipoUsuario() { return tablas.get(13); }
 	public String darTablaUsuario() { return tablas.get(14); }
-	public String darTablaUsuarioTipoUsuario() { return tablas.get(15); }
-	public String darTablaVenta() { return tablas.get(16); }
-	public String darTablaVentaProducto() { return tablas.get(17); }
+	public String darTablaVenta() { return tablas.get(15); }
+	public String darTablaVentaProducto() { return tablas.get(16); }
 
 	private long nextval () {
 		
@@ -889,6 +884,11 @@ public class PersistenciaSuperAndes {
 		return sqlSucursal.darSucursalPorId (pmf.getPersistenceManager(), id);
 	}
 
+	public Sucursal darIdPorSucursal (String nombre) {
+		
+		return sqlSucursal.darIdPorSucursal (pmf.getPersistenceManager(), nombre);
+	}
+	
 	public List<Sucursal> darSucursales () {
 		
 		return sqlSucursal.darSucursales (pmf.getPersistenceManager());
@@ -1095,6 +1095,11 @@ public class PersistenciaSuperAndes {
 		
 		return sqlTipoUsuario.darTipoUsuarioPorId (pmf.getPersistenceManager(), id);
 	}
+	
+	public TipoUsuario darIdPorTipoUsuario (String tipo) {
+		
+		return sqlTipoUsuario.darIdPorTipoUsuario (pmf.getPersistenceManager(), tipo);
+	}
 
 	public List<TipoUsuario> darTiposUsuario () {
 		
@@ -1107,19 +1112,19 @@ public class PersistenciaSuperAndes {
 	 *****************************************************************/
 
 	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo,
-			String pais, String ciudad, String direccion, int puntos, long id_Sucursal, long id_Supermercado) {
+			String pais, String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try {
             tx.begin();
             long id = nextval ();
-            long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_Sucursal, id_Supermercado);
+            long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado);
             tx.commit();
             
             log.trace ("Inserción de Usuario: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Usuario (id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_Sucursal, id_Supermercado);
+            return new Usuario (id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado);
         }
         catch (Exception e) {
         	
@@ -1169,74 +1174,6 @@ public class PersistenciaSuperAndes {
 	public List<Usuario> darUsuarios () {
 		
 		return sqlUsuario.darUsuarios (pmf.getPersistenceManager());
-	}
-	
-	
-	/* ****************************************************************
-	 * 			Métodos para manejar los UsuarioTipoUsuario
-	 *****************************************************************/
-
-	public UsuarioTipoUsuario adicionarUsuarioTipoUsuario (long id_Usuario, long id_TipoUsuario) {
-		
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try {
-            tx.begin();
-            long tuplasInsertadas = sqlUsuarioTipoUsuario.adicionarUsuarioTipoUsuario(pm, id_Usuario, id_TipoUsuario);
-            tx.commit();
-            
-            log.trace ("Inserción de UsuarioTipoUsuario: " + id_Usuario + id_TipoUsuario + ": " + tuplasInsertadas + " tuplas insertadas");
-            
-            return new UsuarioTipoUsuario (id_Usuario, id_TipoUsuario);
-        }
-        catch (Exception e) {
-        	
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	return null;
-        }
-        finally {
-        	
-            if (tx.isActive()) {
-            	
-                tx.rollback();
-            }
-            pm.close();
-        }
-	}
-
-	public long eliminarUsuarioTipoUsuarioPorIdUsuarioYTipoUsuario (long id_Usuario, long id_TipoUsuario) {
-		
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try {
-            tx.begin();
-            long resp = sqlUsuarioTipoUsuario.eliminarUsuarioTipoUsuarioPorIdUsuarioYTipoUsuario(pm, id_Usuario, id_TipoUsuario);
-            tx.commit();
-            return resp;
-        }
-        catch (Exception e) {
-        	
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-            return -1;
-        }
-        finally {
-        	
-            if (tx.isActive()) {
-            	
-                tx.rollback();
-            }
-            pm.close();
-        }
-	}
-	
-	public UsuarioTipoUsuario darUsuarioTipoUsuarioPorIdUsuario (long id_Usuario) {
-		
-		return sqlUsuarioTipoUsuario.darUsuarioTipoUsuarioPorIdUsuario (pmf.getPersistenceManager(), id_Usuario);
-	}
-
-	public List<UsuarioTipoUsuario> darUsuariosTiposUsuario () {
-		
-		return sqlUsuarioTipoUsuario.darUsuariosTiposUsuario (pmf.getPersistenceManager());
 	}
 	
 		

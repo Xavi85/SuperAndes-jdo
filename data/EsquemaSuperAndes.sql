@@ -120,7 +120,7 @@ CREATE TABLE ORDEN_PEDIDO_PRODUCTO(
 -- Creacion tabla TIPO_USUARIO
 CREATE TABLE TIPO_USUARIO(
     id NUMBER,
-    tipo VARCHAR2(255 BYTE) NOT NULL,
+    tipo VARCHAR2(255 BYTE) NOT NULL UNIQUE,
     CONSTRAINT PK_id_tipoUsuario PRIMARY KEY (id),
     CONSTRAINT CHECK_tipoUsuario CHECK(tipo IN ('Administrador', 'Gerente General', 'Gerente Sucursal', 'Operador', 'Cajero', 'Cliente'))
 );

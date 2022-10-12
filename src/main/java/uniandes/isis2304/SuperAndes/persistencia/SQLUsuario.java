@@ -19,11 +19,11 @@ class SQLUsuario {
 	}
 
 	public long adicionarUsuario (PersistenceManager pm, long id, long nDocumento, String tipoDocumento, String nombre, String correo,
-			String pais, String ciudad, String direccion, int puntos, long id_Sucursal, long id_Supermercado) 
+			String pais, String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) 
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuario () + "(id, nDocumento, tipoDocumento, nombre, correo,\r\n"
-        		+ "pais, ciudad, direccion, puntos, id_Sucursal, id_Supermercado) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        q.setParameters(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_Sucursal, id_Supermercado);
+        		+ "pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        q.setParameters(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado);
         return (long) q.executeUnique();
 	}
 

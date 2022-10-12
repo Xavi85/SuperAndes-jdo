@@ -19,6 +19,8 @@ public interface VOUsuario {
 	public String getDireccion();
 
 	public int getPuntos();
+	
+	public long getId_TipoUsuario();
 
 	public long getId_Sucursal();
 

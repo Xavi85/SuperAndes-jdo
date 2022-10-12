@@ -39,6 +39,14 @@ class SQLTipoUsuario {
 		q.setParameters(id);
 		return (TipoUsuario) q.executeUnique();
 	}
+	
+	public TipoUsuario darIdPorTipoUsuario (PersistenceManager pm, String tipo) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaTipoUsuario () + " WHERE tipo = ?");
+		q.setResultClass(TipoUsuario.class);
+		q.setParameters(tipo);
+		return (TipoUsuario) q.executeUnique();
+	}
 
 	public List<TipoUsuario> darTiposUsuario (PersistenceManager pm)
 	{

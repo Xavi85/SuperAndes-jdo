@@ -11,6 +11,7 @@ public class Usuario implements VOUsuario {
 	private String ciudad;
 	private String direccion;
 	private int puntos;
+	private long id_TipoUsuario;
 	private long id_Sucursal;
 	private long id_Supermercado;
 	
@@ -25,12 +26,13 @@ public class Usuario implements VOUsuario {
 		this.ciudad = "";
 		this.direccion = "";
 		this.puntos = 0;
+		this.id_TipoUsuario = 0;
 		this.id_Sucursal = 0;
 		this.id_Supermercado = 0;
 	}
 	
 	public Usuario(long id, long nDocumento, String tipoDocumento, String nombre, String correo,
-			String pais, String ciudad, String direccion, int puntos, long id_Sucursal, long id_Supermercado) {
+			String pais, String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) {
 
 		this.id = id;
 		this.nDocumento = nDocumento;
@@ -41,6 +43,7 @@ public class Usuario implements VOUsuario {
 		this.ciudad = ciudad;
 		this.direccion = direccion;
 		this.puntos = puntos;
+		this.id_TipoUsuario = id_TipoUsuario;
 		this.id_Sucursal = id_Sucursal;
 		this.id_Supermercado = id_Supermercado;
 	}
@@ -115,6 +118,14 @@ public class Usuario implements VOUsuario {
 
 	public void setPuntos(int puntos) {
 		this.puntos = puntos;
+	}
+	
+	public long getId_TipoUsuario() {
+		return id_TipoUsuario;
+	}
+
+	public void setId_TipoUsuario(long id_TipoUsuario) {
+		this.id_TipoUsuario = id_TipoUsuario;
 	}
 
 	public long getId_Sucursal() {

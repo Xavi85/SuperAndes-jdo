@@ -502,6 +502,14 @@ public class SuperAndes {
         log.info ("Buscando Sucursal por Id: " + sucursal != null ? sucursal : "NO EXISTE");
         return sucursal;
 	}
+	
+	public Sucursal darIdPorSucursal (String nombre)
+	{
+        log.info ("Dar un id por el nombre de una Sucursal: " + nombre);
+        Sucursal sucursal = pp.darIdPorSucursal (nombre);
+        log.info ("Buscando id por el nombre de una Sucursal: " + sucursal != null ? sucursal : "NO EXISTE");
+        return sucursal;
+	}
 
 	public List<Sucursal> darSucursales () {
 		
@@ -644,9 +652,17 @@ public class SuperAndes {
 	
 	public TipoUsuario darTipoUsuarioPorId (long id)
 	{
-        log.info ("Dar información de un Tipo de Producto por id: " + id);
+        log.info ("Dar información de un Tipo de Usuario por id: " + id);
         TipoUsuario tipoUsuario = pp.darTipoUsuarioPorId (id);
-        log.info ("Buscando Tipo de Producto por Id: " + tipoUsuario != null ? tipoUsuario : "NO EXISTE");
+        log.info ("Buscando Tipo de Usuario por Id: " + tipoUsuario != null ? tipoUsuario : "NO EXISTE");
+        return tipoUsuario;
+	}
+	
+	public TipoUsuario darIdPorTipoUsuario (String tipo)
+	{
+        log.info ("Dar un id por un Tipo de Usuario: " + tipo);
+        TipoUsuario tipoUsuario = pp.darIdPorTipoUsuario (tipo);
+        log.info ("Buscando id por Tipo de Usuario: " + tipoUsuario != null ? tipoUsuario : "NO EXISTE");
         return tipoUsuario;
 	}
 
@@ -676,10 +692,10 @@ public class SuperAndes {
 	 *****************************************************************/
 
 	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo,
-			String pais, String ciudad, String direccion, int puntos, long id_Sucursal, long id_Supermercado) {
+			String pais, String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) {
 		
 		log.info ("Adicionando Usuario: " + nombre);
-		Usuario usuario = pp.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_Sucursal, id_Supermercado);
+		Usuario usuario = pp.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado);
         log.info ("Adicionando Usuario: " + usuario);
         return usuario;
 	}
@@ -720,55 +736,6 @@ public class SuperAndes {
         return voUsuarios;
 	}
 
-	
-	/* ****************************************************************
-	 * 			Métodos para manejar los Usuarios y Tipos de Usuarios
-	 *****************************************************************/
-
-	public UsuarioTipoUsuario adicionarUsuarioTipoUsuario (long id_Usuario, long id_TipoUsuario) {
-		
-		log.info ("Adicionando Usuario y tipo de Usuario: " + id_Usuario + ", " + id_TipoUsuario);
-		UsuarioTipoUsuario usuarioTipoUsuario = pp.adicionarUsuarioTipoUsuario (id_Usuario, id_TipoUsuario);
-        log.info ("Adicionando Usuario y tipo de Usuario: " + usuarioTipoUsuario);
-        return usuarioTipoUsuario;
-	}
-
-	public long eliminarUsuarioTipoUsuarioPorIdUsuarioYTipoUsuario (long id_Usuario, long id_TipoUsuario) {
-		
-        log.info ("Eliminando Usuario y tipo de Usuario: " + id_Usuario + ", " + id_TipoUsuario);
-        long resp = pp.eliminarUsuarioTipoUsuarioPorIdUsuarioYTipoUsuario (id_Usuario, id_TipoUsuario);
-        log.info ("Eliminando Usuario y tipo de Usuario: " + resp + " tuplas eliminadas");
-        return resp;
-	}
-	
-	public UsuarioTipoUsuario darUsuarioTipoUsuarioPorIdUsuario (long id_Usuario)
-	{
-        log.info ("Dar información de un Usuario y tipo de Usuario id Usuario: " + id_Usuario);
-        UsuarioTipoUsuario usuarioTipoUsuario = pp.darUsuarioTipoUsuarioPorIdUsuario (id_Usuario);
-        log.info ("Buscando Usuario y tipo de Usuario id Usuario: " + usuarioTipoUsuario != null ? usuarioTipoUsuario : "NO EXISTE");
-        return usuarioTipoUsuario;
-	}
-
-	public List<UsuarioTipoUsuario> darUsuariosTiposUsuario () {
-		
-        log.info ("Consultando Usuario y tipo de Usuario");
-        List<UsuarioTipoUsuario> usuarioTipoUsuario = pp.darUsuariosTiposUsuario ();	
-        log.info ("Consultando Usuario y tipo de Usuario: " + usuarioTipoUsuario.size() + " Usuario y tipo de Usuario existentes");
-        return usuarioTipoUsuario;
-	}
-
-	public List<VOUsuarioTipoUsuario> darVOUsuariosTiposUsuario () {
-		
-		log.info ("Generando los VO de los Usuario y tipo de Usuario");       
-        List<VOUsuarioTipoUsuario> voUsuariosTiposUsuario = new LinkedList<VOUsuarioTipoUsuario> ();
-        for (UsuarioTipoUsuario beb : pp.darUsuariosTiposUsuario ())
-        {
-        	voUsuariosTiposUsuario.add (beb);
-        }
-        log.info ("Generando los VO de los Usuario y tipo de Usuario: " + voUsuariosTiposUsuario.size() + " existentes");
-        return voUsuariosTiposUsuario;
-	}
-	
 	
 	/* ****************************************************************
 	 * 			Métodos para manejar las Ventas
