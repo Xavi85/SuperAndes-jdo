@@ -27,14 +27,14 @@ class SQLPromocionProducto {
 
 	public long eliminarPromocionProductoPorIdPromocion (PersistenceManager pm, long id_Promocion)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaPromocionProducto () + " WHERE id = ?");
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaPromocionProducto () + " WHERE id_Promocion = ?");
         q.setParameters(id_Promocion);
         return (long) q.executeUnique();
 	}
 
 	public PromocionProducto darPromocionProductoPorIdPromocion (PersistenceManager pm, long id_Promocion) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaPromocionProducto () + " WHERE id = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaPromocionProducto () + " WHERE id_Promocion = ?");
 		q.setResultClass(PromocionProducto.class);
 		q.setParameters(id_Promocion);
 		return (PromocionProducto) q.executeUnique();

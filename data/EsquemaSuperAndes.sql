@@ -117,12 +117,19 @@ CREATE TABLE ORDEN_PEDIDO_PRODUCTO(
     CONSTRAINT FK_ordenPedidoProducto_id_Producto FOREIGN KEY(id_Producto) REFERENCES PRODUCTO(idLote)
 );
 --------------------------------------------------------------------------------
+-- Creacion tabla TIPO_USUARIO
+CREATE TABLE TIPO_USUARIO(
+    id NUMBER,
+    tipo VARCHAR2(255 BYTE) NOT NULL,
+    CONSTRAINT PK_id_tipoUsuario PRIMARY KEY (id),
+    CONSTRAINT CHECK_tipoUsuario CHECK(tipo IN ('Administrador', 'Gerente General', 'Gerente Sucursal', 'Operador', 'Cajero', 'Cliente'))
+);
+--------------------------------------------------------------------------------
 -- Creacion tabla USUARIO
 CREATE TABLE USUARIO(
     id NUMBER,
     nDocumento NUMBER NOT NULL,
     tipoDocumento VARCHAR2(255 BYTE) NOT NULL,
-    tipoUsuario VARCHAR2(255 BYTE) NOT NULL,
     nombre VARCHAR2(255 BYTE) NOT NULL,
     correo VARCHAR2(255 BYTE) NOT NULL UNIQUE,
     pais VARCHAR2(255 BYTE) NOT NULL,
@@ -132,10 +139,19 @@ CREATE TABLE USUARIO(
     id_Sucursal NUMBER NOT NULL,
     id_Supermercado NUMBER NOT NULL,
 	CONSTRAINT PK_id_usuario PRIMARY KEY (id),
+
     CONSTRAINT FK_usuario_id_Sucursal FOREIGN KEY(id_Sucursal) REFERENCES SUCURSAL(id),
     CONSTRAINT FK_usuario_id_Supermercado FOREIGN KEY(id_Supermercado) REFERENCES SUPERMERCADO(id),
-    CONSTRAINT CHECK_usuario_tipoDocumento CHECK(tipoDocumento IN ('Cedula Cuidadania', 'Cedula Extranjeria', 'Tarjeta de Identificacion', 'Pasaporte', 'NIT')),
-    CONSTRAINT CHECK_usuario_tipoUsuario CHECK(tipoUsuario IN ('Administrador', 'Gerente General', 'Gerente Sucursal', 'Operador', 'Cajero', 'Cliente'))
+    CONSTRAINT CHECK_usuario_tipoDocumento CHECK(tipoDocumento IN ('Cedula Cuidadania', 'Cedula Extranjeria', 'Tarjeta de Identificacion', 'Pasaporte', 'NIT'))
+);
+--------------------------------------------------------------------------------
+-- Creacion tabla USUARIO_TIPO_USUARIO
+CREATE TABLE USUARIO_TIPO_USUARIO(
+    id_Usuario NUMBER,
+    id_TipoUsuario NUMBER,
+	CONSTRAINT PK_id_usuarioTipoUsuario PRIMARY KEY (id_Usuario, id_TipoUsuario),
+    CONSTRAINT FK_usuarioTipoUsuario_id_Usuario FOREIGN KEY(id_Usuario) REFERENCES USUARIO(id),
+    CONSTRAINT FK_usuarioTipoUsuario_id_TipoUsuario FOREIGN KEY(id_TipoUsuario) REFERENCES TIPO_USUARIO(id)
 );
 --------------------------------------------------------------------------------
 -- Creacion tabla VENTA

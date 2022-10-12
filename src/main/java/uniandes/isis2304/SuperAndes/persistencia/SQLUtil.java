@@ -89,7 +89,9 @@ class SQLUtil
         Query qSucursal = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSucursal());
         Query qSupermercado = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSupermercado());
         Query qTipoProducto = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaTipoProducto());
+        Query qTipoUsuario = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaTipoUsuario());
         Query qUsuario = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaUsuario());
+        Query qUsuarioTipoUsuario = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaUsuarioTipoUsuario());
         Query qVenta = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaVenta());
         Query qVentaProducto = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaVentaProducto());
 
@@ -105,13 +107,15 @@ class SQLUtil
         long sucursalEliminados = (long) qSucursal.executeUnique ();
         long supermercadoEliminados = (long) qSupermercado.executeUnique ();
         long tipoProductoEliminados = (long) qTipoProducto.executeUnique ();
+        long tipoUsuarioEliminados = (long) qTipoUsuario.executeUnique ();
         long usuarioEliminados = (long) qUsuario.executeUnique ();
+        long usuarioTipoUsuarioEliminados = (long) qUsuarioTipoUsuario.executeUnique ();
         long ventaEliminados = (long) qVenta.executeUnique ();
         long ventaProductoEliminados = (long) qVentaProducto.executeUnique ();
         return new long[] {bodegaEliminados, estanteEliminados, facturaElectronicaEliminadas, ordenPedidoEliminadas, 
         		ordenPedidoProductoEliminados, productoEliminados, promocionEliminados, promocionProductoEliminados, 
-        		proveedorEliminados, sucursalEliminados, supermercadoEliminados, tipoProductoEliminados, usuarioEliminados, 
-        		ventaEliminados, ventaProductoEliminados};
+        		proveedorEliminados, sucursalEliminados, supermercadoEliminados, tipoProductoEliminados, tipoUsuarioEliminados, 
+        		usuarioEliminados, usuarioTipoUsuarioEliminados, ventaEliminados, ventaProductoEliminados};
 	}
 
 }

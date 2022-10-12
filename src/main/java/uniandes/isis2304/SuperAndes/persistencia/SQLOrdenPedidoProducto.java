@@ -27,14 +27,14 @@ class SQLOrdenPedidoProducto {
 
 	public long eliminarOrdenPedidoProductoPorIdOrdenPedido (PersistenceManager pm, long id_OrdenPedido)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaOrdenPedidoProducto () + " WHERE id = ?");
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaOrdenPedidoProducto () + " WHERE id_OrdenPedido = ?");
         q.setParameters(id_OrdenPedido);
         return (long) q.executeUnique();
 	}
 
 	public OrdenPedidoProducto darOrdenPedidoProductoPorIdOrdenPedido (PersistenceManager pm, long id_OrdenPedido) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaOrdenPedidoProducto () + " WHERE id = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaOrdenPedidoProducto () + " WHERE id_OrdenPedido = ?");
 		q.setResultClass(OrdenPedidoProducto.class);
 		q.setParameters(id_OrdenPedido);
 		return (OrdenPedidoProducto) q.executeUnique();

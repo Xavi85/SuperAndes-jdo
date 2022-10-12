@@ -310,9 +310,10 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			resultado += eliminados [9] + " Sucursales eliminadas\n";
 			resultado += eliminados [10] + " Supermercados eliminados\n";
 			resultado += eliminados [11] + " Tipos de Productos eliminados\n";
-			resultado += eliminados [12] + " Usuarios eliminados\n";
-			resultado += eliminados [13] + " Ventas eliminadas\n";
-			resultado += eliminados [14] + " Ventas y Porductos eliminados\n";
+			resultado += eliminados [12] + " Tipos de Usuarios eliminados\n";
+			resultado += eliminados [13] + " Usuarios eliminados\n";
+			resultado += eliminados [14] + " Ventas eliminadas\n";
+			resultado += eliminados [15] + " Ventas y Porductos eliminados\n";
 			resultado += "\nLimpieza terminada";
    
 			panelDatos.actualizarInterfaz(resultado);

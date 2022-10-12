@@ -5,7 +5,6 @@ public class Usuario implements VOUsuario {
 	private long id;
 	private long nDocumento;
 	private String tipoDocumento;
-	private String tipoUsuario;
 	private String nombre;
 	private String correo;
 	private String pais;
@@ -20,7 +19,6 @@ public class Usuario implements VOUsuario {
 		this.id = 0;
 		this.nDocumento = 0;
 		this.tipoDocumento = "";
-		this.tipoUsuario = "";
 		this.nombre = "";
 		this.correo = "";
 		this.pais = "";
@@ -31,13 +29,12 @@ public class Usuario implements VOUsuario {
 		this.id_Supermercado = 0;
 	}
 	
-	public Usuario(long id, long nDocumento, String tipoDocumento, String tipoUsuario, String nombre, String correo,
+	public Usuario(long id, long nDocumento, String tipoDocumento, String nombre, String correo,
 			String pais, String ciudad, String direccion, int puntos, long id_Sucursal, long id_Supermercado) {
 
 		this.id = id;
 		this.nDocumento = nDocumento;
 		this.tipoDocumento = tipoDocumento;
-		this.tipoUsuario = tipoUsuario;
 		this.nombre = nombre;
 		this.correo = correo;
 		this.pais = pais;
@@ -70,14 +67,6 @@ public class Usuario implements VOUsuario {
 
 	public void setTipoDocumento(String tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
-	}
-
-	public String getTipoUsuario() {
-		return tipoUsuario;
-	}
-
-	public void setTipoUsuario(String tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
 	}
 
 	public String getNombre() {
@@ -153,8 +142,7 @@ public class Usuario implements VOUsuario {
 		builder.append(nDocumento);
 		builder.append(", tipoDocumento=");
 		builder.append(tipoDocumento);
-		builder.append(", tipoUsuario=");
-		builder.append(tipoUsuario);
+		builder.append(", id_TipoUsuario=");
 		builder.append(", nombre=");
 		builder.append(nombre);
 		builder.append(", correo=");

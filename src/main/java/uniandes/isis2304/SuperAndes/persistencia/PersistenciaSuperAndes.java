@@ -22,7 +22,9 @@ import uniandes.isis2304.SuperAndes.negocio.Proveedor;
 import uniandes.isis2304.SuperAndes.negocio.Sucursal;
 import uniandes.isis2304.SuperAndes.negocio.Supermercado;
 import uniandes.isis2304.SuperAndes.negocio.TipoProducto;
+import uniandes.isis2304.SuperAndes.negocio.TipoUsuario;
 import uniandes.isis2304.SuperAndes.negocio.Usuario;
+import uniandes.isis2304.SuperAndes.negocio.UsuarioTipoUsuario;
 import uniandes.isis2304.SuperAndes.negocio.Venta;
 import uniandes.isis2304.SuperAndes.negocio.VentaProducto;
 import uniandes.isis2304.SuperAndes.negocio.FacturaElectronica;
@@ -51,7 +53,9 @@ public class PersistenciaSuperAndes {
 	private SQLSucursal sqlSucursal;
 	private SQLSupermercado sqlSupermercado;
 	private SQLTipoProducto sqlTipoProducto;
+	private SQLTipoUsuario sqlTipoUsuario;
 	private SQLUsuario sqlUsuario;
+	private SQLUsuarioTipoUsuario sqlUsuarioTipoUsuario;
 	private SQLVenta sqlVenta;
 	private SQLVentaProducto sqlVentaProducto;
 	
@@ -80,7 +84,9 @@ public class PersistenciaSuperAndes {
 		tablas.add ("SUCURSAL");
 		tablas.add ("SUPERMERCADO");
 		tablas.add ("TIPO_PRODUCTO");
+		tablas.add ("TIPO_USUARIO");
 		tablas.add ("USUARIO");
+		tablas.add ("USUARIO_TIPO_USUARIO");
 		tablas.add ("VENTA");
 		tablas.add ("VENTA_PRODUCTO");
 	}
@@ -146,7 +152,9 @@ public class PersistenciaSuperAndes {
 		sqlSucursal = new SQLSucursal(this);
 		sqlSupermercado = new SQLSupermercado(this);
 		sqlTipoProducto = new SQLTipoProducto(this);
+		sqlTipoUsuario = new SQLTipoUsuario(this);
 		sqlUsuario = new SQLUsuario(this);
+		sqlUsuarioTipoUsuario = new SQLUsuarioTipoUsuario(this);
 		sqlVenta = new SQLVenta(this);
 		sqlVentaProducto = new SQLVentaProducto(this);	
 		sqlUtil = new SQLUtil(this);
@@ -165,9 +173,11 @@ public class PersistenciaSuperAndes {
 	public String darTablaSucursal() { return tablas.get(10); }
 	public String darTablaSupermercado() { return tablas.get(11); }
 	public String darTablaTipoProducto() { return tablas.get(12); }
-	public String darTablaUsuario() { return tablas.get(13); }
-	public String darTablaVenta() { return tablas.get(14); }
-	public String darTablaVentaProducto() { return tablas.get(15); }
+	public String darTablaTipoUsuario() { return tablas.get(13); }
+	public String darTablaUsuario() { return tablas.get(14); }
+	public String darTablaUsuarioTipoUsuario() { return tablas.get(15); }
+	public String darTablaVenta() { return tablas.get(16); }
+	public String darTablaVentaProducto() { return tablas.get(17); }
 
 	private long nextval () {
 		
@@ -192,7 +202,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las Bodegas
 	 *****************************************************************/
 	
-	public Bodega adicionarBodega(int volMax, int pesoMax, String tipoAlmacen, long id_Sucursal, long id_TipoProducto) {
+	public Bodega adicionarBodega (int volMax, int pesoMax, String tipoAlmacen, long id_Sucursal, long id_TipoProducto) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -261,7 +271,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar los Estantes
 	 *****************************************************************/
 
-	public Estante adicionarEstante(int volMax, int pesoMax, String tipoAlmacen, int nAbastecimiento, long id_Sucursal, long id_TipoProducto) {
+	public Estante adicionarEstante (int volMax, int pesoMax, String tipoAlmacen, int nAbastecimiento, long id_Sucursal, long id_TipoProducto) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -330,7 +340,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las FacturasElectronicas
 	 *****************************************************************/
 
-	public FacturaElectronica adicionarFacturaElectronica(long numFactura, long id_Sucursal, long id_Cliente, long id_Venta) {
+	public FacturaElectronica adicionarFacturaElectronica (long numFactura, long id_Sucursal, long id_Cliente, long id_Venta) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -399,7 +409,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las OrdenesPedidos
 	 *****************************************************************/
 
-	public OrdenPedido adicionarOrdenPedido(Date fCompra, int vTotal, long id_Proveedor, long id_Sucursal) {
+	public OrdenPedido adicionarOrdenPedido (Date fCompra, int vTotal, long id_Proveedor, long id_Sucursal) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -468,7 +478,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las OrdenesPedidosProductos
 	 *****************************************************************/
 
-	public OrdenPedidoProducto adicionarOrdenPedidoProducto(long id_OrdenPedido, long id_Producto, int cantCompra, int pCompra) {
+	public OrdenPedidoProducto adicionarOrdenPedidoProducto (long id_OrdenPedido, long id_Producto, int cantCompra, int pCompra) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -536,7 +546,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar los Productos
 	 *****************************************************************/
 
-	public Producto adicionarProducto(String codigoBarra, String nombre, String marca, int pVenta, String presentacion,
+	public Producto adicionarProducto (String codigoBarra, String nombre, String marca, int pVenta, String presentacion,
 			int pUnidadMedida, int cantPPT, String unidadMedida, int espEmpPeso, int espEmpVol, boolean esPerecedero,
 			Date fVencimiento, int nReorden, int stockBodega, int stockProducto, int stockTotal, long id_TipoProducto) {
 		
@@ -611,7 +621,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las Promociones
 	 *****************************************************************/
 
-	public Promocion adicionarPromocion(String nombre, Date fInicio, Date fFin, String descripcion, String tipoPromocion,
+	public Promocion adicionarPromocion (String nombre, Date fInicio, Date fFin, String descripcion, String tipoPromocion,
 			int lleve, int pague, float descuento, int pVenta, long id_Sucursal) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -683,7 +693,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las PromocionesProductos
 	 *****************************************************************/
 
-	public PromocionProducto adicionarPromocionProducto(long id_Promocion, long id_Producto) {
+	public PromocionProducto adicionarPromocionProducto (long id_Promocion, long id_Producto) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -751,7 +761,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar los Proveedores
 	 *****************************************************************/
 
-	public Proveedor adicionarProveedor(long nit, String nombre, int calificacion) {
+	public Proveedor adicionarProveedor (long nit, String nombre, int calificacion) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -820,7 +830,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las Sucursales
 	 *****************************************************************/
 
-	public Sucursal adicionarSucursal(String nombre, String pais, String ciudad, String direccion, long id_Supermercado) {
+	public Sucursal adicionarSucursal (String nombre, String pais, String ciudad, String direccion, long id_Supermercado) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -889,7 +899,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar los Supermercados
 	 *****************************************************************/
 
-	public Supermercado adicionarSupermercado(long nit, String nombre) {
+	public Supermercado adicionarSupermercado (long nit, String nombre) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -958,7 +968,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar los TiposProductos
 	 *****************************************************************/
 
-	public TipoProducto adicionarTipoProducto(String nombre, String tipoAlmacen, String categoria, String subCategoria) {
+	public TipoProducto adicionarTipoProducto (String nombre, String tipoAlmacen, String categoria, String subCategoria) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -1024,10 +1034,79 @@ public class PersistenciaSuperAndes {
 
 	
 	/* ****************************************************************
+	 * 			Métodos para manejar los TiposUsuarios
+	 *****************************************************************/
+
+	public TipoUsuario adicionarTipoUsuario (String tipo) {
+		
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlTipoUsuario.adicionarTipoUsuario(pm, id, tipo);
+            tx.commit();
+            
+            log.trace ("Inserción de TipoUsuario: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new TipoUsuario (id, tipo);
+        }
+        catch (Exception e) {
+        	
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally {
+        	
+            if (tx.isActive()) {
+            	
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+	public long eliminarTipoUsuarioPorId (long id) {
+		
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try {
+            tx.begin();
+            long resp = sqlTipoUsuario.eliminarTipoUsuarioPorId(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e) {
+        	
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally {
+        	
+            if (tx.isActive()) {
+            	
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public TipoUsuario darTipoUsuarioPorId (long id) {
+		
+		return sqlTipoUsuario.darTipoUsuarioPorId (pmf.getPersistenceManager(), id);
+	}
+
+	public List<TipoUsuario> darTiposUsuario () {
+		
+		return sqlTipoUsuario.darTiposUsuario (pmf.getPersistenceManager());
+	}
+	
+	
+	/* ****************************************************************
 	 * 			Métodos para manejar los Usuarios
 	 *****************************************************************/
 
-	public Usuario adicionarUsuario(long nDocumento, String tipoDocumento, String tipoUsuario, String nombre, String correo,
+	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo,
 			String pais, String ciudad, String direccion, int puntos, long id_Sucursal, long id_Supermercado) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -1035,12 +1114,12 @@ public class PersistenciaSuperAndes {
         try {
             tx.begin();
             long id = nextval ();
-            long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, id, nDocumento, tipoDocumento, tipoUsuario, nombre, correo, pais, ciudad, direccion, puntos, id_Sucursal, id_Supermercado);
+            long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_Sucursal, id_Supermercado);
             tx.commit();
             
             log.trace ("Inserción de Usuario: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Usuario (id, nDocumento, tipoDocumento, tipoUsuario, nombre, correo, pais, ciudad, direccion, puntos, id_Sucursal, id_Supermercado);
+            return new Usuario (id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_Sucursal, id_Supermercado);
         }
         catch (Exception e) {
         	
@@ -1091,13 +1170,81 @@ public class PersistenciaSuperAndes {
 		
 		return sqlUsuario.darUsuarios (pmf.getPersistenceManager());
 	}
-
 	
+	
+	/* ****************************************************************
+	 * 			Métodos para manejar los UsuarioTipoUsuario
+	 *****************************************************************/
+
+	public UsuarioTipoUsuario adicionarUsuarioTipoUsuario (long id_Usuario, long id_TipoUsuario) {
+		
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try {
+            tx.begin();
+            long tuplasInsertadas = sqlUsuarioTipoUsuario.adicionarUsuarioTipoUsuario(pm, id_Usuario, id_TipoUsuario);
+            tx.commit();
+            
+            log.trace ("Inserción de UsuarioTipoUsuario: " + id_Usuario + id_TipoUsuario + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new UsuarioTipoUsuario (id_Usuario, id_TipoUsuario);
+        }
+        catch (Exception e) {
+        	
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally {
+        	
+            if (tx.isActive()) {
+            	
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+	public long eliminarUsuarioTipoUsuarioPorIdUsuarioYTipoUsuario (long id_Usuario, long id_TipoUsuario) {
+		
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try {
+            tx.begin();
+            long resp = sqlUsuarioTipoUsuario.eliminarUsuarioTipoUsuarioPorIdUsuarioYTipoUsuario(pm, id_Usuario, id_TipoUsuario);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e) {
+        	
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally {
+        	
+            if (tx.isActive()) {
+            	
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public UsuarioTipoUsuario darUsuarioTipoUsuarioPorIdUsuario (long id_Usuario) {
+		
+		return sqlUsuarioTipoUsuario.darUsuarioTipoUsuarioPorIdUsuario (pmf.getPersistenceManager(), id_Usuario);
+	}
+
+	public List<UsuarioTipoUsuario> darUsuariosTiposUsuario () {
+		
+		return sqlUsuarioTipoUsuario.darUsuariosTiposUsuario (pmf.getPersistenceManager());
+	}
+	
+		
 	/* ****************************************************************
 	 * 			Métodos para manejar las Ventas
 	 *****************************************************************/
 
-	public Venta adicionarVenta(Date fVenta, int pTotal, long id_Sucursal, long id_Cajero) {
+	public Venta adicionarVenta (Date fVenta, int pTotal, long id_Sucursal, long id_Cajero) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -1166,7 +1313,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las VentasProductos
 	 *****************************************************************/
 
-	public VentaProducto adicionarVentaProducto(long id_Venta, long id_Producto, int pVentaH, int cantidad) {
+	public VentaProducto adicionarVentaProducto (long id_Venta, long id_Producto, int pVentaH, int cantidad) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();

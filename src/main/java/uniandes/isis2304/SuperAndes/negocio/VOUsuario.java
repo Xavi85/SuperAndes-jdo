@@ -8,8 +8,6 @@ public interface VOUsuario {
 
 	public String getTipoDocumento();
 
-	public String getTipoUsuario();
-
 	public String getNombre();
 
 	public String getCorreo();

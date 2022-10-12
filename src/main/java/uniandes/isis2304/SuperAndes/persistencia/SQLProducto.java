@@ -34,14 +34,14 @@ class SQLProducto {
 
 	public long eliminarProductoPorId (PersistenceManager pm, long id)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaProducto () + " WHERE id = ?");
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaProducto () + " WHERE idLote = ?");
         q.setParameters(id);
         return (long) q.executeUnique();
 	}
 
 	public Producto darProductoPorId (PersistenceManager pm, long id) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaProducto () + " WHERE id = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaProducto () + " WHERE idLote = ?");
 		q.setResultClass(Producto.class);
 		q.setParameters(id);
 		return (Producto) q.executeUnique();

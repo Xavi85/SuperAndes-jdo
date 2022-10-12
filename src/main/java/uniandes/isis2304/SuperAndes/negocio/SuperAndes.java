@@ -35,7 +35,7 @@ public class SuperAndes {
 
 	public Bodega adicionarBodega (int volMax, int pesoMax, String tipoAlmacen, long id_Sucursal, long id_TipoProducto) {
 		
-		log.info ("Adicionando Bodega " + volMax + ", " + pesoMax + ", " + tipoAlmacen + ", " + id_Sucursal + ", " + id_TipoProducto);
+		log.info ("Adicionando Bodega: " + volMax + ", " + pesoMax + ", " + tipoAlmacen + ", " + id_Sucursal + ", " + id_TipoProducto);
 		Bodega Bodega = pp.adicionarBodega (volMax, pesoMax, tipoAlmacen, id_Sucursal, id_TipoProducto);
         log.info ("Adicionando Bodega: " + Bodega);
         return Bodega;
@@ -84,7 +84,7 @@ public class SuperAndes {
 
 	public Estante adicionarEstante (int volMax, int pesoMax, String tipoAlmacen, int nAbastecimiento, long id_Sucursal, long id_TipoProducto) {
 		
-		log.info ("Adicionando Estante " + volMax + ", " + pesoMax + ", " + tipoAlmacen + ", "  + nAbastecimiento + ", " + id_Sucursal + ", " + id_TipoProducto);
+		log.info ("Adicionando Estante: " + volMax + ", " + pesoMax + ", " + tipoAlmacen + ", "  + nAbastecimiento + ", " + id_Sucursal + ", " + id_TipoProducto);
 		Estante estante = pp.adicionarEstante (volMax, pesoMax, tipoAlmacen, nAbastecimiento, id_Sucursal, id_TipoProducto);
         log.info ("Adicionando Estante: " + estante);
         return estante;
@@ -133,7 +133,7 @@ public class SuperAndes {
 
 	public FacturaElectronica adicionarFacturaElectronica (long numFactura, long id_Sucursal, long id_Cliente, long id_Venta) {
 		
-		log.info ("Adicionando Facturas Electronica " + numFactura);
+		log.info ("Adicionando Facturas Electronica: " + numFactura);
 		FacturaElectronica facturasElectronica = pp.adicionarFacturaElectronica (numFactura, id_Sucursal, id_Cliente, id_Venta);
         log.info ("Adicionando FacturasElectronica: " + facturasElectronica);
         return facturasElectronica;
@@ -182,7 +182,7 @@ public class SuperAndes {
 
 	public OrdenPedido adicionarOrdenPedido (Date fCompra, int vTotal, long id_Proveedor, long id_Sucursal) {
 		
-		log.info ("Adicionando Orden de Pedido " + fCompra + ", " + vTotal + ", " + id_Proveedor + ", "  + id_Sucursal);
+		log.info ("Adicionando Orden de Pedido: " + fCompra + ", " + vTotal + ", " + id_Proveedor + ", "  + id_Sucursal);
 		OrdenPedido ordenPedido = pp.adicionarOrdenPedido (fCompra, vTotal, id_Proveedor, id_Sucursal);
         log.info ("Adicionando Orden de Pedido: " + ordenPedido);
         return ordenPedido;
@@ -231,7 +231,7 @@ public class SuperAndes {
 
 	public OrdenPedidoProducto adicionarOrdenPedidoProducto (long id_OrdenPedido, long id_Producto, int cantCompra, int pCompra) {
 		
-		log.info ("Adicionando Orden de Pedido de Producto " + id_OrdenPedido + ", " + id_Producto + ", " + cantCompra + ", "  + pCompra);
+		log.info ("Adicionando Orden de Pedido de Producto: " + id_OrdenPedido + ", " + id_Producto + ", " + cantCompra + ", "  + pCompra);
 		OrdenPedidoProducto ordenPedidoProducto = pp.adicionarOrdenPedidoProducto (id_OrdenPedido, id_Producto, cantCompra, pCompra);
         log.info ("Adicionando Orden de Pedido de Producto: " + ordenPedidoProducto);
         return ordenPedidoProducto;
@@ -282,7 +282,7 @@ public class SuperAndes {
 			int pUnidadMedida, int cantPPT, String unidadMedida, int espEmpPeso, int espEmpVol, boolean esPerecedero,
 			Date fVencimiento, int nReorden, int stockBodega, int stockProducto, int stockTotal, long id_TipoProducto) {
 		
-		log.info ("Adicionando Producto " + nombre);
+		log.info ("Adicionando Producto: " + nombre);
 		Producto producto = pp.adicionarProducto (codigoBarra, nombre, marca, pVenta, presentacion,
         		pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,
         		fVencimiento, nReorden, stockBodega, stockProducto, stockTotal, id_TipoProducto);
@@ -334,7 +334,7 @@ public class SuperAndes {
 	public Promocion adicionarPromocion (String nombre, Date fInicio, Date fFin, String descripcion, String tipoPromocion,
 			int lleve, int pague, float descuento, int pVenta, long id_Sucursal) {
 		
-		log.info ("Adicionando Promocion " + nombre);
+		log.info ("Adicionando Promocion: " + nombre);
 		Promocion promocion = pp.adicionarPromocion (nombre, fInicio, fFin, descripcion, tipoPromocion, lleve, pague, descuento, pVenta, id_Sucursal);
         log.info ("Adicionando Promocion: " + promocion);
         return promocion;
@@ -383,7 +383,7 @@ public class SuperAndes {
 
 	public PromocionProducto adicionarPromocionProducto (long id_Promocion, long id_Producto) {
 		
-		log.info ("Adicionando Promocion de Producto " + id_Promocion + ", " + id_Producto);
+		log.info ("Adicionando Promocion de Producto: " + id_Promocion + ", " + id_Producto);
 		PromocionProducto promocionProducto = pp.adicionarPromocionProducto (id_Promocion, id_Producto);
         log.info ("Adicionando Promocion de Producto: " + promocionProducto);
         return promocionProducto;
@@ -432,7 +432,7 @@ public class SuperAndes {
 
 	public Proveedor adicionarProveedor (long nit, String nombre, int calificacion) {
 		
-		log.info ("Adicionando Proveedor " + nombre);
+		log.info ("Adicionando Proveedor: " + nombre);
 		Proveedor proveedor = pp.adicionarProveedor (nit, nombre, calificacion);
         log.info ("Adicionando Proveedor: " + proveedor);
         return proveedor;
@@ -481,7 +481,7 @@ public class SuperAndes {
 
 	public Sucursal adicionarSucursal (String nombre, String pais, String ciudad, String direccion, long id_Supermercado) {
 		
-		log.info ("Adicionando Sucursal " + nombre);
+		log.info ("Adicionando Sucursal: " + nombre);
 		Sucursal sucursal = pp.adicionarSucursal (nombre, pais, ciudad, direccion, id_Supermercado);
         log.info ("Adicionando Sucursal: " + sucursal);
         return sucursal;
@@ -530,7 +530,7 @@ public class SuperAndes {
 
 	public Supermercado adicionarSupermercado (long nit, String nombre) {
 		
-		log.info ("Adicionando Supermercado " + nombre);
+		log.info ("Adicionando Supermercado: " + nombre);
 		Supermercado supermercado = pp.adicionarSupermercado (nit, nombre);
         log.info ("Adicionando Supermercado: " + supermercado);
         return supermercado;
@@ -579,7 +579,7 @@ public class SuperAndes {
 
 	public TipoProducto adicionarTipoProducto (String nombre, String tipoAlmacen, String categoria, String subCategoria) {
 		
-		log.info ("Adicionando Tipo de Producto " + nombre);
+		log.info ("Adicionando Tipo de Producto: " + nombre);
 		TipoProducto tipoProducto = pp.adicionarTipoProducto (nombre, tipoAlmacen, categoria, subCategoria);
         log.info ("Adicionando Tipo de Producto: " + tipoProducto);
         return tipoProducto;
@@ -623,14 +623,63 @@ public class SuperAndes {
 
 	
 	/* ****************************************************************
+	 * 			Métodos para manejar los Tipos de Usuarios
+	 *****************************************************************/
+
+	public TipoUsuario adicionarTipoUsuario (String tipo) {
+		
+		log.info ("Adicionando Tipo de Usuario: " + tipo);
+		TipoUsuario tipoUsuario = pp.adicionarTipoUsuario (tipo);
+        log.info ("Adicionando Tipo de Usuario: " + tipoUsuario);
+        return tipoUsuario;
+	}
+
+	public long eliminarTipoUsuarioPorId (long id) {
+		
+        log.info ("Eliminando Tipo de Usuario por id: " + id);
+        long resp = pp.eliminarTipoUsuarioPorId (id);
+        log.info ("Eliminando Tipo de Usuario por id: " + resp + " tuplas eliminadas");
+        return resp;
+	}
+	
+	public TipoUsuario darTipoUsuarioPorId (long id)
+	{
+        log.info ("Dar información de un Tipo de Producto por id: " + id);
+        TipoUsuario tipoUsuario = pp.darTipoUsuarioPorId (id);
+        log.info ("Buscando Tipo de Producto por Id: " + tipoUsuario != null ? tipoUsuario : "NO EXISTE");
+        return tipoUsuario;
+	}
+
+	public List<TipoUsuario> darTiposUsuario () {
+		
+        log.info ("Consultando Tipos de Usuario");
+        List<TipoUsuario> tipoProducto = pp.darTiposUsuario ();	
+        log.info ("Consultando Tipos de Usuario: " + tipoProducto.size() + " TiposUsuario existentes");
+        return tipoProducto;
+	}
+
+	public List<VOTipoUsuario> darVOTiposUsuario () {
+		
+		log.info ("Generando los VO de los Tipos de Usuario");       
+        List<VOTipoUsuario> voTiposUsuario = new LinkedList<VOTipoUsuario> ();
+        for (TipoUsuario beb : pp.darTiposUsuario ())
+        {
+        	voTiposUsuario.add (beb);
+        }
+        log.info ("Generando los VO de los Tipos de Usuario: " + voTiposUsuario.size() + " existentes");
+        return voTiposUsuario;
+	}
+	
+	
+	/* ****************************************************************
 	 * 			Métodos para manejar los Usuarios
 	 *****************************************************************/
 
-	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String tipoUsuario, String nombre, String correo,
+	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo,
 			String pais, String ciudad, String direccion, int puntos, long id_Sucursal, long id_Supermercado) {
 		
-		log.info ("Adicionando Usuario " + nombre);
-		Usuario usuario = pp.adicionarUsuario (nDocumento, tipoDocumento, tipoUsuario, nombre, correo, pais, ciudad, direccion, puntos, id_Sucursal, id_Supermercado);
+		log.info ("Adicionando Usuario: " + nombre);
+		Usuario usuario = pp.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_Sucursal, id_Supermercado);
         log.info ("Adicionando Usuario: " + usuario);
         return usuario;
 	}
@@ -673,12 +722,61 @@ public class SuperAndes {
 
 	
 	/* ****************************************************************
+	 * 			Métodos para manejar los Usuarios y Tipos de Usuarios
+	 *****************************************************************/
+
+	public UsuarioTipoUsuario adicionarUsuarioTipoUsuario (long id_Usuario, long id_TipoUsuario) {
+		
+		log.info ("Adicionando Usuario y tipo de Usuario: " + id_Usuario + ", " + id_TipoUsuario);
+		UsuarioTipoUsuario usuarioTipoUsuario = pp.adicionarUsuarioTipoUsuario (id_Usuario, id_TipoUsuario);
+        log.info ("Adicionando Usuario y tipo de Usuario: " + usuarioTipoUsuario);
+        return usuarioTipoUsuario;
+	}
+
+	public long eliminarUsuarioTipoUsuarioPorIdUsuarioYTipoUsuario (long id_Usuario, long id_TipoUsuario) {
+		
+        log.info ("Eliminando Usuario y tipo de Usuario: " + id_Usuario + ", " + id_TipoUsuario);
+        long resp = pp.eliminarUsuarioTipoUsuarioPorIdUsuarioYTipoUsuario (id_Usuario, id_TipoUsuario);
+        log.info ("Eliminando Usuario y tipo de Usuario: " + resp + " tuplas eliminadas");
+        return resp;
+	}
+	
+	public UsuarioTipoUsuario darUsuarioTipoUsuarioPorIdUsuario (long id_Usuario)
+	{
+        log.info ("Dar información de un Usuario y tipo de Usuario id Usuario: " + id_Usuario);
+        UsuarioTipoUsuario usuarioTipoUsuario = pp.darUsuarioTipoUsuarioPorIdUsuario (id_Usuario);
+        log.info ("Buscando Usuario y tipo de Usuario id Usuario: " + usuarioTipoUsuario != null ? usuarioTipoUsuario : "NO EXISTE");
+        return usuarioTipoUsuario;
+	}
+
+	public List<UsuarioTipoUsuario> darUsuariosTiposUsuario () {
+		
+        log.info ("Consultando Usuario y tipo de Usuario");
+        List<UsuarioTipoUsuario> usuarioTipoUsuario = pp.darUsuariosTiposUsuario ();	
+        log.info ("Consultando Usuario y tipo de Usuario: " + usuarioTipoUsuario.size() + " Usuario y tipo de Usuario existentes");
+        return usuarioTipoUsuario;
+	}
+
+	public List<VOUsuarioTipoUsuario> darVOUsuariosTiposUsuario () {
+		
+		log.info ("Generando los VO de los Usuario y tipo de Usuario");       
+        List<VOUsuarioTipoUsuario> voUsuariosTiposUsuario = new LinkedList<VOUsuarioTipoUsuario> ();
+        for (UsuarioTipoUsuario beb : pp.darUsuariosTiposUsuario ())
+        {
+        	voUsuariosTiposUsuario.add (beb);
+        }
+        log.info ("Generando los VO de los Usuario y tipo de Usuario: " + voUsuariosTiposUsuario.size() + " existentes");
+        return voUsuariosTiposUsuario;
+	}
+	
+	
+	/* ****************************************************************
 	 * 			Métodos para manejar las Ventas
 	 *****************************************************************/
 
 	public Venta adicionarVenta (Date fVenta, int pTotal, long id_Sucursal, long id_Cajero) {
 		
-		log.info ("Adicionando Venta " + fVenta + ", " + pTotal + ", " + id_Sucursal + ", "  + id_Cajero);
+		log.info ("Adicionando Venta: " + fVenta + ", " + pTotal + ", " + id_Sucursal + ", "  + id_Cajero);
 		Venta venta = pp.adicionarVenta (fVenta, pTotal, id_Sucursal, id_Cajero);
         log.info ("Adicionando Venta: " + venta);
         return venta;
@@ -727,7 +825,7 @@ public class SuperAndes {
 
 	public VentaProducto adicionarVentaProducto (long id_Venta, long id_Producto, int pVentaH, int cantidad) {
 		
-		log.info ("Adicionando Venta de Producto " + id_Venta + ", " + id_Producto + ", " + pVentaH + ", "  + cantidad);
+		log.info ("Adicionando Venta de Producto: " + id_Venta + ", " + id_Producto + ", " + pVentaH + ", "  + cantidad);
 		VentaProducto ventaProducto = pp.adicionarVentaProducto (id_Venta, id_Producto, pVentaH, cantidad);
         log.info ("Adicionando Venta de Producto: " + ventaProducto);
         return ventaProducto;
