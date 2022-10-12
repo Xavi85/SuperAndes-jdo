@@ -12,7 +12,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.Objects;
 
 import javax.jdo.JDODataStoreException;
 import javax.swing.ImageIcon;
@@ -57,7 +56,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 	 *****************************************************************/
 
     private JsonObject tableConfig;
-    private SuperAndes SuperAndes;
+    private SuperAndes superAndes;
     private JsonObject guiConfig;
     private PanelDatos panelDatos;
     private JMenuBar menuBar;
@@ -71,8 +70,19 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 
 		String rol[] = {"Administrador", "Gerente General", "Gerente Sucursal", "Operador", "Cajero", "Cliente"};
 		JComboBox combo = new JComboBox(rol);
-
 		JOptionPane.showMessageDialog(null, combo, "Tipos", JOptionPane.QUESTION_MESSAGE);
+		/*
+		long idU = 0;
+		try {
+			idU = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese su ID:", "Abrir sesión", JOptionPane.INFORMATION_MESSAGE));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (HeadlessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				*/
 		String rolActual = rol[combo.getSelectedIndex()];
 
 		String json = CONFIG_INTERFAZ;
@@ -86,7 +96,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			json += "GerenteGeneral.json";
 		}
 		else if(rolActual.equals(rol[2]))
-		{
+		{			
 			json += "GerenteSucursal.json";
 		}
 		else if(rolActual.equals(rol[3]))
@@ -107,7 +117,10 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
         }
         
         tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
-        SuperAndes = new SuperAndes (tableConfig);
+        superAndes = new SuperAndes (tableConfig);
+        
+        
+        
         
     	String path = guiConfig.get("bannerPath").getAsString();
         panelDatos = new PanelDatos ( );
@@ -206,7 +219,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     public void listarProveedor() {
     	
     	try {
-			List <VOProveedor> lista = SuperAndes.darVOProveedores();
+			List <VOProveedor> lista = superAndes.darVOProveedores();
 			String resultado = "En listar Bodega";
 			resultado +=  "\n" + listarProveedores (lista);
 			panelDatos.actualizarInterfaz(resultado);
@@ -226,7 +239,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     		if (idProveedorStr != null) {
     			
     			long idProveedor = Long.valueOf (idProveedorStr);
-    			long tbEliminados = SuperAndes.eliminarBodegaPorId (idProveedor);
+    			long tbEliminados = superAndes.eliminarBodegaPorId (idProveedor);
 
     			String resultado = "En eliminar Proveedor\n\n";
     			resultado += tbEliminados + " Proveedor eliminado\n";
@@ -252,7 +265,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     public void listarTipoProducto() {
     	
     	try {
-			List <VOTipoProducto> lista = SuperAndes.darVOTiposProductos();
+			List <VOTipoProducto> lista = superAndes.darVOTiposProductos();
 			String resultado = "En listar Bodegas";
 			resultado +=  "\n" + listarTiposProductos (lista);
 			panelDatos.actualizarInterfaz(resultado);
@@ -273,7 +286,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     public void listarTipoUsuario() {
     	
     	try {
-			List <VOTipoUsuario> lista = SuperAndes.darVOTiposUsuario();
+			List <VOTipoUsuario> lista = superAndes.darVOTiposUsuario();
 			String resultado = "En listar Tipos de Usuarios";
 			resultado +=  "\n" + listarTiposUsuario (lista);
 			panelDatos.actualizarInterfaz(resultado);
@@ -293,7 +306,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     		String nombreTipo = JOptionPane.showInputDialog (this, "Nombre del tipo de Usuario", "Adicionar tipo de Usuario", JOptionPane.QUESTION_MESSAGE);
     		if (nombreTipo != null)
     		{
-        		VOTipoUsuario tb = SuperAndes.adicionarTipoUsuario (nombreTipo);
+        		VOTipoUsuario tb = superAndes.adicionarTipoUsuario (nombreTipo);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear un tipo de usuario con nombre: " + nombreTipo);
@@ -323,7 +336,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     public void listarSucursal() {
     	
     	try {
-			List <VOSucursal> lista = SuperAndes.darVOSucursales();
+			List <VOSucursal> lista = superAndes.darVOSucursales();
 			String resultado = "En listar Sucursales";
 			resultado +=  "\n" + listarSucursales (lista);
 			panelDatos.actualizarInterfaz(resultado);
@@ -346,7 +359,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     		String direccion = JOptionPane.showInputDialog (this, "Dirección de la Sucursal", "Adicionar Sucursal", JOptionPane.QUESTION_MESSAGE);
     		if (nombre != null || pais != null || ciudad != null || direccion != null )
     		{
-        		VOSucursal tb = SuperAndes.adicionarSucursal (nombre, pais, ciudad, direccion, 1);
+        		VOSucursal tb = superAndes.adicionarSucursal (nombre, pais, ciudad, direccion, 1);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear una sucursal con nombre: " + nombre);
@@ -376,7 +389,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     public void listarUsuario() {
     	
     	try {
-			List <VOUsuario> lista = SuperAndes.darVOUsuarios();
+			List <VOUsuario> lista = superAndes.darVOUsuarios();
 			String resultado = "En listar Usuarios";
 			resultado +=  "\n" + listarUsuarios (lista);
 			panelDatos.actualizarInterfaz(resultado);
@@ -388,7 +401,10 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+   
     
+    
+   /* 
     public void adicionarUsuario( )
     {
     	try 
@@ -408,14 +424,14 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     		String ciudad = JOptionPane.showInputDialog (this, "Ciudad de Residencia", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
     		String direccion = JOptionPane.showInputDialog (this, "Dirección de Residencia", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
     		
-    		List tiposUsuario = SuperAndes.darNombreTiposUsuario();
+    		List tiposUsuario = superAndes.darNombreTiposUsuario();
     		String[] opcTiposUsuario = new String[tiposUsuario.size()];
     		for(int i = 0; i < tiposUsuario.size(); i++) {
     			opcTiposUsuario[i] = tiposUsuario.get(i).toString();
     		}
 			JComboBox opcionesTiposUsuario = new JComboBox(opcTiposUsuario);
 			JOptionPane.showMessageDialog(null, opcionesTiposUsuario, "Seleccione el tipo de Usuario", JOptionPane.QUESTION_MESSAGE);
-			long id_TipoUsuario = SuperAndes.darIdPorTipoUsuario(opcTiposUsuario[opcionesTiposUsuario.getSelectedIndex()]).getId();
+			long id_TipoUsuario = superAndes.darIdPorTipoUsuario(opcTiposUsuario[opcionesTiposUsuario.getSelectedIndex()]).getId();
 
 			if(opcTiposUsuario[opcionesTiposUsuario.getSelectedIndex()].equals("Administrador") || opcTiposUsuario[opcionesTiposUsuario.getSelectedIndex()].equals("Gerente General") || opcTiposUsuario[opcionesTiposUsuario.getSelectedIndex()].equals("Cliente")) {
     			
@@ -426,21 +442,21 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
         		
     		} else {
 	
-				List sucursales = SuperAndes.darNombreSucursales();
+				List sucursales = superAndes.darNombreSucursales();
 	    		String[] opcSucursales = new String[sucursales.size()];
 	    		for(int i = 0; i < sucursales.size(); i++) {
 	    			opcSucursales[i] = sucursales.get(i).toString();
 	    		}
 				JComboBox opcionesSucursales = new JComboBox(opcSucursales);
 				JOptionPane.showMessageDialog(null, opcionesSucursales, "Seleccione la Sucursales", JOptionPane.QUESTION_MESSAGE);
-				id_Sucursal = SuperAndes.darIdPorSucursal(opcSucursales[opcionesSucursales.getSelectedIndex()]).getId();
+				id_Sucursal = superAndes.darIdPorSucursal(opcSucursales[opcionesSucursales.getSelectedIndex()]).getId();
     		}
     		
 			long id_Supermercado = 1;
     		
     		if (Objects.isNull(nDocumento) || tipoDocumento != null || nombre != null || correo != null || pais != null || ciudad != null || direccion != null || Objects.isNull(id_Supermercado))
     		{
-        		VOUsuario tb = SuperAndes.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado);
+        		VOUsuario tb = superAndes.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear el Usuario con nombre: " + nombre);
@@ -460,6 +476,16 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			String resultado = generarMensajeError(e);
 			panelDatos.actualizarInterfaz(resultado);
 		}
+    }
+    */
+    
+    /* ****************************************************************
+	 * 			CRUD de Bodega
+	 *****************************************************************/
+    
+    public void adicionarBodega( )
+    {
+
     }
     
     
@@ -525,7 +551,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 		try 
 		{
     		// Ejecución de la demo y recolección de los resultados
-			long eliminados [] = SuperAndes.limpiarSuperAndes();
+			long eliminados [] = superAndes.limpiarSuperAndes();
 			
 			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
 			String resultado = "\n\n************ Limpiando la base de datos ************ \n";
@@ -663,7 +689,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
         }
         return resp;
 	}
-
+	
 	private String listarUsuarios(List<VOUsuario> lista) 
     {
     	String resp = "Los usuarios existentes son:\n";
@@ -674,6 +700,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
         }
         return resp;
 	}
+
 
     /**
      * Genera una cadena de caracteres con la descripción de la excepcion e, haciendo énfasis en las excepcionsde JDO
@@ -780,6 +807,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
             UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName( ) );
             InterfazSuperAndesApp interfaz = new InterfazSuperAndesApp( );
             interfaz.setVisible( true );
+
         }
         catch( Exception e )
         {

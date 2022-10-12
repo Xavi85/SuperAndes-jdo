@@ -1,21 +1,21 @@
 package uniandes.isis2304.SuperAndes.negocio;
 
 public class Usuario implements VOUsuario {
-
+	
 	private long id;
 	private long nDocumento;
-	private String tipoDocumento;
-	private String nombre;
-	private String correo;
-	private String pais;
-	private String ciudad;
-	private String direccion;
-	private Integer puntos;
-	private Long id_TipoUsuario;
-	private Long id_Sucursal;
-	private long id_Supermercado;
-	
-	public Usuario() {
+    private String tipoDocumento;
+    private String nombre;
+    private String correo;
+    private String pais;
+    private String ciudad;
+    private String direccion;
+    private int puntos;
+    private long id_TipoUsuario;
+    private long id_Sucursal;
+    private long id_Supermercado;
+    
+    public Usuario() {
 
 		this.id = 0;
 		this.nDocumento = 0;
@@ -26,13 +26,13 @@ public class Usuario implements VOUsuario {
 		this.ciudad = "";
 		this.direccion = "";
 		this.puntos = 0;
-		this.id_TipoUsuario = (long) 0;
-		this.id_Sucursal = (long) 0;
+		this.id_TipoUsuario = 0;
+		this.id_Sucursal = 0;
 		this.id_Supermercado = 0;
 	}
-	
-	public Usuario(long id, long nDocumento, String tipoDocumento, String nombre, String correo,
-			String pais, String ciudad, String direccion, Integer puntos, Long id_TipoUsuario, Long id_Sucursal, long id_Supermercado) {
+    
+	public Usuario(long id, long nDocumento, String tipoDocumento, String nombre, String correo, String pais,
+			String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) {
 
 		this.id = id;
 		this.nDocumento = nDocumento;
@@ -116,15 +116,15 @@ public class Usuario implements VOUsuario {
 		return puntos;
 	}
 
-	public void setPuntos(Integer puntos) {
+	public void setPuntos(int puntos) {
 		this.puntos = puntos;
 	}
-	
+
 	public long getId_TipoUsuario() {
 		return id_TipoUsuario;
 	}
 
-	public void setId_TipoUsuario(Long id_TipoUsuario) {
+	public void setId_TipoUsuario(long id_TipoUsuario) {
 		this.id_TipoUsuario = id_TipoUsuario;
 	}
 
@@ -132,7 +132,7 @@ public class Usuario implements VOUsuario {
 		return id_Sucursal;
 	}
 
-	public void setId_Sucursal(Long id_Sucursal) {
+	public void setId_Sucursal(long id_Sucursal) {
 		this.id_Sucursal = id_Sucursal;
 	}
 
@@ -153,7 +153,6 @@ public class Usuario implements VOUsuario {
 		builder.append(nDocumento);
 		builder.append(", tipoDocumento=");
 		builder.append(tipoDocumento);
-		builder.append(", id_TipoUsuario=");
 		builder.append(", nombre=");
 		builder.append(nombre);
 		builder.append(", correo=");
@@ -166,6 +165,8 @@ public class Usuario implements VOUsuario {
 		builder.append(direccion);
 		builder.append(", puntos=");
 		builder.append(puntos);
+		builder.append(", id_TipoUsuario=");
+		builder.append(id_TipoUsuario);
 		builder.append(", id_Sucursal=");
 		builder.append(id_Sucursal);
 		builder.append(", id_Supermercado=");

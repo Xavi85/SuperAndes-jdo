@@ -11,7 +11,7 @@ public interface VOUsuario {
 	public String getNombre();
 
 	public String getCorreo();
-	
+
 	public String getPais();
 
 	public String getCiudad();
@@ -19,13 +19,13 @@ public interface VOUsuario {
 	public String getDireccion();
 
 	public int getPuntos();
-	
+
 	public long getId_TipoUsuario();
 
 	public long getId_Sucursal();
 
 	public long getId_Supermercado();
-	
+
 	@Override
 	public String toString();
 }

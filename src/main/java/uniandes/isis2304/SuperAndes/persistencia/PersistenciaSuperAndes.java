@@ -151,9 +151,10 @@ public class PersistenciaSuperAndes {
 		sqlTipoProducto = new SQLTipoProducto(this);
 		sqlTipoUsuario = new SQLTipoUsuario(this);
 		sqlUsuario = new SQLUsuario(this);
+		sqlUtil = new SQLUtil(this);
 		sqlVenta = new SQLVenta(this);
 		sqlVentaProducto = new SQLVentaProducto(this);	
-		sqlUtil = new SQLUtil(this);
+		
 	}
 
 	public String darSeqSuperAndes() { return tablas.get(0); }
@@ -1121,8 +1122,8 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar los Usuarios
 	 *****************************************************************/
 
-	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo,
-			String pais, String ciudad, String direccion, Integer puntos, Long id_TipoUsuario, Long id_Sucursal, long id_Supermercado) {
+	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo, String pais,
+			String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -1181,9 +1182,19 @@ public class PersistenciaSuperAndes {
 		return sqlUsuario.darUsuarioPorId (pmf.getPersistenceManager(), id);
 	}
 
+	public Usuario darIdPorUsuario (String nombre) {
+		
+		return sqlUsuario.darIdPorUsuario (pmf.getPersistenceManager(), nombre);
+	}
+	
 	public List<Usuario> darUsuarios () {
 		
 		return sqlUsuario.darUsuarios (pmf.getPersistenceManager());
+	}
+	
+	public List<Object> darNombreUsuarios () {
+		
+		return sqlUsuario.darNombreUsuarios (pmf.getPersistenceManager());
 	}
 	
 		

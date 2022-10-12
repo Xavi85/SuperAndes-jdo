@@ -707,11 +707,11 @@ public class SuperAndes {
 	 * 			Métodos para manejar los Usuarios
 	 *****************************************************************/
 
-	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo,
-			String pais, String ciudad, String direccion, Integer puntos, Long id_TipoUsuario, Long id_Sucursal, long id_Supermercado) {
+	public Sucursal adicionarUsuario(long id, long nDocumento, String tipoDocumento, String nombre, String correo, String pais,
+			String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) {
 		
 		log.info ("Adicionando Usuario: " + nombre);
-		Usuario usuario = pp.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado);
+		Sucursal usuario = pp.adicionarSucursal (nombre, pais, ciudad, direccion, id_Supermercado);
         log.info ("Adicionando Usuario: " + usuario);
         return usuario;
 	}
@@ -726,9 +726,17 @@ public class SuperAndes {
 	
 	public Usuario darUsuarioPorId (long id)
 	{
-        log.info ("Dar información de un Usuario por id: " + id);
+        log.info ("Dar información de una Usuario por id: " + id);
         Usuario usuario = pp.darUsuarioPorId (id);
         log.info ("Buscando Usuario por Id: " + usuario != null ? usuario : "NO EXISTE");
+        return usuario;
+	}
+	
+	public Usuario darIdPorUsuario (String nombre)
+	{
+        log.info ("Dar un id por el nombre de un Usuario: " + nombre);
+        Usuario usuario = pp.darIdPorUsuario (nombre);
+        log.info ("Buscando id por el nombre de un Usuario: " + usuario != null ? usuario : "NO EXISTE");
         return usuario;
 	}
 
@@ -742,7 +750,7 @@ public class SuperAndes {
 
 	public List<VOUsuario> darVOUsuarios () {
 		
-		log.info ("Generando los VO de los Usuarios");       
+		log.info ("Generando los VO de los Usuario");       
         List<VOUsuario> voUsuarios = new LinkedList<VOUsuario> ();
         for (Usuario usu : pp.darUsuarios ())
         {
@@ -750,6 +758,14 @@ public class SuperAndes {
         }
         log.info ("Generando los VO de los Usuarios: " + voUsuarios.size() + " existentes");
         return voUsuarios;
+	}
+	
+	public List<Object> darNombreUsuarios () {
+		
+        log.info ("Consultando Nombres de los Usuarios");
+        List<Object> nombreUsuarios = pp.darNombreUsuarios ();	
+        log.info ("Consultando Nombres de los Usuarios: " + nombreUsuarios.size() + " Nombre Usuarios existentes");
+        return nombreUsuarios;
 	}
 
 	

@@ -5,16 +5,20 @@
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
-		{ "menuTitle": "Listar",
+		{ "menuTitle": "Requerimientos Funcionales",
 		  "options":
 			[
 				{
-					"label": "Listar Proveedor",
-					"event": "listarProveedor"
+					"label": "RF4 - Registar una Bodega a Sucursal",
+					"event": "adicionarBodega"
 				},
 				{
-					"label": "Listar Tipos de Productos",
-					"event": "listarTipoProducto"
+					"label": "Listar Usuarios",
+					"event": "listarUsuario"
+				},
+				{
+					"label": "Listar Sucursales",
+					"event": "listarSucursal"
 				}
 			]
 		},

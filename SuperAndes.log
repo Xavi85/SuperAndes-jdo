@@ -510,3 +510,202 @@ ORA-02291: restricción de integridad (ISIS2304A33202220.FK_USUARIO_ID_SUCURSAL)
 10:19:31,569 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=9, nombre=Exito Country, pais=Colombia, ciudad=Bogotá, direccion=Carrera 9 #134-20, id_Supermercado=1]
 10:19:31,569 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Usuario: Alvaro Serrano
 10:19:35,968 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Usuario: Usuario [id=10, nDocumento=63743682, tipoDocumento=Cedula Ciudadania, id_TipoUsuario=, nombre=Alvaro Serrano, correo=aserrano@grupoexito.com, pais=Colombia, ciudad=Bogotá, direccion=Carrera 8 #132-57, puntos=null, id_Sucursal=9, id_Supermercado=1]
+13:17:03,856 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - NO se encontró un archivo de configuración válido
+13:17:12,365 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración por defecto
+13:17:12,380 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:19:58,148 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - NO se encontró un archivo de configuración válido
+13:27:30,735 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - NO se encontró un archivo de configuración válido
+13:27:34,163 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración por defecto
+13:27:34,206 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:40:53,323 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - NO se encontró un archivo de configuración válido
+13:47:10,427 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:47:53,414 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+13:59:09,006 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+13:59:09,006 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+13:59:09,028 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:59:11,485 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+13:59:11,573 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+13:59:11,574 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+13:59:52,683 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+13:59:52,683 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+13:59:52,706 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:00:23,896 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+14:00:23,970 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+14:00:23,971 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+14:01:23,859 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:01:23,859 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:01:23,885 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:02:37,100 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+14:02:37,165 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+14:02:37,165 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+14:03:54,669 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:03:54,669 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:03:54,694 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:03:57,243 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+14:03:57,324 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+14:03:57,324 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+14:04:53,426 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:04:53,427 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:04:53,450 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:06:57,554 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:06:57,555 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:06:57,576 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:06:59,910 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+14:06:59,975 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+14:06:59,975 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 36743682
+14:06:59,999 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - 
+14:07:25,962 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:07:25,962 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:07:25,984 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:07:28,526 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+14:07:28,594 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+14:07:28,594 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+14:08:15,252 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:08:15,252 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:08:15,275 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:08:17,634 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+14:08:17,702 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+14:08:17,702 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 0
+14:08:17,726 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - 
+14:09:16,098 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:09:16,099 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:09:16,126 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:09:18,633 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+14:09:18,694 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+14:09:18,694 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+14:11:54,782 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:11:54,783 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:11:54,808 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:11:57,312 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+14:17:35,548 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:17:35,549 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:17:35,576 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:17:38,146 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+14:23:27,347 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:23:27,348 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:23:27,375 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:23:29,743 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+14:24:55,302 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:24:55,302 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:24:55,327 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:24:57,635 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+14:27:34,054 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:27:34,055 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:27:34,078 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:27:36,847 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+14:34:38,898 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:34:38,898 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:34:38,919 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:34:41,510 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Validar información de un Usuario por id y id de Tipo de Usuario: 63743682
+14:49:31,308 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:49:31,309 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:49:31,336 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:49:33,758 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+14:49:33,833 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+14:49:33,833 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Buscando el Usuario del sistema: 63743682 con id_TipoUsuario: 3
+14:57:21,405 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:57:21,406 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:57:21,430 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:58:42,663 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:58:42,663 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:58:42,675 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:58:54,533 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+14:58:54,599 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+14:58:54,599 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Buscando el Usuario del sistema: 63743682 con id_TipoUsuario: 3
+14:59:31,632 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+14:59:31,633 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+14:59:31,643 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:01:59,372 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:01:59,372 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:01:59,382 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:02:10,759 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de un Usuario por id: 10
+15:02:46,361 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:02:46,362 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:02:46,370 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:02:48,855 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de un Usuario por id: 10
+15:05:12,868 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:05:12,868 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:05:12,879 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:05:15,249 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Usuarios
+15:05:15,368 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Usuarios: 0 Usuarios existentes
+15:13:05,761 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:13:05,762 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:13:05,771 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:16:57,926 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:16:57,926 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:16:57,956 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:18:40,810 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:18:40,810 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:18:40,837 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:18:43,224 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de un Usuario por id: 10
+15:20:18,312 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:20:18,312 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:20:18,340 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:20:20,780 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de un Usuario por id: 10
+15:22:06,751 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:22:06,752 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:22:06,767 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:22:15,594 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de un Usuario por id: 10
+15:24:26,166 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:24:26,167 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:24:26,179 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:24:57,572 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de un Usuario por id: 10
+15:25:34,212 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:25:34,212 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:25:34,221 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:25:39,086 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de un Usuario por id: 10
+15:27:33,619 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:27:33,619 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:27:33,634 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:27:38,166 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+15:27:38,230 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+15:27:38,230 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de un Usuario por id: 10
+15:28:35,636 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:28:35,636 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:28:35,645 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:28:39,846 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+15:28:39,905 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+15:28:39,905 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de un Proveedor por id: 3
+15:28:39,934 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Proveedor [id=3, nit=11959543, nombre=Javier S3., calificacion=7]
+15:31:26,265 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:31:26,265 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:31:26,279 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:31:32,851 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+15:31:32,935 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+15:31:32,935 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de un Proveedor por id: 3
+15:31:32,962 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Proveedor [id=3, nit=11959543, nombre=Javier S3., calificacion=7]
+15:31:32,963 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de un Usuario por id: 10
+15:33:24,489 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:33:24,490 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:33:24,500 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:33:29,631 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de los Usuarios
+15:34:13,939 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:34:13,940 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:34:13,954 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:34:17,691 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de los Usuarios
+15:35:19,767 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:35:19,767 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:35:19,775 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:35:23,208 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de las Sucursales
+15:35:23,307 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de las Sucursales: 1 existentes
+15:35:25,970 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de los Usuarios
+15:48:16,284 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:48:16,285 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:48:16,294 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:48:20,672 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de las Sucursales
+15:48:20,737 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de las Sucursales: 1 existentes
+15:48:22,493 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de los Usuarios
+15:49:56,257 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:49:56,258 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:49:56,267 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:49:59,472 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de los Usuarios
+15:51:23,598 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:51:23,599 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:51:23,608 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:51:26,809 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de los Usuarios
+16:46:32,474 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+16:46:32,474 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+16:46:32,487 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+16:46:40,193 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de las Sucursales
+16:46:40,267 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de las Sucursales: 1 existentes
+16:46:46,981 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Generando los VO de los Usuario
