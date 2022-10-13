@@ -6,7 +6,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.SuperAndes.negocio.TipoProducto;
-import uniandes.isis2304.SuperAndes.negocio.TipoUsuario;
 
 class SQLTipoProducto {
 	

@@ -7,6 +7,8 @@ public class Usuario implements VOUsuario {
     private String tipoDocumento;
     private String nombre;
     private String correo;
+    private String pais;
+    private String ciudad;
     private String direccion;
     private Integer puntos;
     private long id_TipoUsuario;
@@ -19,20 +21,24 @@ public class Usuario implements VOUsuario {
 		this.tipoDocumento = "";
 		this.nombre = "";
 		this.correo = "";
+		this.pais = "";
+		this.ciudad = "";
 		this.direccion = "";
 		this.puntos = 0;
 		this.id_TipoUsuario = 0;
 		this.id_Sucursal = (long) 0;
 	}
     
-	public Usuario(long id, long nDocumento, String tipoDocumento, String nombre, String correo, String direccion,
-			Integer puntos, long id_TipoUsuario, Long id_Sucursal) {
+	public Usuario(long id, long nDocumento, String tipoDocumento, String nombre, String correo, String pais,  String ciudad, 
+			String direccion, Integer puntos, long id_TipoUsuario, Long id_Sucursal) {
 
 		this.id = id;
 		this.nDocumento = nDocumento;
 		this.tipoDocumento = tipoDocumento;
 		this.nombre = nombre;
 		this.correo = correo;
+		this.pais = pais;
+		this.ciudad = ciudad;
 		this.direccion = direccion;
 		this.puntos = puntos;
 		this.id_TipoUsuario = id_TipoUsuario;
@@ -77,6 +83,22 @@ public class Usuario implements VOUsuario {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+	
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+	
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
 	}
 
 	public String getDireccion() {
@@ -124,6 +146,10 @@ public class Usuario implements VOUsuario {
 		builder.append(nombre);
 		builder.append(", correo=");
 		builder.append(correo);
+		builder.append(", pais=");
+		builder.append(pais);
+		builder.append(", ciudad=");
+		builder.append(ciudad);
 		builder.append(", direccion=");
 		builder.append(direccion);
 		builder.append(", puntos=");

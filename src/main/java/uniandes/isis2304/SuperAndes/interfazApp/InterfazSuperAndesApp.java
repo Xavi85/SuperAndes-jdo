@@ -464,6 +464,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     		long nDocumento = Long.parseLong(JOptionPane.showInputDialog (this, "Numero de Documento", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE));	
     		String nombre = JOptionPane.showInputDialog (this, "Nombre", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
 			String correo = JOptionPane.showInputDialog (this, "Correo Electrónico", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
+			String pais = JOptionPane.showInputDialog (this, "Pais de Residencia", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
+			String ciudad = JOptionPane.showInputDialog (this, "Ciudad de Residencia", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
     		String direccion = JOptionPane.showInputDialog (this, "Dirección de Residencia", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
     		
     		List tiposUsuario = superAndes.darNombreTiposUsuario();
@@ -494,9 +496,9 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 				id_Sucursal = superAndes.darIdPorSucursal(opcSucursales[opcionesSucursales.getSelectedIndex()]).getId();
     		}
     		
-    		if (!Objects.isNull(nDocumento) && tipoDocumento != null && nombre != null && correo != null && direccion != null)
+    		if (!Objects.isNull(nDocumento) && tipoDocumento != null && nombre != null && correo != null && pais != null && ciudad != null && direccion != null)
     		{
-        		VOUsuario tb = superAndes.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, direccion, puntos, id_TipoUsuario, id_Sucursal);
+        		VOUsuario tb = superAndes.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear el Usuario con nombre: " + nombre);
@@ -518,6 +520,48 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 		}
     }
     
+    public void adicionarUsuarioCliente( )
+    {
+    	try 
+    	{
+    		String[] opcTipoDocumento = {"Cedula Ciudadania", "Cedula Extranjeria", "Tarjeta de Identificacion", "Pasaporte", "NIT"};
+			JComboBox opcionesTipoDocumento = new JComboBox(opcTipoDocumento);
+			JOptionPane.showMessageDialog(null, opcionesTipoDocumento, "Seleccione el tipo de Documentos", JOptionPane.QUESTION_MESSAGE);
+			String tipoDocumento = opcTipoDocumento[opcionesTipoDocumento.getSelectedIndex()];
+    		
+    		long nDocumento = Long.parseLong(JOptionPane.showInputDialog (this, "Numero de Documento", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE));	
+    		String nombre = JOptionPane.showInputDialog (this, "Nombre", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
+			String correo = JOptionPane.showInputDialog (this, "Correo Electrónico", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
+			String pais = JOptionPane.showInputDialog (this, "Pais de Residencia", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
+			String ciudad = JOptionPane.showInputDialog (this, "Ciudad de Residencia", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
+    		String direccion = JOptionPane.showInputDialog (this, "Dirección de Residencia", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
+    		Integer puntos = 0;
+			long id_TipoUsuario = superAndes.darIdPorTipoUsuario("Cliente").getId();
+			Long id_Sucursal = null;
+
+    		if (!Objects.isNull(nDocumento) && tipoDocumento != null && nombre != null && correo != null && pais != null && ciudad != null && direccion != null)
+    		{
+        		VOUsuario tb = superAndes.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal);
+        		if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear el Cliente con nombre: " + nombre);
+        		}
+        		String resultado = "En adicionar Cliente\n\n";
+        		resultado += "Cliente adicionada exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
     
     /* ****************************************************************
 	 * 			CRUD de Bodega
@@ -635,6 +679,79 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
         		}
         		String resultado = "En adicionar Proveedor\n\n";
         		resultado += "Proveedor adicionado exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    
+    
+    /* ****************************************************************
+	 * 			CRUD de Producto
+	 *****************************************************************/
+    
+    public void adicionarProducto( )
+    {
+    	try 
+    	{
+    		String fVencimiento;
+    		
+    		String codigoBarra = JOptionPane.showInputDialog (this, "Codigo de Barra", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String nombre = JOptionPane.showInputDialog (this, "Nombre del Producto", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String marca = JOptionPane.showInputDialog (this, "Marca del Producto", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
+    		int pVenta = Integer.parseInt(JOptionPane.showInputDialog (this, "Precio de Venta", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));	
+    		String presentacion = JOptionPane.showInputDialog (this, "Presentacion del Prducto", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
+    		int pUnidadMedida = Integer.parseInt(JOptionPane.showInputDialog (this, "Precio por Unidad de Medida", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int cantPPT = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad en la Presentacion", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		String unidadMedida = JOptionPane.showInputDialog (this, "Unidad de Medida", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
+    		int espEmpPeso = Integer.parseInt(JOptionPane.showInputDialog (this, "Especificacion de Peso del Empacado", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int espEmpVol = Integer.parseInt(JOptionPane.showInputDialog (this, "Especificacion de Volumen del Empacado", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		
+    		String bool[] = {"true","false"};
+			JComboBox opcionesBool = new JComboBox(bool);
+			JOptionPane.showMessageDialog(this, opcionesBool, "Es Perecedero?", JOptionPane.QUESTION_MESSAGE);
+			String esPerecedero = (String) opcionesBool.getSelectedItem();
+    		
+    		if(esPerecedero.equals("true")) {
+    			fVencimiento = JOptionPane.showInputDialog (this, "Fecha Vencimiento (dd/MM/yyyy)", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
+    		} else { fVencimiento = null; }
+    		
+    		int nReorden = Integer.parseInt(JOptionPane.showInputDialog (this, "Numero de Reordenamiento", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int stockBodega = Integer.parseInt(JOptionPane.showInputDialog (this, "Stock en Bodega", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int stockEstante = Integer.parseInt(JOptionPane.showInputDialog (this, "Stock en Estantes", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int stockTotal = Integer.parseInt(JOptionPane.showInputDialog (this, "Stock Total", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		
+    		List tiposProdutos = superAndes.darNombreTiposProductos();
+    		String[] opcTiposProdutos = new String[tiposProdutos.size()];
+    		for(int i = 0; i < tiposProdutos.size(); i++) {
+    			opcTiposProdutos[i] = tiposProdutos.get(i).toString();
+    		}
+			JComboBox opcionesTiposProdutos = new JComboBox(opcTiposProdutos);
+			JOptionPane.showMessageDialog(null, opcionesTiposProdutos, "Seleccione el tipo de Producto", JOptionPane.QUESTION_MESSAGE);
+			long id_TipoProducto = superAndes.darIdPorTipoProducto(opcTiposProdutos[opcionesTiposProdutos.getSelectedIndex()]).getId();
+
+    		if (codigoBarra != null && nombre != null && marca != null && !Objects.isNull(pVenta) && presentacion != null && 
+    				!Objects.isNull(pUnidadMedida) && !Objects.isNull(cantPPT) && unidadMedida != null && !Objects.isNull(espEmpPeso) && 
+    				!Objects.isNull(espEmpVol) && !Objects.isNull(esPerecedero) && !Objects.isNull(nReorden) && !Objects.isNull(stockBodega) && 
+    				!Objects.isNull(stockEstante) && !Objects.isNull(stockTotal) && !Objects.isNull(id_TipoProducto)) {
+    			
+        		VOProducto tb = superAndes.adicionarProducto(codigoBarra, nombre, marca, pVenta, presentacion, pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero, fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto);
+        		if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear el Producto");
+        		}
+        		String resultado = "En adicionar Producto\n\n";
+        		resultado += "Producto adicionado exitosamente: " + tb;
     			resultado += "\n Operación terminada";
     			panelDatos.actualizarInterfaz(resultado);
     		}

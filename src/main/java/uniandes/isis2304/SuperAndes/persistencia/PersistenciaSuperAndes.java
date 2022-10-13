@@ -543,8 +543,8 @@ public class PersistenciaSuperAndes {
 	 *****************************************************************/
 
 	public Producto adicionarProducto (String codigoBarra, String nombre, String marca, int pVenta, String presentacion,
-			int pUnidadMedida, int cantPPT, String unidadMedida, int espEmpPeso, int espEmpVol, boolean esPerecedero,
-			Date fVencimiento, int nReorden, int stockBodega, int stockProducto, int stockTotal, long id_TipoProducto) {
+			int pUnidadMedida, int cantPPT, String unidadMedida, int espEmpPeso, int espEmpVol, String esPerecedero,
+			String fVencimiento, int nReorden, int stockBodega, int stockEstante, int stockTotal, long id_TipoProducto) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -553,14 +553,14 @@ public class PersistenciaSuperAndes {
             long idLote = nextval ();
             long tuplasInsertadas = sqlProducto.adicionarProducto(pm, idLote, codigoBarra, nombre, marca, pVenta, presentacion,
             		pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,
-            		fVencimiento, nReorden, stockBodega, stockProducto, stockTotal, id_TipoProducto);
+            		fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto);
             tx.commit();
             
             log.trace ("Inserción de Producto: " + idLote + ": " + tuplasInsertadas + " tuplas insertadas");
             
             return new Producto (idLote, codigoBarra, nombre, marca, pVenta, presentacion,
             		pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,
-            		fVencimiento, nReorden, stockBodega, stockProducto, stockTotal, id_TipoProducto);
+            		fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto);
         }
         catch (Exception e) {
         	
@@ -1131,7 +1131,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar los Usuarios
 	 *****************************************************************/
 
-	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo, 
+	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo, String pais, String ciudad, 
 			String direccion, Integer puntos, long id_TipoUsuario, Long id_Sucursal) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -1139,12 +1139,12 @@ public class PersistenciaSuperAndes {
         try {
             tx.begin();
             long id = nextval ();
-            long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, id, nDocumento, tipoDocumento, nombre, correo, direccion, puntos, id_TipoUsuario, id_Sucursal);
+            long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal);
             tx.commit();
             
             log.trace ("Inserción de Usuario: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Usuario (id, nDocumento, tipoDocumento, nombre, correo, direccion, puntos, id_TipoUsuario, id_Sucursal);
+            return new Usuario (id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal);
         }
         catch (Exception e) {
         	

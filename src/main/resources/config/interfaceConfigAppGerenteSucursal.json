@@ -19,6 +19,14 @@
 				{
 					"label": "RF6 - Registar Proveedor",
 					"event": "adicionarProveedor"
+				},
+				{
+					"label": "RF7 - Registar Producto",
+					"event": "adicionarProducto"
+				},
+				{
+					"label": "RF8 - Registar Clientes",
+					"event": "adicionarUsuarioCliente"
 				}
 			]
 		},

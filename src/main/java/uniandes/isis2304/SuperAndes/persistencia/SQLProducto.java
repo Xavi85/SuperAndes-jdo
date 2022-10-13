@@ -1,6 +1,5 @@
 package uniandes.isis2304.SuperAndes.persistencia;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -20,15 +19,15 @@ class SQLProducto {
 	}
 
 	public long adicionarProducto (PersistenceManager pm, long idLote, String codigoBarra, String nombre, String marca, int pVenta, String presentacion,
-			int pUnidadMedida, int cantPPT, String unidadMedida, int espEmpPeso, int espEmpVol, boolean esPerecedero,
-			Date fVencimiento, int nReorden, int stockBodega, int stockProducto, int stockTotal, long id_TipoProducto) 
+			int pUnidadMedida, int cantPPT, String unidadMedida, int espEmpPeso, int espEmpVol, String esPerecedero,
+			String fVencimiento, int nReorden, int stockBodega, int stockEstante, int stockTotal, long id_TipoProducto) 
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaProducto () + "(idLote, codigoBarra, nombre, marca, pVenta, presentacion,\r\n"
         		+ "pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,\r\n"
-        		+ "fVencimiento, nReorden, stockBodega, stockProducto, stockTotal, id_TipoProducto) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        		+ "fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'dd/MM/yyyy'), ?, ?, ?, ?, ?)");
         q.setParameters(idLote, codigoBarra, nombre, marca, pVenta, presentacion,
         		pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,
-        		fVencimiento, nReorden, stockBodega, stockProducto, stockTotal, id_TipoProducto);
+        		fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto);
         return (long) q.executeUnique();
 	}
 

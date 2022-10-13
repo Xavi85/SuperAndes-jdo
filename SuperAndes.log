@@ -1170,3 +1170,201 @@ ORA-00001: restricción única (ISIS2304A33202220.PK_ID_USUARIO) violada
 22:11:57,902 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
 22:16:36,293 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Proveedor: ACME INC.
 22:16:37,169 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Proveedor: Proveedor [id=7, nit=11959544, nombre=ACME INC., calificacion=0]
+23:46:50,495 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:46:50,496 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:46:50,524 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:46:53,092 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+23:46:53,163 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+23:46:53,163 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+23:46:53,180 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+23:46:53,180 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+23:46:53,199 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
+23:48:00,618 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:48:00,618 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:48:00,649 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:48:03,108 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+23:48:03,189 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+23:48:03,189 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+23:48:03,211 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+23:48:03,211 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+23:48:03,238 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
+23:50:25,082 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos
+23:50:25,181 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos: 3 Nombre de Tipos de Productos existentes
+23:50:29,844 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Producto: Galletas
+23:50:29,874 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoProducto [id=1, nombre=Galletas, tipoAlmacen=Refrigerado, categoria=Abarrotes, subCategoria=Golosinas]
+23:50:29,875 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: Galleta Festival Chocolate
+23:50:30,851 (AWT-EventQueue-0) ERROR [uniandes.isis2304.SuperAndes.persistencia.PersistenciaSuperAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion,  pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,  fVencimiento, nReorden, stockBodega, stockProducto, stockTotal, id_TipoProducto) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'dd/MM/yyyy'), ?, ?, ?, ?, ?)".
+ORA-00904: "STOCKPRODUCTO": identificador no válido
+
+23:50:30,866 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: null
+23:52:32,671 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:52:32,672 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:52:32,697 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:52:35,013 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+23:52:35,080 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+23:52:35,080 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+23:52:35,100 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+23:52:35,100 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+23:52:35,122 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
+23:54:56,020 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos
+23:54:56,045 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos: 3 Nombre de Tipos de Productos existentes
+23:55:00,665 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Producto: Legumbres
+23:55:00,707 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoProducto [id=2, nombre=Legumbres, tipoAlmacen=Normal, categoria=Abarrotes, subCategoria=Granos]
+23:55:00,707 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: Lentejas Rojas
+23:55:01,446 (AWT-EventQueue-0) ERROR [uniandes.isis2304.SuperAndes.persistencia.PersistenciaSuperAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion,  pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,  fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'dd/MM/yyyy'), ?, ?, ?, ?, ?)".
+Tipo de columna no válido
+23:55:01,461 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: null
+00:03:04,610 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:03:04,611 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:03:04,637 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:03:07,224 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+00:03:07,287 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+00:03:07,287 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+00:03:07,303 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+00:03:07,303 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+00:03:07,325 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
+00:04:12,019 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos
+00:04:12,041 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos: 3 Nombre de Tipos de Productos existentes
+00:04:15,210 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Producto: Galletas
+00:04:15,243 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoProducto [id=1, nombre=Galletas, tipoAlmacen=Refrigerado, categoria=Abarrotes, subCategoria=Golosinas]
+00:04:15,243 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: galleta festival choco
+00:04:16,169 (AWT-EventQueue-0) ERROR [uniandes.isis2304.SuperAndes.persistencia.PersistenciaSuperAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion,  pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,  fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'dd/MM/yyyy'), ?, ?, ?, ?, ?)".
+ORA-02290: restricción de control (ISIS2304A33202220.CHECK_PRODUCTO_ESPERECEDERO) violada
+
+00:04:16,184 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: null
+00:09:53,307 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:09:53,308 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:09:53,329 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:09:56,193 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+00:09:56,252 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+00:09:56,252 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+00:09:56,272 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+00:09:56,272 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+00:09:56,293 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
+00:11:10,442 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos
+00:11:10,464 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos: 3 Nombre de Tipos de Productos existentes
+00:11:13,244 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Producto: Galletas
+00:11:13,267 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoProducto [id=1, nombre=Galletas, tipoAlmacen=Refrigerado, categoria=Abarrotes, subCategoria=Golosinas]
+00:11:13,268 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: Galletas Festival Chocolate
+00:11:13,973 (AWT-EventQueue-0) ERROR [uniandes.isis2304.SuperAndes.persistencia.PersistenciaSuperAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion,  pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,  fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '?', TO_DATE(?, 'dd/MM/yyyy'), ?, ?, ?, ?, ?)".
+Índice de columna no válido
+00:11:13,988 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: null
+00:13:35,580 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:13:35,581 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:13:35,606 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:13:38,000 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+00:13:38,065 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+00:13:38,065 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+00:13:38,083 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+00:13:38,083 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+00:13:38,106 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
+00:14:50,082 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos
+00:14:50,101 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos: 3 Nombre de Tipos de Productos existentes
+00:14:52,939 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Producto: Galletas
+00:14:52,957 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoProducto [id=1, nombre=Galletas, tipoAlmacen=Refrigerado, categoria=Abarrotes, subCategoria=Golosinas]
+00:14:52,957 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: galleta festival chocolate
+00:14:53,660 (AWT-EventQueue-0) ERROR [uniandes.isis2304.SuperAndes.persistencia.PersistenciaSuperAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion,  pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,  fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'dd/MM/yyyy'), ?, ?, ?, ?, ?)".
+ORA-02290: restricción de control (ISIS2304A33202220.CHECK_PRODUCTO_ESPERECEDERO) violada
+
+00:14:53,673 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: null
+00:20:19,572 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:20:19,572 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:20:19,603 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:20:21,953 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+00:20:22,013 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+00:20:22,013 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+00:20:22,040 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+00:20:22,040 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+00:20:22,063 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
+00:21:14,598 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos
+00:21:14,619 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos: 3 Nombre de Tipos de Productos existentes
+00:21:17,456 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Producto: Galletas
+00:21:17,474 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoProducto [id=1, nombre=Galletas, tipoAlmacen=Refrigerado, categoria=Abarrotes, subCategoria=Golosinas]
+00:21:17,475 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: Galletas Festival Chocolate
+00:21:18,359 (AWT-EventQueue-0) ERROR [uniandes.isis2304.SuperAndes.persistencia.PersistenciaSuperAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion,  pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,  fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'dd/MM/yyyy'), ?, ?, ?, ?, ?)".
+ORA-02290: restricción de control (ISIS2304A33202220.CHECK_PRODUCTO_ESPERECEDERO) violada
+
+00:21:18,375 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: null
+00:22:46,579 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:22:46,581 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:22:46,608 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:22:49,142 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+00:22:49,208 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+00:22:49,208 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+00:22:49,228 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+00:22:49,228 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+00:22:49,252 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
+00:23:53,526 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:23:53,527 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:23:53,549 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:23:55,909 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+00:23:55,982 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+00:23:55,982 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+00:23:56,001 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+00:23:56,001 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+00:23:56,023 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
+00:25:26,972 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos
+00:25:26,994 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos: 3 Nombre de Tipos de Productos existentes
+00:25:29,319 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Producto: Galletas
+00:25:29,342 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoProducto [id=1, nombre=Galletas, tipoAlmacen=Refrigerado, categoria=Abarrotes, subCategoria=Golosinas]
+00:25:29,342 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: Galleta Festival Chocolate
+00:25:30,081 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: Producto [idLote=14, codigoBarra=21546584, nombre=Galleta Festival Chocolate, marca=Festival, pVenta=1000, presentacion=4 x envase, pUnidadMedida=1000, cantPPT=100, unidadMedida=gramo, espEmpPeso=100, espEmpVol=10, esPerecedero=false, fVencimiento=null, nReorden=1000, stockBodega=500, stockEstante=500, stockTotal=1000, id_TipoProducto=1]
+00:26:59,949 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos
+00:26:59,975 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos: 3 Nombre de Tipos de Productos existentes
+00:27:02,596 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Producto: Legumbres
+00:27:02,627 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoProducto [id=2, nombre=Legumbres, tipoAlmacen=Normal, categoria=Abarrotes, subCategoria=Granos]
+00:27:02,629 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: Lenteja Roja
+00:27:02,657 (AWT-EventQueue-0) ERROR [uniandes.isis2304.SuperAndes.persistencia.PersistenciaSuperAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion,  pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,  fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'dd/MM/yyyy'), ?, ?, ?, ?, ?)".
+Tipo de columna no válido
+00:27:02,672 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: null
+00:31:54,712 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:31:54,712 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:31:54,745 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:31:56,509 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+00:31:56,575 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+00:31:56,575 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+00:31:56,597 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+00:31:56,597 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+00:31:56,626 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
+00:32:57,041 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos
+00:32:57,062 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Tipos de Productos: 3 Nombre de Tipos de Productos existentes
+00:32:59,634 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Producto: Legumbres
+00:32:59,659 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoProducto [id=2, nombre=Legumbres, tipoAlmacen=Normal, categoria=Abarrotes, subCategoria=Granos]
+00:32:59,659 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: Lentejas Rojas
+00:32:59,947 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Producto: Producto [idLote=16, codigoBarra=215646846, nombre=Lentejas Rojas, marca=Lentejuelas, pVenta=1000, presentacion=envase unico, pUnidadMedida=1000, cantPPT=100, unidadMedida=gramo, espEmpPeso=100, espEmpVol=10, esPerecedero=true, fVencimiento=31/12/2022, nReorden=1000, stockBodega=500, stockEstante=500, stockTotal=1000, id_TipoProducto=2]
+00:41:26,020 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:41:26,020 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:41:26,047 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:41:27,563 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+00:41:27,620 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+00:41:27,620 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+00:41:27,639 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+00:41:27,639 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+00:41:27,661 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
+00:42:23,819 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Cliente
+00:42:23,841 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=6, tipo=Cliente]
+00:42:23,841 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Usuario: Paola Laiton
+00:42:24,117 (AWT-EventQueue-0) ERROR [uniandes.isis2304.SuperAndes.persistencia.PersistenciaSuperAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion,puntos, id_TipoUsuario, id_Sucursal) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)".
+ORA-00904: "CIUDAD": identificador no válido
+
+00:42:24,131 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Usuario: null
+00:48:56,665 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:48:56,666 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:48:56,686 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:48:58,148 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+00:48:58,221 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+00:48:58,221 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+00:48:58,248 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 0 id de Sucursal existentes
+00:49:14,781 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:49:14,782 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:49:14,803 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:49:16,294 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+00:49:16,359 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+00:49:16,359 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+00:49:16,378 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+00:49:16,378 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+00:49:16,401 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=BogotÃ¡, direccion=Calle 127 #14-46, id_Supermercado=1]
+00:49:58,439 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Cliente
+00:49:58,459 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=6, tipo=Cliente]
+00:49:58,459 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Usuario: Paola Laiton
+00:49:58,741 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Adicionando Usuario: Usuario [id=18, nDocumento=16486454, tipoDocumento=Cedula Ciudadania, nombre=Paola Laiton, correo=plaiton@gmail.com, pais=Colombia, ciudad=Bogota, direccion=Calle 81 #10-20, puntos=0, id_TipoUsuario=6, id_Sucursal=null, id_Supermercado=]

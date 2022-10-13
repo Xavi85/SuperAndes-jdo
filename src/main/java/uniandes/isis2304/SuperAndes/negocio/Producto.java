@@ -1,7 +1,5 @@
 package uniandes.isis2304.SuperAndes.negocio;
 
-import java.util.Date;
-
 public class Producto implements VOProducto {
 
 	private long idLote;
@@ -15,8 +13,8 @@ public class Producto implements VOProducto {
 	private String unidadMedida;
 	private int espEmpPeso;
 	private int espEmpVol;
-	private boolean esPerecedero;
-	Date fVencimiento;
+	private String esPerecedero;
+	private String fVencimiento;
 	private int nReorden;
 	private int stockBodega;
 	private int stockEstante;
@@ -36,8 +34,8 @@ public class Producto implements VOProducto {
 		this.unidadMedida = "";
 		this.espEmpPeso = 0;
 		this.espEmpVol = 0;
-		this.esPerecedero = false;
-		this.fVencimiento = new Date();
+		this.esPerecedero = "";
+		this.fVencimiento = "";
 		this.nReorden = 0;
 		this.stockBodega = 0;
 		this.stockEstante = 0;
@@ -46,8 +44,8 @@ public class Producto implements VOProducto {
 	}
 	
 	public Producto(long idLote, String codigoBarra, String nombre, String marca, int pVenta, String presentacion,
-			int pUnidadMedida, int cantPPT, String unidadMedida, int espEmpPeso, int espEmpVol, boolean esPerecedero,
-			Date fVencimiento, int nReorden, int stockBodega, int stockEstante, int stockTotal, long id_TipoProducto) {
+			int pUnidadMedida, int cantPPT, String unidadMedida, int espEmpPeso, int espEmpVol, String esPerecedero,
+			String fVencimiento, int nReorden, int stockBodega, int stockEstante, int stockTotal, long id_TipoProducto) {
 
 		this.idLote = idLote;
 		this.codigoBarra = codigoBarra;
@@ -157,19 +155,19 @@ public class Producto implements VOProducto {
 		this.espEmpVol = espEmpVol;
 	}
 
-	public boolean isEsPerecedero() {
+	public String getEsPerecedero() {
 		return esPerecedero;
 	}
 
-	public void setEsPerecedero(boolean esPerecedero) {
+	public void setEsPerecedero(String esPerecedero) {
 		this.esPerecedero = esPerecedero;
 	}
 
-	public Date getfVencimiento() {
+	public String getfVencimiento() {
 		return fVencimiento;
 	}
 
-	public void setfVencimiento(Date fVencimiento) {
+	public void setfVencimiento(String fVencimiento) {
 		this.fVencimiento = fVencimiento;
 	}
 

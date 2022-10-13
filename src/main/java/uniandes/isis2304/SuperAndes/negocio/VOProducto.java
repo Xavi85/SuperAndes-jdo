@@ -1,7 +1,5 @@
 package uniandes.isis2304.SuperAndes.negocio;
 
-import java.util.Date;
-
 public interface VOProducto {
 
 	public long getIdLote();
@@ -26,9 +24,9 @@ public interface VOProducto {
 
 	public int getEspEmpVol();
 
-	public boolean isEsPerecedero();
+	public String getEsPerecedero();
 
-	public Date getfVencimiento();
+	public String getfVencimiento();
 
 	public int getnReorden();
 

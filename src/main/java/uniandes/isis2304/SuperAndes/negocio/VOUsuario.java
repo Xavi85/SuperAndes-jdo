@@ -11,6 +11,10 @@ public interface VOUsuario {
 	public String getNombre();
 
 	public String getCorreo();
+	
+	public String getPais();
+	
+	public String getCiudad();
 
 	public String getDireccion();
 

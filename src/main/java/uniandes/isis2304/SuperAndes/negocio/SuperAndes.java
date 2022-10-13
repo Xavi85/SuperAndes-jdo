@@ -279,13 +279,13 @@ public class SuperAndes {
 	 *****************************************************************/
 
 	public Producto adicionarProducto (String codigoBarra, String nombre, String marca, int pVenta, String presentacion,
-			int pUnidadMedida, int cantPPT, String unidadMedida, int espEmpPeso, int espEmpVol, boolean esPerecedero,
-			Date fVencimiento, int nReorden, int stockBodega, int stockProducto, int stockTotal, long id_TipoProducto) {
+			int pUnidadMedida, int cantPPT, String unidadMedida, int espEmpPeso, int espEmpVol, String esPerecedero,
+			String fVencimiento, int nReorden, int stockBodega, int stockEstante, int stockTotal, long id_TipoProducto) {
 		
 		log.info ("Adicionando Producto: " + nombre);
 		Producto producto = pp.adicionarProducto (codigoBarra, nombre, marca, pVenta, presentacion,
         		pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero,
-        		fVencimiento, nReorden, stockBodega, stockProducto, stockTotal, id_TipoProducto);
+        		fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto);
         log.info ("Adicionando Producto: " + producto);
         return producto;
 	}
@@ -723,11 +723,11 @@ public class SuperAndes {
 	 * 			Métodos para manejar los Usuarios
 	 *****************************************************************/
 
-	public Usuario adicionarUsuario(long nDocumento, String tipoDocumento, String nombre, String correo, 
+	public Usuario adicionarUsuario(long nDocumento, String tipoDocumento, String nombre, String correo, String pais, String ciudad,
 			String direccion, Integer puntos, long id_TipoUsuario, Long id_Sucursal) {
 		
 		log.info ("Adicionando Usuario: " + nombre);
-		Usuario usuario = pp.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, direccion, puntos, id_TipoUsuario, id_Sucursal);
+		Usuario usuario = pp.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal);
         log.info ("Adicionando Usuario: " + usuario);
         return usuario;
 	}
