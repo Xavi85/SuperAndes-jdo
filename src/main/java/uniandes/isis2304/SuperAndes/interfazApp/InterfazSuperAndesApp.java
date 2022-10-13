@@ -3,6 +3,7 @@ package uniandes.isis2304.SuperAndes.interfazApp;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -12,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Objects;
 
 import javax.jdo.JDODataStoreException;
 import javax.swing.ImageIcon;
@@ -33,6 +35,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.SuperAndes.negocio.SuperAndes;
+import uniandes.isis2304.SuperAndes.negocio.VOProducto;
 import uniandes.isis2304.SuperAndes.negocio.VOProveedor;
 import uniandes.isis2304.SuperAndes.negocio.VOSucursal;
 import uniandes.isis2304.SuperAndes.negocio.VOTipoProducto;
@@ -57,6 +60,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 
     private JsonObject tableConfig;
     private SuperAndes superAndes;
+    private boolean permitirIngreso;
     private JsonObject guiConfig;
     private PanelDatos panelDatos;
     private JMenuBar menuBar;
@@ -67,14 +71,16 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 	 *****************************************************************/
 
     public InterfazSuperAndesApp() {
+    	
+    	permitirIngreso = false;
 
 		String rol[] = {"Administrador", "Gerente General", "Gerente Sucursal", "Operador", "Cajero", "Cliente"};
 		JComboBox combo = new JComboBox(rol);
 		JOptionPane.showMessageDialog(null, combo, "Tipos", JOptionPane.QUESTION_MESSAGE);
-		/*
-		long idU = 0;
+
+		long nDocumento = 0;
 		try {
-			idU = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese su ID:", "Abrir sesión", JOptionPane.INFORMATION_MESSAGE));
+			nDocumento = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese su ID:", "Abrir sesión", JOptionPane.INFORMATION_MESSAGE));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,7 +88,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				*/
+
 		String rolActual = rol[combo.getSelectedIndex()];
 
 		String json = CONFIG_INTERFAZ;
@@ -118,9 +124,23 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
         
         tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
         superAndes = new SuperAndes (tableConfig);
-        
-        
-        
+
+    	List aux = superAndes.darIdSucursalUsuariosConDocumentoIdTipoUsuario(nDocumento, superAndes.darIdPorTipoUsuario(rolActual).getId());
+    	
+    	System.out.println(rolActual);
+
+    	long temp = Long.parseLong(aux.get(0).toString());
+
+ 		if(aux.size() != 0) {
+ 			permitirIngreso = true;
+ 		}
+ 		else {
+ 			JOptionPane.showMessageDialog(this, "El usuario con ID: " + nDocumento + " NO exite en la base de datos\n o el ID: " + nDocumento + " NO está asociado al rol: " + rolActual, "ERROR", JOptionPane.ERROR_MESSAGE);
+ 		}
+ 		
+ 		if(rolActual != "Administrador" || rolActual != "Gerente General") {
+ 			JOptionPane.showMessageDialog(null, superAndes.darSucursalPorId(temp).getNombre(), "Esta accediendo a la Sucursal:", JOptionPane.INFORMATION_MESSAGE);
+ 		}
         
     	String path = guiConfig.get("bannerPath").getAsString();
         panelDatos = new PanelDatos ( );
@@ -209,6 +229,27 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
         	menuBar.add( menu );
         }        
         setJMenuBar ( menuBar );	
+    }
+    
+    
+    /* ****************************************************************
+	 * 			CRUD de Producto
+	 *****************************************************************/
+
+    public void listarProducto() {
+    	
+    	try {
+			List <VOProducto> lista = superAndes.darVOProductos();
+			String resultado = "En listar Productos";
+			resultado +=  "\n" + listarProductos (lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) {
+    		
+    		String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
     }
     
     
@@ -401,10 +442,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
-   
-    
-    
-   /* 
+
     public void adicionarUsuario( )
     {
     	try 
@@ -420,8 +458,6 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     		long nDocumento = Long.parseLong(JOptionPane.showInputDialog (this, "Numero de Documento", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE));	
     		String nombre = JOptionPane.showInputDialog (this, "Nombre", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
 			String correo = JOptionPane.showInputDialog (this, "Correo Electrónico", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
-    		String pais = JOptionPane.showInputDialog (this, "País de Residencia", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
-    		String ciudad = JOptionPane.showInputDialog (this, "Ciudad de Residencia", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
     		String direccion = JOptionPane.showInputDialog (this, "Dirección de Residencia", "Adicionar Usuario", JOptionPane.QUESTION_MESSAGE);
     		
     		List tiposUsuario = superAndes.darNombreTiposUsuario();
@@ -452,11 +488,9 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 				id_Sucursal = superAndes.darIdPorSucursal(opcSucursales[opcionesSucursales.getSelectedIndex()]).getId();
     		}
     		
-			long id_Supermercado = 1;
-    		
-    		if (Objects.isNull(nDocumento) || tipoDocumento != null || nombre != null || correo != null || pais != null || ciudad != null || direccion != null || Objects.isNull(id_Supermercado))
+    		if (Objects.isNull(nDocumento) || tipoDocumento != null || nombre != null || correo != null || direccion != null)
     		{
-        		VOUsuario tb = superAndes.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado);
+        		VOUsuario tb = superAndes.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, direccion, puntos, id_TipoUsuario, id_Sucursal);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear el Usuario con nombre: " + nombre);
@@ -477,7 +511,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
-    */
+    
     
     /* ****************************************************************
 	 * 			CRUD de Bodega
@@ -700,6 +734,17 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
         }
         return resp;
 	}
+	
+	private String listarProductos(List<VOProducto> lista) 
+    {
+    	String resp = "Los Productos existentes son:\n";
+    	int i = 1;
+        for (VOProducto tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
 
 
     /**
@@ -806,7 +851,14 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
             // Unifica la interfaz para Mac y para Windows.
             UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName( ) );
             InterfazSuperAndesApp interfaz = new InterfazSuperAndesApp( );
-            interfaz.setVisible( true );
+			if(interfaz.permitirIngreso)
+			{
+				interfaz.setVisible( true );
+			} 
+			else
+			{
+				interfaz.dispose();
+			}
 
         }
         catch( Exception e )

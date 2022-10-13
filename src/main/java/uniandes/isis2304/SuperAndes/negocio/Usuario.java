@@ -7,13 +7,10 @@ public class Usuario implements VOUsuario {
     private String tipoDocumento;
     private String nombre;
     private String correo;
-    private String pais;
-    private String ciudad;
     private String direccion;
-    private int puntos;
+    private Integer puntos;
     private long id_TipoUsuario;
-    private long id_Sucursal;
-    private long id_Supermercado;
+    private Long id_Sucursal;
     
     public Usuario() {
 
@@ -22,30 +19,24 @@ public class Usuario implements VOUsuario {
 		this.tipoDocumento = "";
 		this.nombre = "";
 		this.correo = "";
-		this.pais = "";
-		this.ciudad = "";
 		this.direccion = "";
 		this.puntos = 0;
 		this.id_TipoUsuario = 0;
-		this.id_Sucursal = 0;
-		this.id_Supermercado = 0;
+		this.id_Sucursal = (long) 0;
 	}
     
-	public Usuario(long id, long nDocumento, String tipoDocumento, String nombre, String correo, String pais,
-			String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) {
+	public Usuario(long id, long nDocumento, String tipoDocumento, String nombre, String correo, String direccion,
+			Integer puntos, long id_TipoUsuario, Long id_Sucursal) {
 
 		this.id = id;
 		this.nDocumento = nDocumento;
 		this.tipoDocumento = tipoDocumento;
 		this.nombre = nombre;
 		this.correo = correo;
-		this.pais = pais;
-		this.ciudad = ciudad;
 		this.direccion = direccion;
 		this.puntos = puntos;
 		this.id_TipoUsuario = id_TipoUsuario;
 		this.id_Sucursal = id_Sucursal;
-		this.id_Supermercado = id_Supermercado;
 	}
 
 	public long getId() {
@@ -88,22 +79,6 @@ public class Usuario implements VOUsuario {
 		this.correo = correo;
 	}
 
-	public String getPais() {
-		return pais;
-	}
-
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
-
-	public String getCiudad() {
-		return ciudad;
-	}
-
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
-	}
-
 	public String getDireccion() {
 		return direccion;
 	}
@@ -112,11 +87,11 @@ public class Usuario implements VOUsuario {
 		this.direccion = direccion;
 	}
 
-	public int getPuntos() {
+	public Integer getPuntos() {
 		return puntos;
 	}
 
-	public void setPuntos(int puntos) {
+	public void setPuntos(Integer puntos) {
 		this.puntos = puntos;
 	}
 
@@ -128,20 +103,12 @@ public class Usuario implements VOUsuario {
 		this.id_TipoUsuario = id_TipoUsuario;
 	}
 
-	public long getId_Sucursal() {
+	public Long getId_Sucursal() {
 		return id_Sucursal;
 	}
 
-	public void setId_Sucursal(long id_Sucursal) {
+	public void setId_Sucursal(Long id_Sucursal) {
 		this.id_Sucursal = id_Sucursal;
-	}
-
-	public long getId_Supermercado() {
-		return id_Supermercado;
-	}
-
-	public void setId_Supermercado(long id_Supermercado) {
-		this.id_Supermercado = id_Supermercado;
 	}
 
 	@Override
@@ -157,10 +124,6 @@ public class Usuario implements VOUsuario {
 		builder.append(nombre);
 		builder.append(", correo=");
 		builder.append(correo);
-		builder.append(", pais=");
-		builder.append(pais);
-		builder.append(", ciudad=");
-		builder.append(ciudad);
 		builder.append(", direccion=");
 		builder.append(direccion);
 		builder.append(", puntos=");
@@ -170,7 +133,6 @@ public class Usuario implements VOUsuario {
 		builder.append(", id_Sucursal=");
 		builder.append(id_Sucursal);
 		builder.append(", id_Supermercado=");
-		builder.append(id_Supermercado);
 		builder.append("]");
 		return builder.toString();
 	}

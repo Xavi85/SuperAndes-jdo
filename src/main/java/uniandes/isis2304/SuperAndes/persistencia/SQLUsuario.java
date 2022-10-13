@@ -19,11 +19,11 @@ class SQLUsuario {
 		this.pp = pp;
 	}
 
-	public long adicionarUsuario (PersistenceManager pm, long id, long nDocumento, String tipoDocumento, String nombre, String correo, String pais,
-			String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) 
+	public long adicionarUsuario (PersistenceManager pm, long id, long nDocumento, String tipoDocumento, String nombre, String correo,
+							String direccion, Integer puntos, long id_TipoUsuario, Long id_Sucursal) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuario () + "(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        q.setParameters(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuario () + "(id, nDocumento, tipoDocumento, nombre, correo, direccion, puntos, id_TipoUsuario, id_Sucursal) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        q.setParameters(id, nDocumento, tipoDocumento, nombre, correo, direccion, puntos, id_TipoUsuario, id_Sucursal);
         return (long) q.executeUnique();
 	}
 
@@ -60,6 +60,13 @@ class SQLUsuario {
 	public List<Object> darNombreUsuarios (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT nombre FROM " + pp.darTablaUsuario ());
+		return q.executeList();
+	}
+	
+	public List<Object> darIdSucursalUsuariosConDocumentoIdTipoUsuario (PersistenceManager pm, long nDocumento, long id_TipoUsuario)
+	{
+		Query q = pm.newQuery(SQL, "SELECT id_Sucursal FROM " + pp.darTablaUsuario () + " WHERE nDocumento = ? AND id_TipoUsuario = ?");
+		q.setParameters(nDocumento, id_TipoUsuario);
 		return q.executeList();
 	}
 }

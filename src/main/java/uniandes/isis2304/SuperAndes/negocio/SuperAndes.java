@@ -707,11 +707,11 @@ public class SuperAndes {
 	 * 			Métodos para manejar los Usuarios
 	 *****************************************************************/
 
-	public Sucursal adicionarUsuario(long id, long nDocumento, String tipoDocumento, String nombre, String correo, String pais,
-			String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) {
+	public Usuario adicionarUsuario(long nDocumento, String tipoDocumento, String nombre, String correo, 
+			String direccion, Integer puntos, long id_TipoUsuario, Long id_Sucursal) {
 		
 		log.info ("Adicionando Usuario: " + nombre);
-		Sucursal usuario = pp.adicionarSucursal (nombre, pais, ciudad, direccion, id_Supermercado);
+		Usuario usuario = pp.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, direccion, puntos, id_TipoUsuario, id_Sucursal);
         log.info ("Adicionando Usuario: " + usuario);
         return usuario;
 	}
@@ -764,6 +764,14 @@ public class SuperAndes {
 		
         log.info ("Consultando Nombres de los Usuarios");
         List<Object> nombreUsuarios = pp.darNombreUsuarios ();	
+        log.info ("Consultando Nombres de los Usuarios: " + nombreUsuarios.size() + " Nombre Usuarios existentes");
+        return nombreUsuarios;
+	}
+	
+	public List<Object> darIdSucursalUsuariosConDocumentoIdTipoUsuario (long nDocumento, long id_TipoUsuario) {
+		
+        log.info ("Consultando Nombres de los Usuarios");
+        List<Object> nombreUsuarios = pp.darIdSucursalUsuariosConDocumentoIdTipoUsuario (nDocumento, id_TipoUsuario);	
         log.info ("Consultando Nombres de los Usuarios: " + nombreUsuarios.size() + " Nombre Usuarios existentes");
         return nombreUsuarios;
 	}

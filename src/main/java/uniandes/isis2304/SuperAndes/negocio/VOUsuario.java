@@ -12,19 +12,13 @@ public interface VOUsuario {
 
 	public String getCorreo();
 
-	public String getPais();
-
-	public String getCiudad();
-
 	public String getDireccion();
 
-	public int getPuntos();
+	public Integer getPuntos();
 
 	public long getId_TipoUsuario();
 
-	public long getId_Sucursal();
-
-	public long getId_Supermercado();
+	public Long getId_Sucursal();
 
 	@Override
 	public String toString();

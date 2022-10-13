@@ -1122,20 +1122,20 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar los Usuarios
 	 *****************************************************************/
 
-	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo, String pais,
-			String ciudad, String direccion, int puntos, long id_TipoUsuario, long id_Sucursal, long id_Supermercado) {
+	public Usuario adicionarUsuario (long nDocumento, String tipoDocumento, String nombre, String correo, 
+			String direccion, Integer puntos, long id_TipoUsuario, Long id_Sucursal) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try {
             tx.begin();
             long id = nextval ();
-            long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado);
+            long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, id, nDocumento, tipoDocumento, nombre, correo, direccion, puntos, id_TipoUsuario, id_Sucursal);
             tx.commit();
             
             log.trace ("Inserción de Usuario: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Usuario (id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal, id_Supermercado);
+            return new Usuario (id, nDocumento, tipoDocumento, nombre, correo, direccion, puntos, id_TipoUsuario, id_Sucursal);
         }
         catch (Exception e) {
         	
@@ -1195,6 +1195,11 @@ public class PersistenciaSuperAndes {
 	public List<Object> darNombreUsuarios () {
 		
 		return sqlUsuario.darNombreUsuarios (pmf.getPersistenceManager());
+	}
+	
+	public List<Object> darIdSucursalUsuariosConDocumentoIdTipoUsuario (long nDocumento, long id_TipoUsuario) {
+		
+		return sqlUsuario.darIdSucursalUsuariosConDocumentoIdTipoUsuario (pmf.getPersistenceManager(), nDocumento, id_TipoUsuario);
 	}
 	
 		
