@@ -1032,12 +1032,21 @@ public class PersistenciaSuperAndes {
 		
 		return sqlTipoProducto.darTipoProductoPorId (pmf.getPersistenceManager(), id);
 	}
+	
+	public TipoProducto darIdPorTipoProducto (String nombre) {
+		
+		return sqlTipoProducto.darIdPorTipoProducto (pmf.getPersistenceManager(), nombre);
+	}
 
 	public List<TipoProducto> darTiposProductos () {
 		
 		return sqlTipoProducto.darTiposProductos (pmf.getPersistenceManager());
 	}
 
+	public List<Object> darNombreTiposProductos () {
+		
+		return sqlTipoProducto.darNombreTiposProductos (pmf.getPersistenceManager());
+	}
 	
 	/* ****************************************************************
 	 * 			Métodos para manejar los TiposUsuarios
@@ -1197,9 +1206,14 @@ public class PersistenciaSuperAndes {
 		return sqlUsuario.darNombreUsuarios (pmf.getPersistenceManager());
 	}
 	
-	public List<Object> darIdSucursalUsuariosConDocumentoIdTipoUsuario (long nDocumento, long id_TipoUsuario) {
+	public List<Object> darIdSucursalUsuarioConDocumentoIdTipoUsuario (long nDocumento, long id_TipoUsuario) {
 		
-		return sqlUsuario.darIdSucursalUsuariosConDocumentoIdTipoUsuario (pmf.getPersistenceManager(), nDocumento, id_TipoUsuario);
+		return sqlUsuario.darIdSucursalUsuarioConDocumentoIdTipoUsuario (pmf.getPersistenceManager(), nDocumento, id_TipoUsuario);
+	}
+	
+	public List<Object> darNombreUsuarioConDocumentoIdTipoUsuario (long nDocumento, long id_TipoUsuario) {
+		
+		return sqlUsuario.darNombreUsuarioConDocumentoIdTipoUsuario (pmf.getPersistenceManager(), nDocumento, id_TipoUsuario);
 	}
 	
 		

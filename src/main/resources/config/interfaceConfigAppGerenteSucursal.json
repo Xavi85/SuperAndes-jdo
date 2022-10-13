@@ -9,20 +9,16 @@
 		  "options":
 			[
 				{
-					"label": "RF4 - Registar una Bodega a Sucursal",
+					"label": "RF4 - Registar una Bodega a una Sucursal",
 					"event": "adicionarBodega"
 				},
 				{
-					"label": "Listar Usuarios",
-					"event": "listarUsuario"
+					"label": "RF5 - Registar un Estante a una Sucursal",
+					"event": "adicionarEstante"
 				},
 				{
-					"label": "Listar Sucursales",
-					"event": "listarSucursal"
-				},
-				{
-					"label": "Listar Productos",
-					"event": "listarProducto"
+					"label": "RF6 - Registar Proveedor",
+					"event": "adicionarProveedor"
 				}
 			]
 		},

@@ -616,6 +616,14 @@ public class SuperAndes {
         log.info ("Buscando Tipo de Producto por Id: " + tipoProducto != null ? tipoProducto : "NO EXISTE");
         return tipoProducto;
 	}
+	
+	public TipoProducto darIdPorTipoProducto (String nombre)
+	{
+        log.info ("Dar un id por un Tipo de Producto: " + nombre);
+        TipoProducto tipoProducto = pp.darIdPorTipoProducto (nombre);
+        log.info ("Buscando id por Tipo de Producto: " + tipoProducto != null ? tipoProducto : "NO EXISTE");
+        return tipoProducto;
+	}
 
 	public List<TipoProducto> darTiposProductos () {
 		
@@ -635,6 +643,14 @@ public class SuperAndes {
         }
         log.info ("Generando los VO de los Tipos de Productos: " + voTiposProductos.size() + " existentes");
         return voTiposProductos;
+	}
+	
+	public List<Object> darNombreTiposProductos () {
+		
+        log.info ("Consultando Nombres de Tipos de Productos");
+        List<Object> nombreTipoProducto = pp.darNombreTiposProductos();	
+        log.info ("Consultando Nombres de Tipos de Productos: " + nombreTipoProducto.size() + " Nombre de Tipos de Productos existentes");
+        return nombreTipoProducto;
 	}
 
 	
@@ -768,10 +784,18 @@ public class SuperAndes {
         return nombreUsuarios;
 	}
 	
-	public List<Object> darIdSucursalUsuariosConDocumentoIdTipoUsuario (long nDocumento, long id_TipoUsuario) {
+	public List<Object> darIdSucursalUsuarioConDocumentoIdTipoUsuario (long nDocumento, long id_TipoUsuario) {
+		
+        log.info ("Consultando id Sucursal de los Usuarios");
+        List<Object> idSucursal = pp.darIdSucursalUsuarioConDocumentoIdTipoUsuario (nDocumento, id_TipoUsuario);	
+        log.info ("Consultando id Sucursal de los Usuarios: " + idSucursal.size() + " id de Sucursal existentes");
+        return idSucursal;
+	}
+	
+public List<Object> darNombreUsuarioConDocumentoIdTipoUsuario (long nDocumento, long id_TipoUsuario) {
 		
         log.info ("Consultando Nombres de los Usuarios");
-        List<Object> nombreUsuarios = pp.darIdSucursalUsuariosConDocumentoIdTipoUsuario (nDocumento, id_TipoUsuario);	
+        List<Object> nombreUsuarios = pp.darNombreUsuarioConDocumentoIdTipoUsuario (nDocumento, id_TipoUsuario);	
         log.info ("Consultando Nombres de los Usuarios: " + nombreUsuarios.size() + " Nombre Usuarios existentes");
         return nombreUsuarios;
 	}

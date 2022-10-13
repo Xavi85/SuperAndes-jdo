@@ -6,6 +6,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.SuperAndes.negocio.TipoProducto;
+import uniandes.isis2304.SuperAndes.negocio.TipoUsuario;
 
 class SQLTipoProducto {
 	
@@ -39,11 +40,25 @@ class SQLTipoProducto {
 		q.setParameters(id);
 		return (TipoProducto) q.executeUnique();
 	}
+	
+	public TipoProducto darIdPorTipoProducto (PersistenceManager pm, String nombre) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaTipoProducto () + " WHERE nombre = ?");
+		q.setResultClass(TipoProducto.class);
+		q.setParameters(nombre);
+		return (TipoProducto) q.executeUnique();
+	}
 
 	public List<TipoProducto> darTiposProductos (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaTipoProducto ());
 		q.setResultClass(TipoProducto.class);
 		return (List<TipoProducto>) q.executeList();
+	}
+	
+	public List<Object> darNombreTiposProductos (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT nombre FROM " + pp.darTablaTipoProducto ());
+		return q.executeList();
 	}
 }

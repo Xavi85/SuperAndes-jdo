@@ -63,9 +63,16 @@ class SQLUsuario {
 		return q.executeList();
 	}
 	
-	public List<Object> darIdSucursalUsuariosConDocumentoIdTipoUsuario (PersistenceManager pm, long nDocumento, long id_TipoUsuario)
+	public List<Object> darIdSucursalUsuarioConDocumentoIdTipoUsuario (PersistenceManager pm, long nDocumento, long id_TipoUsuario)
 	{
 		Query q = pm.newQuery(SQL, "SELECT id_Sucursal FROM " + pp.darTablaUsuario () + " WHERE nDocumento = ? AND id_TipoUsuario = ?");
+		q.setParameters(nDocumento, id_TipoUsuario);
+		return q.executeList();
+	}
+	
+	public List<Object> darNombreUsuarioConDocumentoIdTipoUsuario (PersistenceManager pm, long nDocumento, long id_TipoUsuario)
+	{
+		Query q = pm.newQuery(SQL, "SELECT nombre FROM " + pp.darTablaUsuario () + " WHERE nDocumento = ? AND id_TipoUsuario = ?");
 		q.setParameters(nDocumento, id_TipoUsuario);
 		return q.executeList();
 	}

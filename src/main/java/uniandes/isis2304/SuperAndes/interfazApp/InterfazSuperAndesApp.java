@@ -35,6 +35,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.SuperAndes.negocio.SuperAndes;
+import uniandes.isis2304.SuperAndes.negocio.VOBodega;
+import uniandes.isis2304.SuperAndes.negocio.VOEstante;
 import uniandes.isis2304.SuperAndes.negocio.VOProducto;
 import uniandes.isis2304.SuperAndes.negocio.VOProveedor;
 import uniandes.isis2304.SuperAndes.negocio.VOSucursal;
@@ -61,6 +63,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     private JsonObject tableConfig;
     private SuperAndes superAndes;
     private boolean permitirIngreso;
+    private long id_Sucursal_U;
     private JsonObject guiConfig;
     private PanelDatos panelDatos;
     private JMenuBar menuBar;
@@ -124,22 +127,25 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
         
         tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
         superAndes = new SuperAndes (tableConfig);
-
-    	List aux = superAndes.darIdSucursalUsuariosConDocumentoIdTipoUsuario(nDocumento, superAndes.darIdPorTipoUsuario(rolActual).getId());
-    	
-    	System.out.println(rolActual);
-
-    	long temp = Long.parseLong(aux.get(0).toString());
+        
+        List aux;
+        
+        if(!rolActual.equals("Administrador") && !rolActual.equals("Gerente General")) {
+        	aux = superAndes.darIdSucursalUsuarioConDocumentoIdTipoUsuario(nDocumento, superAndes.darIdPorTipoUsuario(rolActual).getId());
+        	id_Sucursal_U = Long.parseLong(aux.get(0).toString());
+        } else {
+        	aux = superAndes.darNombreUsuarioConDocumentoIdTipoUsuario(nDocumento, superAndes.darIdPorTipoUsuario(rolActual).getId());
+        }
 
  		if(aux.size() != 0) {
  			permitirIngreso = true;
  		}
  		else {
- 			JOptionPane.showMessageDialog(this, "El usuario con ID: " + nDocumento + " NO exite en la base de datos\n o el ID: " + nDocumento + " NO está asociado al rol: " + rolActual, "ERROR", JOptionPane.ERROR_MESSAGE);
+ 			JOptionPane.showMessageDialog(null, "El usuario con ID: " + nDocumento + " NO exite en la base de datos\n o el ID: " + nDocumento + " NO está asociado al rol: " + rolActual, "ERROR", JOptionPane.ERROR_MESSAGE);
  		}
  		
- 		if(rolActual != "Administrador" || rolActual != "Gerente General") {
- 			JOptionPane.showMessageDialog(null, superAndes.darSucursalPorId(temp).getNombre(), "Esta accediendo a la Sucursal:", JOptionPane.INFORMATION_MESSAGE);
+ 		if(!rolActual.equals("Administrador") && !rolActual.equals("Gerente General")) {
+ 			JOptionPane.showMessageDialog(null, superAndes.darSucursalPorId(id_Sucursal_U).getNombre(), "Accediendo a la Sucursal:", JOptionPane.INFORMATION_MESSAGE);
  		}
         
     	String path = guiConfig.get("bannerPath").getAsString();
@@ -488,7 +494,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 				id_Sucursal = superAndes.darIdPorSucursal(opcSucursales[opcionesSucursales.getSelectedIndex()]).getId();
     		}
     		
-    		if (Objects.isNull(nDocumento) || tipoDocumento != null || nombre != null || correo != null || direccion != null)
+    		if (!Objects.isNull(nDocumento) && tipoDocumento != null && nombre != null && correo != null && direccion != null)
     		{
         		VOUsuario tb = superAndes.adicionarUsuario (nDocumento, tipoDocumento, nombre, correo, direccion, puntos, id_TipoUsuario, id_Sucursal);
         		if (tb == null)
@@ -519,7 +525,129 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     
     public void adicionarBodega( )
     {
-
+    	try 
+    	{
+    		int volMax = Integer.parseInt(JOptionPane.showInputDialog (this, "Volumen Maximo", "Adicionar Bodega", JOptionPane.QUESTION_MESSAGE));	
+    		int pesoMax = Integer.parseInt(JOptionPane.showInputDialog (this, "Peso Maximo", "Adicionar Bodega", JOptionPane.QUESTION_MESSAGE));
+    		long id_Sucursal = id_Sucursal_U;
+    		
+    		List tiposProdutos = superAndes.darNombreTiposProductos();
+    		String[] opcTiposProdutos = new String[tiposProdutos.size()];
+    		for(int i = 0; i < tiposProdutos.size(); i++) {
+    			opcTiposProdutos[i] = tiposProdutos.get(i).toString();
+    		}
+			JComboBox opcionesTiposProdutos = new JComboBox(opcTiposProdutos);
+			JOptionPane.showMessageDialog(null, opcionesTiposProdutos, "Seleccione el tipo de Producto", JOptionPane.QUESTION_MESSAGE);
+			long id_TipoProducto = superAndes.darIdPorTipoProducto(opcTiposProdutos[opcionesTiposProdutos.getSelectedIndex()]).getId();
+			String tipoAlmacen = superAndes.darIdPorTipoProducto(opcTiposProdutos[opcionesTiposProdutos.getSelectedIndex()]).getTipoAlmacen();
+    		
+    		if (!Objects.isNull(volMax) && !Objects.isNull(pesoMax) && tipoAlmacen != null && !Objects.isNull(id_Sucursal) && !Objects.isNull(id_TipoProducto))
+    		{
+        		VOBodega tb = superAndes.adicionarBodega(volMax, pesoMax, tipoAlmacen, id_Sucursal, id_TipoProducto);
+        		if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear la Bodega");
+        		}
+        		String resultado = "En adicionar Bodega\n\n";
+        		resultado += "Bodega adicionada exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    
+    /* ****************************************************************
+	 * 			CRUD de Estante
+	 *****************************************************************/
+    
+    public void adicionarEstante( )
+    {
+    	try 
+    	{
+    		int volMax = Integer.parseInt(JOptionPane.showInputDialog (this, "Volumen Maximo", "Adicionar Estante", JOptionPane.QUESTION_MESSAGE));	
+    		int pesoMax = Integer.parseInt(JOptionPane.showInputDialog (this, "Peso Maximo", "Adicionar Estante", JOptionPane.QUESTION_MESSAGE));
+    		long id_Sucursal = id_Sucursal_U;
+    		int nAbastecimiento = Integer.parseInt(JOptionPane.showInputDialog (this, "Numero Para Abastecimiento", "Adicionar Estante", JOptionPane.QUESTION_MESSAGE));
+    		
+    		List tiposProdutos = superAndes.darNombreTiposProductos();
+    		String[] opcTiposProdutos = new String[tiposProdutos.size()];
+    		for(int i = 0; i < tiposProdutos.size(); i++) {
+    			opcTiposProdutos[i] = tiposProdutos.get(i).toString();
+    		}
+			JComboBox opcionesTiposProdutos = new JComboBox(opcTiposProdutos);
+			JOptionPane.showMessageDialog(null, opcionesTiposProdutos, "Seleccione el tipo de Producto", JOptionPane.QUESTION_MESSAGE);
+			long id_TipoProducto = superAndes.darIdPorTipoProducto(opcTiposProdutos[opcionesTiposProdutos.getSelectedIndex()]).getId();
+			String tipoAlmacen = superAndes.darIdPorTipoProducto(opcTiposProdutos[opcionesTiposProdutos.getSelectedIndex()]).getTipoAlmacen();
+    		
+    		if (!Objects.isNull(volMax) && !Objects.isNull(pesoMax) && tipoAlmacen != null && !Objects.isNull(nAbastecimiento) && !Objects.isNull(id_Sucursal) && !Objects.isNull(id_TipoProducto))
+    		{
+        		VOEstante tb = superAndes.adicionarEstante(volMax, pesoMax, tipoAlmacen, nAbastecimiento, id_Sucursal, id_TipoProducto);
+        		if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear el Estante");
+        		}
+        		String resultado = "En adicionar Estante\n\n";
+        		resultado += "Estante adicionado exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    
+    /* ****************************************************************
+	 * 			CRUD de Proveedor
+	 *****************************************************************/
+    
+    public void adicionarProveedor( )
+    {
+    	try 
+    	{
+    		long nit = Long.parseLong(JOptionPane.showInputDialog (this, "NIT", "Adicionar Proveedor", JOptionPane.QUESTION_MESSAGE));	
+    		String nombre = JOptionPane.showInputDialog (this, "Nombre de la Empresa", "Adicionar Proveedor", JOptionPane.QUESTION_MESSAGE);
+    		int calificacion = 0;
+    		
+    		if (!Objects.isNull(nit) && nombre != null)
+    		{
+        		VOProveedor tb = superAndes.adicionarProveedor(nit, nombre, calificacion);
+        		if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear el Proveedor");
+        		}
+        		String resultado = "En adicionar Proveedor\n\n";
+        		resultado += "Proveedor adicionado exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
     }
     
     
