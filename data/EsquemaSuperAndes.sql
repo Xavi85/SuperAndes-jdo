@@ -136,22 +136,12 @@ CREATE TABLE USUARIO(
     ciudad VARCHAR2(255 BYTE) NOT NULL,
     direccion VARCHAR2(255 BYTE) NOT NULL,
     puntos NUMBER,
-    id_Sucursal NUMBER NOT NULL,
-    id_Supermercado NUMBER NOT NULL,
+    id_TipoUsuario NUMBER NOT NULL,
+    id_Sucursal NUMBER,
 	CONSTRAINT PK_id_usuario PRIMARY KEY (id),
-
+    CONSTRAINT FK_usuario_id_TipoUsuario FOREIGN KEY(id_TipoUsuario) REFERENCES TIPO_USUARIO(id),
     CONSTRAINT FK_usuario_id_Sucursal FOREIGN KEY(id_Sucursal) REFERENCES SUCURSAL(id),
-    CONSTRAINT FK_usuario_id_Supermercado FOREIGN KEY(id_Supermercado) REFERENCES SUPERMERCADO(id),
-    CONSTRAINT CHECK_usuario_tipoDocumento CHECK(tipoDocumento IN ('Cedula Cuidadania', 'Cedula Extranjeria', 'Tarjeta de Identificacion', 'Pasaporte', 'NIT'))
-);
---------------------------------------------------------------------------------
--- Creacion tabla USUARIO_TIPO_USUARIO
-CREATE TABLE USUARIO_TIPO_USUARIO(
-    id_Usuario NUMBER,
-    id_TipoUsuario NUMBER,
-	CONSTRAINT PK_id_usuarioTipoUsuario PRIMARY KEY (id_Usuario, id_TipoUsuario),
-    CONSTRAINT FK_usuarioTipoUsuario_id_Usuario FOREIGN KEY(id_Usuario) REFERENCES USUARIO(id),
-    CONSTRAINT FK_usuarioTipoUsuario_id_TipoUsuario FOREIGN KEY(id_TipoUsuario) REFERENCES TIPO_USUARIO(id)
+    CONSTRAINT CHECK_usuario_tipoDocumento CHECK(tipoDocumento IN ('Cedula Ciudadania', 'Cedula Extranjeria', 'Tarjeta de Identificacion', 'Pasaporte', 'NIT'))
 );
 --------------------------------------------------------------------------------
 -- Creacion tabla VENTA
@@ -239,4 +229,33 @@ COMMIT;
 INSERT INTO TIPO_PRODUCTO(id, nombre, tipoAlmacen, categoria, subCategoria) VALUES (1, 'Galletas', 'Refrigerado', 'Abarrotes', 'Golosinas');
 INSERT INTO TIPO_PRODUCTO(id, nombre, tipoAlmacen, categoria, subCategoria) VALUES (2, 'Legumbres', 'Normal', 'Abarrotes', 'Granos');
 INSERT INTO TIPO_PRODUCTO(id, nombre, tipoAlmacen, categoria, subCategoria) VALUES (3, 'Cloro', 'Congelado', 'Utlies de Aseo', 'Desinfectantes');
+COMMIT;
+
+-- Creacion tuplas SUPERMERCADO
+INSERT INTO SUPERMERCADO(id, nit, nombre) VALUES (1, 778889991, 'Exito');
+COMMIT;
+
+-- Creacion tuplas SUCURSAL
+INSERT INTO SUCURSAL(id, nombre, pais, ciudad, direccion, id_Supermercado) VALUES (1, 'Exito Country', 'Colombia', 'Bogotá', 'Carrera 7c #127A-46', 1);
+INSERT INTO SUCURSAL(id, nombre, pais, ciudad, direccion, id_Supermercado) VALUES (2, 'Exito Unicentro', 'Colombia', 'Bogotá', 'Calle 127 #14-46', 1);
+COMMIT;
+
+-- Creacion tuplas TIPO_USUARIO
+INSERT INTO TIPO_USUARIO(id, tipo) VALUES (1, 'Administrador');
+INSERT INTO TIPO_USUARIO(id, tipo) VALUES (2, 'Gerente General');
+INSERT INTO TIPO_USUARIO(id, tipo) VALUES (3, 'Gerente Sucursal');
+INSERT INTO TIPO_USUARIO(id, tipo) VALUES (4, 'Operador');
+INSERT INTO TIPO_USUARIO(id, tipo) VALUES (5, 'Cajero');
+INSERT INTO TIPO_USUARIO(id, tipo) VALUES (6, 'Cliente');
+COMMIT;
+
+-- Creacion tuplas USUARIO
+INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (1, '1195954', 'Cedula Extranjeria', 'Javier Serrano', 'serranor@gmail.com', 'Colombia', 'Bogotá', 'Carrera 7c #127A-46', null, 6, null);
+INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (2, '63743682', 'Cedula Ciudadania', 'Alvaro Serrano', 'aserrano@grupoexito', 'Colombia', 'Bogotá', 'Carrera 8 #132-57', null, 3, null);
+INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (3, '1189865', 'Cedula Extranjeria', 'Ana Varela', 'avarela@grupoexito', 'Colombia', 'Bogotá', 'Carrera 8 #132-57', null, 3, 2);
+COMMIT;
+
+-- Creacion tuplas PRODUCTO
+INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion, pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero, fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto)
+VALUES (1, 1010101010, 'Galletas 1', 'Arcor', 1000, 'pres', 1000, 100, 'gramos', 100, 45, 'false', null, 10000, 5000, 5000, 10000, 3);
 COMMIT;
