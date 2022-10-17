@@ -22,6 +22,35 @@
 				}
 			]
 		},
+		{ "menuTitle": "Requerimientos Funcionales de Consulta",
+		  "options":
+			[
+				{
+					"label": "RFC1",
+					"event": "requerimientoFuncional1"
+				},
+				{
+					"label": "RFC2",
+					"event": "requerimientoFuncional2"
+				},
+				{
+					"label": "RFC3",
+					"event": "requerimientoFuncional3"
+				},
+				{
+					"label": "RFC4",
+					"event": "requerimientoFuncional4"
+				},
+				{
+					"label": "RFC5",
+					"event": "requerimientoFuncional5"
+				},
+				{
+					"label": "RFC6",
+					"event": "requerimientoFuncional6"
+				}
+			]
+		},
 		{ "menuTitle": "Mantenimiento",
 		  "options":
 			[

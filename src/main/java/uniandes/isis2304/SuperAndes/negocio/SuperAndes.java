@@ -910,4 +910,38 @@ public List<Object> darNombreUsuarioConDocumentoIdTipoUsuario (long nDocumento, 
         log.info ("Limpiando la BD de SuperAndes: Listo!");
         return borrrados;
 	}
+	
+	/* ****************************************************************
+	 * 			Métodos para consultas
+	 *****************************************************************/
+	
+	public List<Object[]> darSucursalesReq1 () {
+		
+        log.info ("Consultando Sucursales para el RFC1");
+        List<Object[]> nombreSucursalesReq1 = pp.darSucursalesReq1();
+        log.info ("Consultando Nombres Sucursales: " + nombreSucursalesReq1.size() + " Nombre de Sucursales Req1");
+        return nombreSucursalesReq1;
+	}
+	
+	public List<Object[]> darPromocionesReq2 () {
+		
+        log.info ("Consultando Promociones para el RFC2");
+        List<Object[]> promocionesReq1 = pp.darPromocionesReq1();
+        log.info ("Consultando Promociones: " + promocionesReq1.size() + " Promociones");
+        return promocionesReq1;
+	}
+	
+	public List<Object[]> darBodegasReq3 (long id_sucursal){
+		log.info ("Consultando Bodegas para el RFC3");
+        List<Object[]> bodegasReq1 = pp.darBodegasReq3(id_sucursal);
+        log.info ("Consultando Bodegas: " + bodegasReq1.size() + " Bodegas");
+        return bodegasReq1;
+	}
+	
+	public List<Object[]> darEstantesReq3 (long id_sucursal){
+		log.info ("Consultando Estantes para el RFC3");
+        List<Object[]> estantesReq1 = pp.darEstantesReq3(id_sucursal);
+        log.info ("Consultando Bodegas: " + estantesReq1.size() + " Bodegas");
+        return estantesReq1;
+	}
 }

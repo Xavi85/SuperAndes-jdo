@@ -1353,6 +1353,26 @@ public class PersistenciaSuperAndes {
 		return sqlVentaProducto.darVentasProductos (pmf.getPersistenceManager());
 	}
 	
+	/* ****************************************************************
+	 * 			Métodos para manejar las consultas
+	 *****************************************************************/
+	
+	public List<Object[]> darSucursalesReq1 () {
+		
+		return sqlSucursal.darSucursalesReq1(pmf.getPersistenceManager());
+	}
+	
+	public List<Object[]> darPromocionesReq1 () {
+		return sqlPromocion.darPromocionesReq1(pmf.getPersistenceManager());
+	}
+	
+	public List<Object[]> darBodegasReq3 (long id_sucursal) {
+		return sqlBodega.darBodegasReq3(pmf.getPersistenceManager(), id_sucursal);
+	}
+	
+	public List<Object[]> darEstantesReq3 (long id_sucursal) {
+		return sqlEstante.darEstantesReq3(pmf.getPersistenceManager(), id_sucursal);
+	}
 	
 	/* ****************************************************************
 	 * 			  Fin métodos para manejadores

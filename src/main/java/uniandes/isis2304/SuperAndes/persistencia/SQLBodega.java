@@ -46,4 +46,18 @@ class SQLBodega {
 		q.setResultClass(Bodega.class);
 		return (List<Bodega>) q.executeList();
 	}
+	
+	public List<Object[]> darBodegasReq3 (PersistenceManager pm, long id_sucursal)
+	{
+		Query q = pm.newQuery(SQL, "select bodega.id, bodega.pesomax, bodega.volmax, bodega.tipoalmacen, 100*stocks.volbodega/bodega.volmax porcentaje_vol, 100*stocks.pesobodega/bodega.pesomax porcentaje_peso "
+				+ "from bodega "
+				+ "inner join ( "
+				+ "select id_tipoproducto, sum(stockbodega * espemppeso) pesobodega, sum(stockbodega * espempvol) volbodega "
+				+ "from producto "
+				+ "group by id_tipoproducto) stocks "
+				+ "on bodega.id_tipoproducto = stocks.id_tipoproducto "
+				+ "where bodega.id_sucursal = ? ");
+		q.setParameters(id_sucursal);
+		return q.executeList();
+	}
 }
