@@ -2325,3 +2325,12 @@ ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno num�
 23:22:47,322 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Estantes para el RFC3
 23:22:47,460 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas: 6 Bodegas
 >>>>>>> branch 'master' of https://github.com/Xavi85/SuperAndes-jdo.git
+00:49:20,232 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:49:20,232 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:49:20,255 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:49:24,358 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Gerente Sucursal
+00:49:24,555 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=3, tipo=Gerente Sucursal]
+00:49:24,555 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+00:49:24,703 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+00:49:24,703 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 2
+00:49:25,115 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=Bogotá, direccion=Calle 127 #14-46, id_Supermercado=1]

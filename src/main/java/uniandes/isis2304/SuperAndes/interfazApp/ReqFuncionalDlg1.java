@@ -14,17 +14,15 @@ import javax.swing.JLabel;
 import javax.swing.BoxLayout;
 import javax.swing.JRadioButton;
 import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JDayChooser;
-import com.toedter.calendar.JCalendar;
 import javax.swing.SwingConstants;
 import javax.swing.ButtonGroup;
 import java.awt.Component;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
-import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class ReqFuncionalDlg1 extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -32,7 +30,6 @@ public class ReqFuncionalDlg1 extends JDialog {
 	private JDateChooser dateChooser1;
 	private JDateChooser dateChooser2;
 	private JRadioButton rdbtnNewRadioButton;
-	private String resultado;
 	private Date fechaInicio;
 	private Date fechaFin;
 
