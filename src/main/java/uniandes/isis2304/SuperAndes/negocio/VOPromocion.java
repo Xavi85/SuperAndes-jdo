@@ -1,16 +1,14 @@
 package uniandes.isis2304.SuperAndes.negocio;
 
-import java.util.Date;
-
 public interface VOPromocion {
 
 	public long getId() ;
 
 	public String getNombre();
 
-	public Date getfInicio();
+	public String getfInicio();
 
-	public Date getfFin();
+	public String getfFin();
 
 	public String getDescripcion();
 

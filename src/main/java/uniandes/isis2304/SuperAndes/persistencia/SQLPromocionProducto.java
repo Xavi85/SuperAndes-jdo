@@ -18,10 +18,10 @@ class SQLPromocionProducto {
 		this.pp = pp;
 	}
 
-	public long adicionarPromocionProducto (PersistenceManager pm, long id_Promocion, long id_Producto) 
+	public long adicionarPromocionProducto (PersistenceManager pm, long id_Promocion, long id_Producto, int stockInicial, int stockActual) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaPromocionProducto () + "(id_Promocion, id_Producto) values (?, ?)");
-        q.setParameters(id_Promocion, id_Producto);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaPromocionProducto () + "(id_Promocion, id_Producto, stockInicial, stockActual) values (?, ?, ?, ?)");
+        q.setParameters(id_Promocion, id_Producto, stockInicial, stockActual);
         return (long) q.executeUnique();
 	}
 

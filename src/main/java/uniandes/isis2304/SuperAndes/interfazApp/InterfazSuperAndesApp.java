@@ -768,6 +768,84 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     }
     
     
+    /* ****************************************************************
+	 * 			CRUD de Promocion
+	 *****************************************************************/
+    
+    public void adicionarPromocion( )
+    {
+    	try
+    	{
+    		String opcPromocion[] = {"Pague N lleve M Unidades", "Hacer Descuento a Producto", "Pague X lleve Y Cantidad", "Pague 1 y el Segundo con Descuento", "Paquete de Productos"};
+			JComboBox opcionesPromocion = new JComboBox(opcPromocion);
+			JOptionPane.showMessageDialog(this, opcionesPromocion, "Seleccione el tipo de Promocion", JOptionPane.QUESTION_MESSAGE);
+			String tipoPromocionSelected = (String) opcionesPromocion.getSelectedItem();
+			
+			
+			String nombre = JOptionPane.showInputDialog (this, "Nombre Promocion", "Adicionar Promocion", JOptionPane.QUESTION_MESSAGE);
+			String fInicio = JOptionPane.showInputDialog (this, "Fecha Inicio (dd/MM/yyyy)", "Adicionar Promocion", JOptionPane.QUESTION_MESSAGE);
+			String fFin = JOptionPane.showInputDialog (this, "Fecha Fin (dd/MM/yyyy)", "Adicionar Promocion", JOptionPane.QUESTION_MESSAGE);
+			String descripcion = JOptionPane.showInputDialog (this, "Descripcion", "Adicionar Promocion", JOptionPane.QUESTION_MESSAGE);
+			long id_Sucursal = id_Sucursal_U;
+			
+			if (tipoPromocionSelected.equals(opcPromocion[0])) //PagueNlleveM
+			{
+				String tipoPromocion = "PagueNlleveM";
+				int lleve = Integer.parseInt(JOptionPane.showInputDialog (this, "Unidades que Lleva", "Pague N lleve M Unidades", JOptionPane.QUESTION_MESSAGE));
+				int pague = Integer.parseInt(JOptionPane.showInputDialog (this, "Unidades que Paga", "Pague N lleve M Unidades", JOptionPane.QUESTION_MESSAGE));
+			}
+			else if(tipoPromocionSelected.equals(opcPromocion[1])) //DescuentoPorcentaje
+			{
+				String tipoPromocion = "DescuentoPorcentaje";
+				float descuento = Float.parseFloat(JOptionPane.showInputDialog (this, "Fraccion que Paga", "Hacer Descuento a Producto", JOptionPane.QUESTION_MESSAGE));
+			}
+			else if(tipoPromocionSelected.equals(opcPromocion[2])) //PagueXlleveY
+			{
+				String tipoPromocion = "PagueXlleveY";
+				int lleve = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad que Lleva", "Pague X lleve Y Cantidad", JOptionPane.QUESTION_MESSAGE));
+				int pague = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad que Paga", "Pague X lleve Y Cantidad", JOptionPane.QUESTION_MESSAGE));
+				float descuento = pague/lleve;
+			}
+			else if(tipoPromocionSelected.equals(opcPromocion[3])) //Pague1Segundo
+			{
+				String tipoPromocion = "Pague1Segundo";
+				float descuento = Float.parseFloat(JOptionPane.showInputDialog (this, "Fraccion que Paga de la Segundo Unidad", "Pague 1 y el Segundo con Descuento", JOptionPane.QUESTION_MESSAGE));
+			}
+			else if(tipoPromocionSelected.equals(opcPromocion[4])) //PaqueteProducutos
+			{
+				String tipoPromocion = "PaqueteProducutos";
+				int cantProd = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad de Productos que incluye el Paquete", "Paquete de Productos", JOptionPane.QUESTION_MESSAGE));
+				int pVenta = Integer.parseInt(JOptionPane.showInputDialog (this, "Precio de Venta del Paquete", "Paquete de Productos", JOptionPane.QUESTION_MESSAGE));
+			}
+			
+			/*
+
+    		if (codigoBarra != null && nombre != null && marca != null && !Objects.isNull(pVenta) && presentacion != null && 
+    				!Objects.isNull(pUnidadMedida) && !Objects.isNull(cantPPT) && unidadMedida != null && !Objects.isNull(espEmpPeso) && 
+    				!Objects.isNull(espEmpVol) && !Objects.isNull(esPerecedero) && !Objects.isNull(nReorden) && !Objects.isNull(stockBodega) && 
+    				!Objects.isNull(stockEstante) && !Objects.isNull(stockTotal) && !Objects.isNull(id_TipoProducto)) {
+    			
+        		VOProducto tb = superAndes.adicionarProducto(codigoBarra, nombre, marca, pVenta, presentacion, pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero, fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto);
+        		if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear el Producto");
+        		}
+        		String resultado = "En adicionar Producto\n\n";
+        		resultado += "Producto adicionado exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}*/
+		} 
+    	catch (Exception e) 
+    	{
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
 	/* ****************************************************************
 	 * 			Métodos administrativos
 	 *****************************************************************/

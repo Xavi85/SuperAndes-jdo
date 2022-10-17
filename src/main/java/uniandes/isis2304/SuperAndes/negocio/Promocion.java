@@ -1,13 +1,11 @@
 package uniandes.isis2304.SuperAndes.negocio;
 
-import java.util.Date;
-
 public class Promocion implements VOPromocion {
 
 	private long id;
 	private String nombre;
-	Date fInicio;
-	Date fFin;
+	private String fInicio;
+	private String fFin;
 	private String descripcion;
 	private String tipoPromocion;
 	private int lleve;
@@ -20,8 +18,8 @@ public class Promocion implements VOPromocion {
 
 		this.id = 0;
 		this.nombre = "";
-		this.fInicio = new Date();
-		this.fFin = new Date();
+		this.fInicio = "";
+		this.fFin = "";
 		this.descripcion = "";
 		this.tipoPromocion = "";
 		this.lleve = 0;
@@ -31,7 +29,7 @@ public class Promocion implements VOPromocion {
 		this.id_Sucursal = 0;
 	}
 	
-	public Promocion(long id, String nombre, Date fInicio, Date fFin, String descripcion, String tipoPromocion,
+	public Promocion(long id, String nombre, String fInicio, String fFin, String descripcion, String tipoPromocion,
 			int lleve, int pague, float descuento, int pVenta, long id_Sucursal) {
 
 		this.id = id;
@@ -63,19 +61,19 @@ public class Promocion implements VOPromocion {
 		this.nombre = nombre;
 	}
 
-	public Date getfInicio() {
+	public String getfInicio() {
 		return fInicio;
 	}
 
-	public void setfInicio(Date fInicio) {
+	public void setfInicio(String fInicio) {
 		this.fInicio = fInicio;
 	}
 
-	public Date getfFin() {
+	public String getfFin() {
 		return fFin;
 	}
 
-	public void setfFin(Date fFin) {
+	public void setfFin(String fFin) {
 		this.fFin = fFin;
 	}
 

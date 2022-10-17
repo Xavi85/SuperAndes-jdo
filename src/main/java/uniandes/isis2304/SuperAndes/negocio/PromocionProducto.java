@@ -4,17 +4,23 @@ public class PromocionProducto implements VOPromocionProducto {
 
 	private long id_Promocion;
 	private long id_Producto;
+	private int stockInicial;
+	private int stockActual;
 	
 	public PromocionProducto() {
 
 		this.id_Promocion = 0;
 		this.id_Producto = 0;
+		this.stockInicial = 0;
+		this.stockActual = 0;
 	}
 	
-	public PromocionProducto(long id_Promocion, long id_Producto) {
+	public PromocionProducto(long id_Promocion, long id_Producto, int stockInicial, int stockActual) {
 
 		this.id_Promocion = id_Promocion;
 		this.id_Producto = id_Producto;
+		this.stockInicial = stockInicial;
+		this.stockActual = stockActual;
 	}
 
 	public long getId_Promocion() {
@@ -33,6 +39,22 @@ public class PromocionProducto implements VOPromocionProducto {
 		this.id_Producto = id_Producto;
 	}
 
+	public int getstockInicial() {
+		return stockInicial;
+	}
+
+	public void setstockInicial(int stockInicial) {
+		this.stockInicial = stockInicial;
+	}
+
+	public int getstockActual() {
+		return stockInicial;
+	}
+
+	public void setstockActual(int stockActual) {
+		this.stockActual = stockActual;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

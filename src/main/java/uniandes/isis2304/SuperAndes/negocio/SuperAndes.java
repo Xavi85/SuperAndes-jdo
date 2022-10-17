@@ -331,7 +331,7 @@ public class SuperAndes {
 	 * 			Métodos para manejar los Promociones
 	 *****************************************************************/
 
-	public Promocion adicionarPromocion (String nombre, Date fInicio, Date fFin, String descripcion, String tipoPromocion,
+	public Promocion adicionarPromocion (String nombre, String fInicio, String fFin, String descripcion, String tipoPromocion,
 			int lleve, int pague, float descuento, int pVenta, long id_Sucursal) {
 		
 		log.info ("Adicionando Promocion: " + nombre);
@@ -381,10 +381,10 @@ public class SuperAndes {
 	 * 			Métodos para manejar los Promociones de Productos
 	 *****************************************************************/
 
-	public PromocionProducto adicionarPromocionProducto (long id_Promocion, long id_Producto) {
+	public PromocionProducto adicionarPromocionProducto (long id_Promocion, long id_Producto, int stockInicial, int stockActual) {
 		
-		log.info ("Adicionando Promocion de Producto: " + id_Promocion + ", " + id_Producto);
-		PromocionProducto promocionProducto = pp.adicionarPromocionProducto (id_Promocion, id_Producto);
+		log.info ("Adicionando Promocion de Producto: " + id_Promocion + ", " + id_Producto + ", " + stockInicial + ", " + stockActual);
+		PromocionProducto promocionProducto = pp.adicionarPromocionProducto (id_Promocion, id_Producto, stockInicial, stockActual);
         log.info ("Adicionando Promocion de Producto: " + promocionProducto);
         return promocionProducto;
 	}

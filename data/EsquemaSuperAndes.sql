@@ -202,6 +202,8 @@ CREATE TABLE PROMOCION(
 CREATE TABLE PROMOCION_PRODUCTO(
     id_Promocion NUMBER,
     id_Producto NUMBER,
+    stockInicial NUMBER NOT NULL,
+    stockActual NUMBER NOT NULL,
 	CONSTRAINT PK_id_promocionProducto PRIMARY KEY (id_Promocion, id_Producto),
     CONSTRAINT FK_promocionProducto_id_Promocion FOREIGN KEY(id_Promocion) REFERENCES PROMOCION(id),
     CONSTRAINT FK_promocionProducto_id_Producto FOREIGN KEY(id_Producto) REFERENCES PRODUCTO(idLote)

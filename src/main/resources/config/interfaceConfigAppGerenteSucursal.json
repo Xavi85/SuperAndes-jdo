@@ -27,6 +27,10 @@
 				{
 					"label": "RF8 - Registar Clientes",
 					"event": "adicionarUsuarioCliente"
+				},
+				{
+					"label": "RF8 - Registar una Promocion",
+					"event": "adicionarPromocion"
 				}
 			]
 		},

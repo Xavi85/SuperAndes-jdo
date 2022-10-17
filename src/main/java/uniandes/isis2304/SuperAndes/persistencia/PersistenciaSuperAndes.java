@@ -617,7 +617,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las Promociones
 	 *****************************************************************/
 
-	public Promocion adicionarPromocion (String nombre, Date fInicio, Date fFin, String descripcion, String tipoPromocion,
+	public Promocion adicionarPromocion (String nombre, String fInicio, String fFin, String descripcion, String tipoPromocion,
 			int lleve, int pague, float descuento, int pVenta, long id_Sucursal) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -689,18 +689,18 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las PromocionesProductos
 	 *****************************************************************/
 
-	public PromocionProducto adicionarPromocionProducto (long id_Promocion, long id_Producto) {
+	public PromocionProducto adicionarPromocionProducto (long id_Promocion, long id_Producto, int stockInicial, int stockActual) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try {
             tx.begin();
-            long tuplasInsertadas = sqlPromocionProducto.adicionarPromocionProducto(pm, id_Promocion, id_Producto);
+            long tuplasInsertadas = sqlPromocionProducto.adicionarPromocionProducto(pm, id_Promocion, id_Producto, stockInicial, stockActual);
             tx.commit();
             
-            log.trace ("Inserción de PromocionProducto: " + id_Promocion + id_Producto + ": " + tuplasInsertadas + " tuplas insertadas");
+            log.trace ("Inserción de PromocionProducto: " + id_Promocion + ", " + id_Producto + ", " + stockInicial + ", " + stockActual + ", " + tuplasInsertadas + " tuplas insertadas");
             
-            return new PromocionProducto (id_Promocion, id_Producto);
+            return new PromocionProducto (id_Promocion, id_Producto, stockInicial, stockActual);
         }
         catch (Exception e) {
         	
