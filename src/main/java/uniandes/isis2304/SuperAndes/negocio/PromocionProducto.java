@@ -54,7 +54,7 @@ public class PromocionProducto implements VOPromocionProducto {
 	public void setstockActual(int stockActual) {
 		this.stockActual = stockActual;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -62,6 +62,10 @@ public class PromocionProducto implements VOPromocionProducto {
 		builder.append(id_Promocion);
 		builder.append(", id_Producto=");
 		builder.append(id_Producto);
+		builder.append(", stockInicial=");
+		builder.append(stockInicial);
+		builder.append(", stockActual=");
+		builder.append(stockActual);
 		builder.append("]");
 		return builder.toString();
 	}
