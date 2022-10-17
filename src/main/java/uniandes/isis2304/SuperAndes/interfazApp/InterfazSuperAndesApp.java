@@ -964,7 +964,169 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 		}
     }
     
+
+    /* ****************************************************************
+	 * 			Requerimientos funcionales de consulta
+	 *****************************************************************/
+    public void requerimientoFuncional1()
+    {
+    	ReqFuncionalDlg1 dialogoReq1 = new ReqFuncionalDlg1();
+    	dialogoReq1.setVisible(true);
+    	
+    	if(dialogoReq1.getFechaIncio() != null)
+    	{
+    		String resultado = "";//"Fecha inicio: " + dialogoReq1.getFechaIncio().toString() + ", Fecha fin: " + dialogoReq1.getFechaFin().toString();
+    		List<Object[]> sucursales = superAndes.darSucursalesReq1();
+    		
+    		for(int i = 0; i < sucursales.size(); i++)
+    		{
+    			Object[] sucursal = sucursales.get(i);
+    			resultado += "\n" + sucursal[0] + "\t" + sucursal[1] + "\t" + sucursal[2];
+    			System.out.println(sucursal.toString());
+    		}
+        	panelDatos.actualizarInterfaz(resultado);
+    	}
+    }
     
+    public void requerimientoFuncional2()
+    {
+    	List<Object[]> promociones = superAndes.darPromocionesReq2();
+    	String resultado = "";
+    	
+    	for(int i = 0; i < promociones.size(); i++)
+		{
+			Object[] promocion = promociones.get(i);
+			
+			for(int j = 0; j < promocion.length; j++)
+			{
+				resultado += promocion[j] + "\t";
+			}
+			
+			resultado += "\n";
+		}
+    	panelDatos.actualizarInterfaz(resultado);
+    }
+    
+    public void requerimientoFuncional3()
+    {
+    	
+    	
+    	try 
+    	{
+    		List sucursales = superAndes.darNombreSucursales();
+    		String[] opcSucursales = new String[sucursales.size()];
+    		for(int i = 0; i < sucursales.size(); i++) {
+    			opcSucursales[i] = sucursales.get(i).toString();
+    		}
+			JComboBox opcionesSucursales = new JComboBox(opcSucursales);
+			
+			JOptionPane.showMessageDialog(null, opcionesSucursales, "Seleccione la sucursal", JOptionPane.QUESTION_MESSAGE);
+			long id_sucursal = superAndes.darIdPorSucursal(opcSucursales[opcionesSucursales.getSelectedIndex()]).getId();
+    		
+			List<Object[]> bodegas = superAndes.darBodegasReq3(id_sucursal);
+			List<Object[]> estantes = superAndes.darEstantesReq3(id_sucursal);
+			
+			String resultado = "Consulta para la sucursal " + id_sucursal + " - " + opcSucursales[opcionesSucursales.getSelectedIndex()] + "\n";
+			resultado += "INDICES DE OCUPACIÓN POR BODEGA\n";
+			resultado += "IDBODEGA\tPESOMAX\tVOLMAX\tTIPO_ALMACEN\tPORCENTAJE_VOL\tPORCENTAJE_PESO\n";
+			
+			for(int i = 0; i < bodegas.size(); i++)
+			{
+				Object[] bodega = bodegas.get(i);
+				
+				for(int j = 0; j < bodega.length; j++)
+				{
+					resultado += bodega[j] + "\t";
+				}
+				
+				resultado += "\n";
+			}
+			
+			resultado += "\nINDICES DE OCUPACIÓN POR ESTANTE\n";
+			resultado += "IDESTANTE\tPESOMAX\tVOLMAX\tTIPO_ALMACEN\tPORCENTAJE_VOL\tPORCENTAJE_PESO\n";
+			
+			for(int i = 0; i < estantes.size(); i++)
+			{
+				Object[] estante = estantes.get(i);
+				
+				for(int j = 0; j < estante.length; j++)
+				{
+					resultado += estante[j] + "\t";
+				}
+				
+				resultado += "\n";
+			}
+			
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+    	catch (Exception e) 
+    	{
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    public void requerimientoFuncional4()
+    {
+    	ReqFuncionalDlg1 dialogoReq1 = new ReqFuncionalDlg1();
+    	dialogoReq1.setVisible(true);
+    	
+    	if(dialogoReq1.getFechaIncio() != null)
+    	{
+    		String resultado = "";//"Fecha inicio: " + dialogoReq1.getFechaIncio().toString() + ", Fecha fin: " + dialogoReq1.getFechaFin().toString();
+    		List<Object[]> sucursales = superAndes.darSucursalesReq1();
+    		
+    		for(int i = 0; i < sucursales.size(); i++)
+    		{
+    			Object[] sucursal = sucursales.get(i);
+    			resultado += "\n" + sucursal[0] + "\t" + sucursal[1] + "\t" + sucursal[2];
+    			System.out.println(sucursal.toString());
+    		}
+        	panelDatos.actualizarInterfaz(resultado);
+    	}
+    }
+    
+    public void requerimientoFuncional5()
+    {
+    	ReqFuncionalDlg1 dialogoReq1 = new ReqFuncionalDlg1();
+    	dialogoReq1.setVisible(true);
+    	
+    	if(dialogoReq1.getFechaIncio() != null)
+    	{
+    		String resultado = "";//"Fecha inicio: " + dialogoReq1.getFechaIncio().toString() + ", Fecha fin: " + dialogoReq1.getFechaFin().toString();
+    		List<Object[]> sucursales = superAndes.darSucursalesReq1();
+    		
+    		for(int i = 0; i < sucursales.size(); i++)
+    		{
+    			Object[] sucursal = sucursales.get(i);
+    			resultado += "\n" + sucursal[0] + "\t" + sucursal[1] + "\t" + sucursal[2];
+    			System.out.println(sucursal.toString());
+    		}
+        	panelDatos.actualizarInterfaz(resultado);
+    	}
+    }
+    
+    public void requerimientoFuncional6()
+    {
+    	ReqFuncionalDlg1 dialogoReq1 = new ReqFuncionalDlg1();
+    	dialogoReq1.setVisible(true);
+    	
+    	if(dialogoReq1.getFechaIncio() != null)
+    	{
+    		String resultado = "";//"Fecha inicio: " + dialogoReq1.getFechaIncio().toString() + ", Fecha fin: " + dialogoReq1.getFechaFin().toString();
+    		List<Object[]> sucursales = superAndes.darSucursalesReq1();
+    		
+    		for(int i = 0; i < sucursales.size(); i++)
+    		{
+    			Object[] sucursal = sucursales.get(i);
+    			resultado += "\n" + sucursal[0] + "\t" + sucursal[1] + "\t" + sucursal[2];
+    			System.out.println(sucursal.toString());
+    		}
+        	panelDatos.actualizarInterfaz(resultado);
+    	}
+    }
+
+
 	/* ****************************************************************
 	 * 			Métodos administrativos
 	 *****************************************************************/
