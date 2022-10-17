@@ -48,4 +48,21 @@ class SQLPromocion {
 		q.setResultClass(Promocion.class);
 		return (List<Promocion>) q.executeList();
 	}
+	
+	public List<Object[]> darPromocionesReq1 (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, 
+			"SELECT * FROM ( "
+				+ " SELECT " + pp.darTablaPromocion() + ".*, cantidad_promociones FROM ("
+					+ " SELECT " + pp.darTablaPromocionProducto() + ".id_promocion, count(*) cantidad_promociones FROM VENTA"
+					+ " INNER JOIN " + pp.darTablaVentaProducto() + " ON " + pp.darTablaVenta() + ".id = " + pp.darTablaVentaProducto() + ".id_venta"
+					+ " INNER JOIN " + pp.darTablaPromocionProducto() + " ON " + pp.darTablaVentaProducto() + ".id_producto = " + pp.darTablaPromocionProducto() + ".id_producto"
+					+ " GROUP BY " + pp.darTablaPromocionProducto() + ".id_promocion) promociones"
+				+ " INNER JOIN " + pp.darTablaPromocion() + " ON promociones.id_promocion = " + pp.darTablaPromocion() + ".id"
+				+ " ORDER BY cantidad_promociones DESC) "
+			+ " WHERE ROWNUM <= 10"  
+			);
+		//q.setResultClass(Promocion.class);
+		return q.executeList();
+	}	
 }

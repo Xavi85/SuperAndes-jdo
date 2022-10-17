@@ -60,4 +60,10 @@ class SQLSucursal {
 		Query q = pm.newQuery(SQL, "SELECT nombre FROM " + pp.darTablaSucursal ());
 		return q.executeList();
 	}
+	
+	public List<Object[]> darSucursalesReq1 (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT id_sucursal, nombre, SUM(ptotal) FROM " + pp.darTablaVenta() + " INNER JOIN " + pp.darTablaSucursal() + " ON " + pp.darTablaVenta() + ".id_sucursal = " + pp.darTablaSucursal() + ".id GROUP BY id_sucursal, nombre");
+		return q.executeList();
+	}
 }

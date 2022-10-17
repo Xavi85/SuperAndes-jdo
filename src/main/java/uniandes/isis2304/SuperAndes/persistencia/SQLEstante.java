@@ -46,4 +46,18 @@ class SQLEstante {
 		q.setResultClass(Estante.class);
 		return (List<Estante>) q.executeList();
 	}
+	
+	public List<Object[]> darEstantesReq3 (PersistenceManager pm, long id_sucursal)
+	{
+		Query q = pm.newQuery(SQL, "select estante.id, estante.pesomax, estante.volmax, estante.tipoalmacen, 100*stocks.volestante/estante.volmax porcentaje_vol, 100*stocks.pesoestante/estante.pesomax porcentaje_peso "
+				+ "from estante "
+				+ "inner join ( "
+				+ "select id_tipoproducto, sum(stockestante * espemppeso) pesoestante, sum(stockestante * espempvol) volestante "
+				+ "from producto "
+				+ "group by id_tipoproducto) stocks "
+				+ "on estante.id_tipoproducto = stocks.id_tipoproducto "
+				+ "where estante.id_sucursal = ?");
+		q.setParameters(id_sucursal);
+		return q.executeList();
+	}
 }
