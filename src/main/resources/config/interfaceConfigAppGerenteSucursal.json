@@ -29,9 +29,13 @@
 					"event": "adicionarUsuarioCliente"
 				},
 				{
-					"label": "RF8 - Registar una Promocion",
+					"label": "RF9 - Registar una Promocion",
 					"event": "adicionarPromocion"
-				}
+				},
+				{
+					"label": "RF11 - Registar una Orden de Pedido",
+					"event": "adicionarOrdenPedido"
+				}				
 			]
 		},
 		{ "menuTitle": "Mantenimiento",

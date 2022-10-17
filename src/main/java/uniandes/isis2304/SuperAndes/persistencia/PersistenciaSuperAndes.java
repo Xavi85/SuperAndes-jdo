@@ -405,7 +405,7 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las OrdenesPedidos
 	 *****************************************************************/
 
-	public OrdenPedido adicionarOrdenPedido (Date fCompra, int vTotal, long id_Proveedor, long id_Sucursal) {
+	public OrdenPedido adicionarOrdenPedido (String fCompra, int vTotal, long id_Proveedor, long id_Sucursal) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -606,10 +606,20 @@ public class PersistenciaSuperAndes {
 		
 		return sqlProducto.darProductoPorId (pmf.getPersistenceManager(), idLote);
 	}
+	
+	public List<Object> darProductoPorNombre (String nombre) {
+		
+		return sqlProducto.darProductoPorNombre (pmf.getPersistenceManager(), nombre);
+	}
 
 	public List<Producto> darProductos () {
 		
 		return sqlProducto.darProductos (pmf.getPersistenceManager());
+	}
+	
+	public List<String> darNombreProductos () {
+		
+		return sqlProducto.darNombreProductos (pmf.getPersistenceManager());
 	}
 
 	

@@ -24,7 +24,7 @@ public class Promocion implements VOPromocion {
 		this.tipoPromocion = "";
 		this.lleve = 0;
 		this.pague = 0;
-		this.descuento = 0;
+		this.descuento = (float) 0;
 		this.pVenta = 0;
 		this.id_Sucursal = 0;
 	}
@@ -97,7 +97,7 @@ public class Promocion implements VOPromocion {
 		return lleve;
 	}
 
-	public void setLleve(int lleve) {
+	public void setLleve(Integer lleve) {
 		this.lleve = lleve;
 	}
 
@@ -105,7 +105,7 @@ public class Promocion implements VOPromocion {
 		return pague;
 	}
 
-	public void setPague(int pague) {
+	public void setPague(Integer pague) {
 		this.pague = pague;
 	}
 
@@ -113,7 +113,7 @@ public class Promocion implements VOPromocion {
 		return descuento;
 	}
 
-	public void setDescuento(float descuento) {
+	public void setDescuento(Float descuento) {
 		this.descuento = descuento;
 	}
 
@@ -121,7 +121,7 @@ public class Promocion implements VOPromocion {
 		return pVenta;
 	}
 
-	public void setpVenta(int pVenta) {
+	public void setpVenta(Integer pVenta) {
 		this.pVenta = pVenta;
 	}
 

@@ -1,11 +1,9 @@
 package uniandes.isis2304.SuperAndes.negocio;
 
-import java.util.Date;
-
 public class OrdenPedido implements VOOrdenPedido {
 
 	private long id;
-	Date fCompra;
+	String fCompra;
 	private int vTotal;
 	private long id_Proveedor;
 	private long id_Sucursal;
@@ -13,13 +11,13 @@ public class OrdenPedido implements VOOrdenPedido {
 	public OrdenPedido() {
 
 		this.id = 0;
-		this.fCompra = new Date();
+		this.fCompra = "";
 		this.vTotal = 0;
 		this.id_Proveedor = 0;
 		this.id_Sucursal = 0;
 	}
 	
-	public OrdenPedido(long id, Date fCompra, int vTotal, long id_Proveedor, long id_Sucursal) {
+	public OrdenPedido(long id, String fCompra, int vTotal, long id_Proveedor, long id_Sucursal) {
 
 		this.id = id;
 		this.fCompra = fCompra;
@@ -36,11 +34,11 @@ public class OrdenPedido implements VOOrdenPedido {
 		this.id = id;
 	}
 
-	public Date getfCompra() {
+	public String getfCompra() {
 		return fCompra;
 	}
 
-	public void setfCompra(Date fCompra) {
+	public void setfCompra(String fCompra) {
 		this.fCompra = fCompra;
 	}
 

@@ -1,6 +1,5 @@
 package uniandes.isis2304.SuperAndes.persistencia;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -19,7 +18,7 @@ class SQLOrdenPedido {
 		this.pp = pp;
 	}
 
-	public long adicionarOrdenPedido (PersistenceManager pm, long id, Date fCompra, int vTotal, long id_Proveedor, long id_Sucursal) 
+	public long adicionarOrdenPedido (PersistenceManager pm, long id, String fCompra, int vTotal, long id_Proveedor, long id_Sucursal) 
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaOrdenPedido () + "(id, fCompra, vTotal, id_Proveedor, id_Sucursal) values (?, ?, ?, ?, ?)");
         q.setParameters(id, fCompra, vTotal, id_Proveedor, id_Sucursal);

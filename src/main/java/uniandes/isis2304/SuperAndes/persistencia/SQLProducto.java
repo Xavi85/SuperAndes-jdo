@@ -45,11 +45,24 @@ class SQLProducto {
 		q.setParameters(id);
 		return (Producto) q.executeUnique();
 	}
+	
+	public List<Object> darProductoPorNombre (PersistenceManager pm, String nombre) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT idLote FROM " + pp.darTablaProducto () + " WHERE nombre = ?");
+		q.setParameters(nombre);
+		return q.executeList();
+	}
 
 	public List<Producto> darProductos (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaProducto ());
 		q.setResultClass(Producto.class);
 		return (List<Producto>) q.executeList();
+	}
+	
+	public List<String> darNombreProductos (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT nombre FROM " + pp.darTablaProducto ());
+		return (List<String>) q.executeList();
 	}
 }

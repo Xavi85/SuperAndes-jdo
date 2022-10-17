@@ -38,6 +38,8 @@ import uniandes.isis2304.SuperAndes.negocio.SuperAndes;
 import uniandes.isis2304.SuperAndes.negocio.VOBodega;
 import uniandes.isis2304.SuperAndes.negocio.VOEstante;
 import uniandes.isis2304.SuperAndes.negocio.VOProducto;
+import uniandes.isis2304.SuperAndes.negocio.VOPromocion;
+import uniandes.isis2304.SuperAndes.negocio.VOPromocionProducto;
 import uniandes.isis2304.SuperAndes.negocio.VOProveedor;
 import uniandes.isis2304.SuperAndes.negocio.VOSucursal;
 import uniandes.isis2304.SuperAndes.negocio.VOTipoProducto;
@@ -776,6 +778,13 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     {
     	try
     	{
+    		String tipoPromocion = "";
+    		int lleve = 0;
+    		int pague = 0;
+    		float descuento = 0;
+    		int pVenta = 0;
+    		int cantProd = 1;
+    		
     		String opcPromocion[] = {"Pague N lleve M Unidades", "Hacer Descuento a Producto", "Pague X lleve Y Cantidad", "Pague 1 y el Segundo con Descuento", "Paquete de Productos"};
 			JComboBox opcionesPromocion = new JComboBox(opcPromocion);
 			JOptionPane.showMessageDialog(this, opcionesPromocion, "Seleccione el tipo de Promocion", JOptionPane.QUESTION_MESSAGE);
@@ -790,35 +799,143 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			
 			if (tipoPromocionSelected.equals(opcPromocion[0])) //PagueNlleveM
 			{
-				String tipoPromocion = "PagueNlleveM";
-				int lleve = Integer.parseInt(JOptionPane.showInputDialog (this, "Unidades que Lleva", "Pague N lleve M Unidades", JOptionPane.QUESTION_MESSAGE));
-				int pague = Integer.parseInt(JOptionPane.showInputDialog (this, "Unidades que Paga", "Pague N lleve M Unidades", JOptionPane.QUESTION_MESSAGE));
+				tipoPromocion = "PagueNlleveM";
+				lleve = Integer.parseInt(JOptionPane.showInputDialog (this, "Unidades que Lleva", "Pague N lleve M Unidades", JOptionPane.QUESTION_MESSAGE));
+				pague = Integer.parseInt(JOptionPane.showInputDialog (this, "Unidades que Paga", "Pague N lleve M Unidades", JOptionPane.QUESTION_MESSAGE));
 			}
 			else if(tipoPromocionSelected.equals(opcPromocion[1])) //DescuentoPorcentaje
 			{
-				String tipoPromocion = "DescuentoPorcentaje";
-				float descuento = Float.parseFloat(JOptionPane.showInputDialog (this, "Fraccion que Paga", "Hacer Descuento a Producto", JOptionPane.QUESTION_MESSAGE));
+				tipoPromocion = "DescuentoPorcentaje";
+				descuento = Float.parseFloat(JOptionPane.showInputDialog (this, "Descuento en porcentaje que aplicara", "Hacer Descuento a Producto", JOptionPane.QUESTION_MESSAGE))/100;
 			}
 			else if(tipoPromocionSelected.equals(opcPromocion[2])) //PagueXlleveY
 			{
-				String tipoPromocion = "PagueXlleveY";
-				int lleve = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad que Lleva", "Pague X lleve Y Cantidad", JOptionPane.QUESTION_MESSAGE));
-				int pague = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad que Paga", "Pague X lleve Y Cantidad", JOptionPane.QUESTION_MESSAGE));
-				float descuento = pague/lleve;
+				tipoPromocion = "PagueXlleveY";
+				lleve = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad que Lleva", "Pague X lleve Y Cantidad", JOptionPane.QUESTION_MESSAGE));
+				pague = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad que Paga", "Pague X lleve Y Cantidad", JOptionPane.QUESTION_MESSAGE));
+				descuento = (float) (pague/lleve);
 			}
 			else if(tipoPromocionSelected.equals(opcPromocion[3])) //Pague1Segundo
 			{
-				String tipoPromocion = "Pague1Segundo";
-				float descuento = Float.parseFloat(JOptionPane.showInputDialog (this, "Fraccion que Paga de la Segundo Unidad", "Pague 1 y el Segundo con Descuento", JOptionPane.QUESTION_MESSAGE));
+				tipoPromocion = "Pague1Segundo";
+				descuento = Float.parseFloat(JOptionPane.showInputDialog (this, "Fraccion que Paga de la Segundo Unidad", "Pague 1 y el Segundo con Descuento", JOptionPane.QUESTION_MESSAGE));
 			}
 			else if(tipoPromocionSelected.equals(opcPromocion[4])) //PaqueteProducutos
 			{
-				String tipoPromocion = "PaqueteProducutos";
-				int cantProd = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad de Productos que incluye el Paquete", "Paquete de Productos", JOptionPane.QUESTION_MESSAGE));
-				int pVenta = Integer.parseInt(JOptionPane.showInputDialog (this, "Precio de Venta del Paquete", "Paquete de Productos", JOptionPane.QUESTION_MESSAGE));
+				tipoPromocion = "PaqueteProducutos";
+				cantProd = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad de Productos que incluye el Paquete", "Paquete de Productos", JOptionPane.QUESTION_MESSAGE));
+				pVenta = Integer.parseInt(JOptionPane.showInputDialog (this, "Precio de Venta del Paquete", "Paquete de Productos", JOptionPane.QUESTION_MESSAGE));	
 			}
 			
-			/*
+			long[] id_Producto = new long[cantProd];
+    		int[] stock = new int[cantProd];
+    		
+    		List nombreProductos = superAndes.darNombreProductos();
+    		String[] opcNombreProdutos = new String[nombreProductos.size()];
+    		for(int i = 0; i < nombreProductos.size(); i++) {
+    			opcNombreProdutos[i] = nombreProductos.get(i).toString();
+    		}
+    		
+			for(int i = 0; i < cantProd; i++) {
+				
+				JComboBox opcionesNombreProdutos = new JComboBox(opcNombreProdutos);
+				JOptionPane.showMessageDialog(null, opcionesNombreProdutos, "Seleccione el Prodcuto: " + (i+1), JOptionPane.QUESTION_MESSAGE);
+				String tempString = superAndes.darProductoPorNombre(opcionesNombreProdutos.getSelectedItem().toString()).toString();
+				System.out.println(tempString.substring(1,tempString.length()-1));
+				id_Producto[i] = Long.parseLong(tempString.substring(1,tempString.length()-1));
+				stock[i] = Integer.parseInt(JOptionPane.showInputDialog (this, "Stock Inical del producto " + (i+1), JOptionPane.QUESTION_MESSAGE));
+			}
+
+    		if (nombre != null && fInicio != null && fFin != null && descripcion != null && tipoPromocion != null && !Objects.isNull(id_Sucursal)) {
+    			
+        		VOPromocion tb1 = superAndes.adicionarPromocion(nombre, fInicio, fFin, descripcion, tipoPromocion, lleve, pague, descuento, pVenta, id_Sucursal);
+        		if (tb1 == null)
+        		{
+        			throw new Exception ("No se pudo crear la Promocion");
+        		}
+        		String resultado1 = "En adicionar Promocion\n\n";
+        		resultado1 += "Promocion adicionada exitosamente: " + tb1;
+    			resultado1 += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado1);
+    			
+    			JOptionPane.showMessageDialog(null, "Ahora se vinculara los productos con la promocion", "Accediendo a la Sucursal:", JOptionPane.INFORMATION_MESSAGE);
+    			VOPromocionProducto tb2 = null;
+    			for(int i = 0; i < cantProd; i++) {
+    				
+    				tb2 = superAndes.adicionarPromocionProducto(tb1.getId(), id_Producto[i], stock[i], stock[i]);
+    			}
+    			if (tb2 == null)
+        		{
+        			throw new Exception ("No se pudo crear la PromocionProducto");
+        		}
+    			panelDatos.actualizarInterfaz("Se agregaron todas las referncias");
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    
+    /* ****************************************************************
+	 * 			CRUD de OrdenPedido
+	 *****************************************************************/
+    
+    public void adicionarOrdenPedido( )
+    {
+    	try 
+    	{
+    		
+    		int result = JOptionPane.showConfirmDialog(this, "Va a registrar el pedido para un nuevo producto?", "Adicionar Orden Pedido", JOptionPane.YES_NO_OPTION);
+    		if(result == JOptionPane.YES_OPTION) {
+    			adicionarProducto();
+    		}
+    		
+    		System.out.println("Sigue");
+    		
+    		/*
+    		
+    		String fVencimiento;
+    		
+    		String codigoBarra = JOptionPane.showInputDialog (this, "Codigo de Barra", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String nombre = JOptionPane.showInputDialog (this, "Nombre del Producto", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String marca = JOptionPane.showInputDialog (this, "Marca del Producto", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
+    		int pVenta = Integer.parseInt(JOptionPane.showInputDialog (this, "Precio de Venta", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));	
+    		String presentacion = JOptionPane.showInputDialog (this, "Presentacion del Prducto", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
+    		int pUnidadMedida = Integer.parseInt(JOptionPane.showInputDialog (this, "Precio por Unidad de Medida", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int cantPPT = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad en la Presentacion", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		String unidadMedida = JOptionPane.showInputDialog (this, "Unidad de Medida", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
+    		int espEmpPeso = Integer.parseInt(JOptionPane.showInputDialog (this, "Especificacion de Peso del Empacado", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int espEmpVol = Integer.parseInt(JOptionPane.showInputDialog (this, "Especificacion de Volumen del Empacado", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		
+    		String bool[] = {"true","false"};
+			JComboBox opcionesBool = new JComboBox(bool);
+			JOptionPane.showMessageDialog(this, opcionesBool, "Es Perecedero?", JOptionPane.QUESTION_MESSAGE);
+			String esPerecedero = (String) opcionesBool.getSelectedItem();
+    		
+    		if(esPerecedero.equals("true")) {
+    			fVencimiento = JOptionPane.showInputDialog (this, "Fecha Vencimiento (dd/MM/yyyy)", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
+    		} else { fVencimiento = null; }
+    		
+    		int nReorden = Integer.parseInt(JOptionPane.showInputDialog (this, "Numero de Reordenamiento", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int stockBodega = Integer.parseInt(JOptionPane.showInputDialog (this, "Stock en Bodega", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int stockEstante = Integer.parseInt(JOptionPane.showInputDialog (this, "Stock en Estantes", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int stockTotal = Integer.parseInt(JOptionPane.showInputDialog (this, "Stock Total", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
+    		
+    		List tiposProdutos = superAndes.darNombreTiposProductos();
+    		String[] opcTiposProdutos = new String[tiposProdutos.size()];
+    		for(int i = 0; i < tiposProdutos.size(); i++) {
+    			opcTiposProdutos[i] = tiposProdutos.get(i).toString();
+    		}
+			JComboBox opcionesTiposProdutos = new JComboBox(opcTiposProdutos);
+			JOptionPane.showMessageDialog(null, opcionesTiposProdutos, "Seleccione el tipo de Producto", JOptionPane.QUESTION_MESSAGE);
+			long id_TipoProducto = superAndes.darIdPorTipoProducto(opcTiposProdutos[opcionesTiposProdutos.getSelectedIndex()]).getId();
 
     		if (codigoBarra != null && nombre != null && marca != null && !Objects.isNull(pVenta) && presentacion != null && 
     				!Objects.isNull(pUnidadMedida) && !Objects.isNull(cantPPT) && unidadMedida != null && !Objects.isNull(espEmpPeso) && 
@@ -846,6 +963,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    
+    
 	/* ****************************************************************
 	 * 			Métodos administrativos
 	 *****************************************************************/

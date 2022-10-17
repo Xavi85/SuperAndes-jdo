@@ -180,7 +180,7 @@ public class SuperAndes {
 	 * 			Métodos para manejar las Ordenes de Pedidos
 	 *****************************************************************/
 
-	public OrdenPedido adicionarOrdenPedido (Date fCompra, int vTotal, long id_Proveedor, long id_Sucursal) {
+	public OrdenPedido adicionarOrdenPedido (String fCompra, int vTotal, long id_Proveedor, long id_Sucursal) {
 		
 		log.info ("Adicionando Orden de Pedido: " + fCompra + ", " + vTotal + ", " + id_Proveedor + ", "  + id_Sucursal);
 		OrdenPedido ordenPedido = pp.adicionarOrdenPedido (fCompra, vTotal, id_Proveedor, id_Sucursal);
@@ -311,6 +311,22 @@ public class SuperAndes {
         log.info ("Consultando Productos");
         List<Producto> producto = pp.darProductos ();	
         log.info ("Consultando Productos: " + producto.size() + " Productos existentes");
+        return producto;
+	}
+	
+	public List<String> darNombreProductos () {
+		
+        log.info ("Consultando Nombre Productos");
+        List<String> nombreProducto = pp.darNombreProductos ();	
+        log.info ("Consultando Nombre Productos: " + nombreProducto.size() + " Productos existentes");
+        return nombreProducto;
+	}
+	
+	public List<Object> darProductoPorNombre (String nombre)
+	{
+        log.info ("Dar información de un Producto por nombre: " + nombre);
+        List<Object> producto = pp.darProductoPorNombre (nombre);
+        log.info ("Buscando Producto por nombre: " + producto != null ? producto : "NO EXISTE");
         return producto;
 	}
 
