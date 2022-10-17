@@ -1425,3 +1425,155 @@ ORA-00904: "CIUDAD": identificador no válido
 15:17:04,115 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
 15:17:04,116 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
 15:17:04,153 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 0 Nombre Usuarios existentes
+22:21:29,240 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:21:29,241 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:21:29,252 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:21:31,723 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+22:21:31,783 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+22:21:31,783 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+22:21:31,823 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 1 Nombre Usuarios existentes
+22:21:45,569 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Sucursales para el RFC1
+22:21:46,198 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres Sucursales: 2 Nombre de Sucursales Req1
+22:22:12,543 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Promociones para el RFC2
+22:22:13,205 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Promociones: 4 Promociones
+22:22:34,249 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Sucursales
+22:22:34,275 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Sucursales: 4 NombreSucursales existentes
+22:22:44,638 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por el nombre de una Sucursal: Exito Country
+22:22:44,682 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=1, nombre=Exito Country, pais=Colombia, ciudad=Bogotá, direccion=Carrera 7c #127A-46, id_Supermercado=1]
+22:22:44,682 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas para el RFC3
+22:22:44,899 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas: 0 Bodegas
+22:22:44,899 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Estantes para el RFC3
+22:22:44,939 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas: 0 Bodegas
+22:23:02,276 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Sucursales
+22:23:02,301 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Sucursales: 4 NombreSucursales existentes
+22:23:03,867 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por el nombre de una Sucursal: Exito Calle 80
+22:23:03,896 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogotá, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+22:23:03,896 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas para el RFC3
+22:23:03,926 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas: 0 Bodegas
+22:23:03,926 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Estantes para el RFC3
+22:23:03,956 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas: 0 Bodegas
+22:23:16,225 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Sucursales
+22:23:16,254 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Sucursales: 4 NombreSucursales existentes
+22:23:18,956 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por el nombre de una Sucursal: Exito La Colina
+22:23:18,990 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=3, nombre=Exito La Colina, pais=Colombia, ciudad=Bogotá, direccion=Avenida Boyacá, Carrera 72 No. 146B, id_Supermercado=1]
+22:23:18,990 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas para el RFC3
+22:23:19,020 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas: 0 Bodegas
+22:23:19,020 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Estantes para el RFC3
+22:23:19,051 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas: 0 Bodegas
+22:23:25,152 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Sucursales
+22:23:25,183 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Sucursales: 4 NombreSucursales existentes
+22:23:27,853 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por el nombre de una Sucursal: Exito Unicentro
+22:23:27,882 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=2, nombre=Exito Unicentro, pais=Colombia, ciudad=Bogotá, direccion=Calle 127 #14-46, id_Supermercado=1]
+22:23:27,882 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas para el RFC3
+22:23:27,912 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas: 0 Bodegas
+22:23:27,912 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Estantes para el RFC3
+22:23:27,941 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas: 0 Bodegas
+22:32:00,102 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:32:00,102 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:32:00,113 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:32:02,120 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+22:32:02,171 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+22:32:02,171 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+22:32:02,201 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 0 Nombre Usuarios existentes
+22:35:12,534 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:35:12,534 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:35:12,545 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:35:14,578 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+22:35:14,670 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+22:35:14,671 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+22:35:14,700 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 0 Nombre Usuarios existentes
+22:38:33,456 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:38:33,457 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:38:33,469 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:38:35,872 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+22:38:35,934 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+22:38:35,934 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+22:38:35,963 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 0 Nombre Usuarios existentes
+22:40:57,981 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:40:57,982 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:40:57,995 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:42:36,395 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+22:43:13,599 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+22:43:26,629 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+22:43:26,698 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 0 Nombre Usuarios existentes
+22:48:48,588 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:48:48,589 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:48:48,603 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:49:03,510 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+22:49:03,560 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+22:49:03,560 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+22:53:02,259 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:53:02,259 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:53:02,269 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:53:04,296 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+22:53:04,346 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+22:53:04,346 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+22:53:04,375 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 0 Nombre Usuarios existentes
+22:54:39,979 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:54:39,979 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:54:39,989 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:54:42,008 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+22:54:42,098 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+22:54:42,098 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+22:54:42,126 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 0 Nombre Usuarios existentes
+22:55:26,950 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:55:26,951 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:55:26,964 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:55:28,963 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+22:55:29,023 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+22:55:29,023 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+22:55:29,053 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 0 Nombre Usuarios existentes
+22:55:49,456 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:55:49,457 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:55:49,471 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:55:51,542 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+22:55:51,594 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+22:55:51,595 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+22:55:51,620 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 0 Nombre Usuarios existentes
+22:58:07,186 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:58:07,186 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:58:07,196 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:58:09,342 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+22:58:09,403 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+22:58:09,403 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+22:58:09,433 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 1 Nombre Usuarios existentes
+23:09:19,359 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:09:19,360 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:09:19,373 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:09:21,578 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+23:09:21,641 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+23:09:21,641 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+23:09:21,670 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 1 Nombre Usuarios existentes
+23:10:24,886 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:10:24,886 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:10:24,897 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:10:27,116 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+23:10:27,176 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+23:10:27,176 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+23:10:27,206 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 1 Nombre Usuarios existentes
+23:20:40,003 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:20:40,003 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:20:40,015 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:20:42,171 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+23:20:42,228 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+23:20:42,228 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+23:20:42,257 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 1 Nombre Usuarios existentes
+23:22:20,241 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:22:20,241 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:22:20,251 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:22:22,216 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+23:22:22,264 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+23:22:22,265 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+23:22:22,294 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 1 Nombre Usuarios existentes
+23:22:29,509 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Sucursales para el RFC1
+23:22:30,171 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres Sucursales: 2 Nombre de Sucursales Req1
+23:22:40,305 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Promociones para el RFC2
+23:22:40,597 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Promociones: 4 Promociones
+23:22:43,566 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Sucursales
+23:22:43,590 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de Sucursales: 4 NombreSucursales existentes
+23:22:46,765 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por el nombre de una Sucursal: Exito Country
+23:22:46,791 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=1, nombre=Exito Country, pais=Colombia, ciudad=Bogotá, direccion=Carrera 7c #127A-46, id_Supermercado=1]
+23:22:46,791 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas para el RFC3
+23:22:47,322 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas: 3 Bodegas
+23:22:47,322 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Estantes para el RFC3
+23:22:47,460 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Bodegas: 6 Bodegas

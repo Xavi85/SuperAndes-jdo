@@ -275,6 +275,30 @@ INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion, p
 VALUES (4, 'f07aa3c7', 'Desinfectante con cloro', 'Blancox', 5400, 'Botella',18, 300, 'mililitros', 300, 80, 'false', null, 1500, 55000, 100, 55100, 3);
 COMMIT;
 
+-- Creacion tuplas BODEGA
+INSERT INTO BODEGA(id, volMax, pesoMax, tipoAlmacen, id_Sucursal, id_TipoProducto)
+VALUES(1, 500000, 30000, 'Normal', 1, 1);
+INSERT INTO BODEGA(id, volMax, pesoMax, tipoAlmacen, id_Sucursal, id_TipoProducto)
+VALUES(2, 400000, 20000, 'Refrigerado', 1, 2);
+INSERT INTO BODEGA(id, volMax, pesoMax, tipoAlmacen, id_Sucursal, id_TipoProducto)
+VALUES(3, 300000, 10000, 'Congelado', 1, 3);
+COMMIT;
+
+-- Creacion tuplas ESTANTE
+INSERT INTO ESTANTE(id, volMax, pesoMax, tipoAlmacen, nAbastecimiento, id_Sucursal, id_TipoProducto)
+VALUES(1, 5000, 300, 'Normal', 2000, 1, 1);
+INSERT INTO ESTANTE(id, volMax, pesoMax, tipoAlmacen, nAbastecimiento, id_Sucursal, id_TipoProducto)
+VALUES(2, 4000, 200, 'Normal', 1500, 1, 1);
+INSERT INTO ESTANTE(id, volMax, pesoMax, tipoAlmacen, nAbastecimiento, id_Sucursal, id_TipoProducto)
+VALUES(3, 6000, 350, 'Normal', 2400, 1, 2);
+INSERT INTO ESTANTE(id, volMax, pesoMax, tipoAlmacen, nAbastecimiento, id_Sucursal, id_TipoProducto)
+VALUES(4, 1000, 300, 'Normal', 600, 1, 2);
+INSERT INTO ESTANTE(id, volMax, pesoMax, tipoAlmacen, nAbastecimiento, id_Sucursal, id_TipoProducto)
+VALUES(5, 8000, 900, 'Normal', 3000, 1, 3);
+INSERT INTO ESTANTE(id, volMax, pesoMax, tipoAlmacen, nAbastecimiento, id_Sucursal, id_TipoProducto)
+VALUES(6, 5500, 300, 'Normal', 2200, 1, 3);
+COMMIT;
+
 -- Creacion tuplas VENTA
 INSERT INTO VENTA(id, fVenta, pTotal, id_Sucursal, id_Cajero)
 VALUES(1, DATE '2021-09-15', 15600, 1, 5);
