@@ -105,27 +105,30 @@ public class SuperAndes {
         log.info ("Buscando Estante por Id: " + estante != null ? estante : "NO EXISTE");
         return estante;
 	}
-
-	public List<Estante> darEstantes () {
+	
+	public List<Object> darIdEstantes () {
 		
         log.info ("Consultando Estantes");
-        List<Estante> estante = pp.darEstantes ();	
+        List<Object> estante = pp.darIdEstantes ();	
         log.info ("Consultando Estantes: " + estante.size() + " Estantes existentes");
         return estante;
 	}
 
-	public List<VOEstante> darVOEstantes () {
+	public List<Object> darNAbastecimientoId (long id) {
 		
-		log.info ("Generando los VO de los Estantes");       
-        List<VOEstante> voEstantes = new LinkedList<VOEstante> ();
-        for (Estante est : pp.darEstantes ())
-        {
-        	voEstantes.add (est);
-        }
-        log.info ("Generando los VO de los Estantes: " + voEstantes.size() + " existentes");
-        return voEstantes;
+        log.info ("Consultando nAbastecimiento Estantes");
+        List<Object> estante = pp.darNAbastecimientoId(id);
+        log.info ("Consultando nAbastecimiento Estantes: " + estante.size() + " Estantes existentes");
+        return estante;
 	}
 
+	public List<Object> darTipoProductoId (long id) {
+		
+        log.info ("Consultando nAbastecimiento Estantes");
+        List<Object> estante = pp.darTipoProductoId(id);
+        log.info ("Consultando nAbastecimiento Estantes: " + estante.size() + " Estantes existentes");
+        return estante;
+	}
 	
 	/* ****************************************************************
 	 * 			Métodos para manejar las Facturas Electronicas
@@ -180,10 +183,10 @@ public class SuperAndes {
 	 * 			Métodos para manejar las Ordenes de Pedidos
 	 *****************************************************************/
 
-	public OrdenPedido adicionarOrdenPedido (String fCompra, int vTotal, long id_Proveedor, long id_Sucursal) {
+	public OrdenPedido adicionarOrdenPedido (String fCompra, long vTotal, String estado, long id_Proveedor, long id_Sucursal) {
 		
 		log.info ("Adicionando Orden de Pedido: " + fCompra + ", " + vTotal + ", " + id_Proveedor + ", "  + id_Sucursal);
-		OrdenPedido ordenPedido = pp.adicionarOrdenPedido (fCompra, vTotal, id_Proveedor, id_Sucursal);
+		OrdenPedido ordenPedido = pp.adicionarOrdenPedido (fCompra, vTotal, estado, id_Proveedor, id_Sucursal);
         log.info ("Adicionando Orden de Pedido: " + ordenPedido);
         return ordenPedido;
 	}
@@ -194,6 +197,13 @@ public class SuperAndes {
         long resp = pp.eliminarOrdenPedidoPorId (id);
         log.info ("Eliminando Orden de Pedido por id: " + resp + " tuplas eliminadas");
         return resp;
+	}
+	
+	public long cambiarEsatdo (String estado, long id)
+	{
+        log.info ("Cambiando estado de Orden de Pedido: " + id);
+        long cambios = pp.cambiarEstado(estado, id);
+        return cambios;
 	}
 	
 	public OrdenPedido darOrdenPedidoPorId (long id)
@@ -209,6 +219,14 @@ public class SuperAndes {
         log.info ("Consultando Ordenes de Pedidos");
         List<OrdenPedido> ordenPedido = pp.darOrdenesPedidos ();	
         log.info ("Consultando Ordenes de Pedidos: " + ordenPedido.size() + " Ordenes de Pedidos existentes");
+        return ordenPedido;
+	}
+	
+	public List<Object> darOrdenesPedidosPorSucursalYEstado (long id_Sucursal, String estado) {
+		
+        log.info ("Consultando Ordenes de Pedidos por Sucursal");
+        List<Object> ordenPedido = pp.darOrdenesPedidosPorSucursalYEstado (id_Sucursal, estado);	
+        log.info ("Consultando Ordenes de Pedidos por Sucursal: " + ordenPedido.size() + " Ordenes de Pedidos existentes");
         return ordenPedido;
 	}
 
@@ -229,7 +247,7 @@ public class SuperAndes {
 	 * 			Métodos para manejar las Ordenes de Pedidos de Productos
 	 ********************************************************************/
 
-	public OrdenPedidoProducto adicionarOrdenPedidoProducto (long id_OrdenPedido, long id_Producto, int cantCompra, int pCompra) {
+	public OrdenPedidoProducto adicionarOrdenPedidoProducto (long id_OrdenPedido, long id_Producto, long cantCompra, long pCompra) {
 		
 		log.info ("Adicionando Orden de Pedido de Producto: " + id_OrdenPedido + ", " + id_Producto + ", " + cantCompra + ", "  + pCompra);
 		OrdenPedidoProducto ordenPedidoProducto = pp.adicionarOrdenPedidoProducto (id_OrdenPedido, id_Producto, cantCompra, pCompra);
@@ -245,13 +263,22 @@ public class SuperAndes {
         return resp;
 	}
 	
-	public OrdenPedidoProducto darOrdenPedidoProductoPorIdOrdenPedido (long id_OrdenPedido)
+	public List<Object> darProductoPorIdOrdenPedido (long id_OrdenPedido)
 	{
         log.info ("Dar información de una Orden de Pedido de Producto por id de Orden de Pedido: " + id_OrdenPedido);
-        OrdenPedidoProducto ordenPedidoProducto = pp.darOrdenPedidoProductoPorIdOrdenPedido (id_OrdenPedido);
+        List<Object> ordenPedidoProducto = pp.darProductoPorIdOrdenPedido (id_OrdenPedido);
         log.info ("Buscando Orden de Pedido de Producto por id de Orden de Pedido: " + ordenPedidoProducto != null ? ordenPedidoProducto : "NO EXISTE");
         return ordenPedidoProducto;
 	}
+	
+	public List<Object> darCantCompraPorIdOrdenPedido (long id_OrdenPedido)
+	{
+        log.info ("Dar información de una Orden de Pedido de Producto por id de Orden de Pedido: " + id_OrdenPedido);
+        List<Object> ordenPedidoProducto = pp.darCantCompraPorIdOrdenPedido (id_OrdenPedido);
+        log.info ("Buscando Orden de Pedido de Producto por id de Orden de Pedido: " + ordenPedidoProducto != null ? ordenPedidoProducto : "NO EXISTE");
+        return ordenPedidoProducto;
+	}
+
 
 	public List<OrdenPedidoProducto> darOrdenesPedidosProductos () {
 		
@@ -290,6 +317,13 @@ public class SuperAndes {
         return producto;
 	}
 
+	public long cambiarStock (int stock, long idLote)
+	{
+        log.info ("Cambiando stock de producto: " + idLote);
+        long cambios = pp.cambiarStocks(stock, idLote);
+        return cambios;
+	}
+	
 	public long eliminarProductoPorId (long id) {
 		
         log.info ("Eliminando Producto por id: " + id);
@@ -303,6 +337,38 @@ public class SuperAndes {
         log.info ("Dar información de un Producto por id: " + id);
         Producto producto = pp.darProductoPorId (id);
         log.info ("Buscando Producto por Id: " + producto != null ? producto : "NO EXISTE");
+        return producto;
+	}
+	
+	public List<Producto> darProductoPorTipoProducto (long id_TipoProducto)
+	{
+        log.info ("Dar información de Productos por Tipo de Producto: " + id_TipoProducto);
+        List<Producto> producto = pp.darProductoPorTipoProducto(id_TipoProducto);
+        log.info ("Buscando Producto por Tipo de Producto: " + producto != null ? producto : "NO EXISTE");
+        return producto;
+	}
+	
+	public List<Long> darIdProductoPorTipoProducto (long id_TipoProducto)
+	{
+        log.info ("Dar información de Productos por Tipo de Producto: " + id_TipoProducto);
+        List<Long> producto = pp.darIdProductoPorTipoProducto(id_TipoProducto);
+        log.info ("Buscando Producto por Tipo de Producto: " + producto != null ? producto : "NO EXISTE");
+        return producto;
+	}
+	
+	public List<Integer> darSBProductoPorTipoProducto (long id_TipoProducto)
+	{
+        log.info ("Dar información de Productos por Tipo de Producto: " + id_TipoProducto);
+        List<Integer> producto = pp.darSBProductoPorTipoProducto(id_TipoProducto);
+        log.info ("Buscando Producto por Tipo de Producto: " + producto != null ? producto : "NO EXISTE");
+        return producto;
+	}
+	
+	public List<Integer> darSEProductoPorTipoProducto (long id_TipoProducto)
+	{
+        log.info ("Dar información de Productos por Tipo de Producto: " + id_TipoProducto);
+        List<Integer> producto = pp.darSEProductoPorTipoProducto(id_TipoProducto);
+        log.info ("Buscando Producto por Tipo de Producto: " + producto != null ? producto : "NO EXISTE");
         return producto;
 	}
 
@@ -320,6 +386,14 @@ public class SuperAndes {
         List<String> nombreProducto = pp.darNombreProductos ();	
         log.info ("Consultando Nombre Productos: " + nombreProducto.size() + " Productos existentes");
         return nombreProducto;
+	}
+	
+	public List<Object> darIdProductos () {
+		
+        log.info ("Consultando Productos");
+        List<Object> producto = pp.darIdProductos();	
+        log.info ("Consultando Productos: " + producto.size() + " Productos existentes");
+        return producto;
 	}
 	
 	public List<Object> darProductoPorNombre (String nombre)

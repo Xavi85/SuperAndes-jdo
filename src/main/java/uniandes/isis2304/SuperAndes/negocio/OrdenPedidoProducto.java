@@ -4,8 +4,8 @@ public class OrdenPedidoProducto implements VOOrdenPedidoProducto {
 
 	private long id_OrdenPedido;
 	private long id_Producto;
-	private int cantCompra;
-	private int pCompra;
+	private long cantCompra;
+	private long pCompra;
 	
 	public OrdenPedidoProducto() {
 
@@ -15,7 +15,7 @@ public class OrdenPedidoProducto implements VOOrdenPedidoProducto {
 		this.pCompra = 0;
 	}
 	
-	public OrdenPedidoProducto(long id_OrdenPedido, long id_Producto, int cantCompra, int pCompra) {
+	public OrdenPedidoProducto(long id_OrdenPedido, long id_Producto, long cantCompra, long pCompra) {
 
 		this.id_OrdenPedido = id_OrdenPedido;
 		this.id_Producto = id_Producto;
@@ -39,19 +39,19 @@ public class OrdenPedidoProducto implements VOOrdenPedidoProducto {
 		this.id_Producto = id_Producto;
 	}
 
-	public int getCantCompra() {
+	public long getCantCompra() {
 		return cantCompra;
 	}
 
-	public void setCantCompra(int cantCompra) {
+	public void setCantCompra(long cantCompra) {
 		this.cantCompra = cantCompra;
 	}
 
-	public int getpCompra() {
+	public long getpCompra() {
 		return pCompra;
 	}
 
-	public void setpCompra(int pCompra) {
+	public void setpCompra(long pCompra) {
 		this.pCompra = pCompra;
 	}
 

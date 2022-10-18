@@ -5,16 +5,16 @@
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
-		{ "menuTitle": "Listar",
+		{ "menuTitle": "Requerimientos Funcionales",
 		  "options":
 			[
 				{
-					"label": "Listar Proveedor",
-					"event": "listarProveedor"
+					"label": "RF12 - Registrar Llegada de un Pedido",
+					"event": "registrarOrdenPedido"
 				},
 				{
-					"label": "Listar Tipos de Productos",
-					"event": "listarTipoProducto"
+					"label": "RF13 - Aprovisionar un Estante",
+					"event": "abastecerEstante"
 				}
 			]
 		},

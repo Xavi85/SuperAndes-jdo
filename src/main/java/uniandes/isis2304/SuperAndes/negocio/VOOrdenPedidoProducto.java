@@ -6,9 +6,9 @@ public interface VOOrdenPedidoProducto {
 
 	public long getId_Producto();
 
-	public int getCantCompra();
+	public long getCantCompra();
 
-	public int getpCompra();
+	public long getpCompra();
 
 	@Override
 	public String toString();

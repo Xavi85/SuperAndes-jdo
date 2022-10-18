@@ -31,19 +31,34 @@ class SQLProducto {
         return (long) q.executeUnique();
 	}
 
-	public long eliminarProductoPorId (PersistenceManager pm, long id)
+	public long cambiarStocks (PersistenceManager pm, int stock, long idLote) 
+	{
+		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaProducto () + " SET stockBodega = stockBodega + ?, stockTotal = stockTotal + ? WHERE idLote = ?");
+	     q.setParameters(stock, stock, idLote);
+	     return (long) q.executeUnique();            
+	}
+
+	public long eliminarProductoPorId (PersistenceManager pm, long idLote)
 	{
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaProducto () + " WHERE idLote = ?");
-        q.setParameters(id);
+        q.setParameters(idLote);
         return (long) q.executeUnique();
 	}
 
-	public Producto darProductoPorId (PersistenceManager pm, long id) 
+	public Producto darProductoPorId (PersistenceManager pm, long idLote) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaProducto () + " WHERE idLote = ?");
 		q.setResultClass(Producto.class);
-		q.setParameters(id);
+		q.setParameters(idLote);
 		return (Producto) q.executeUnique();
+	}
+	
+	public List<Producto> darProductoPorTipoProducto (PersistenceManager pm, long id_TipoProducto) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaProducto () + " WHERE id_TipoProducto = ?");
+		q.setResultClass(Producto.class);
+		q.setParameters(id_TipoProducto);
+		return q.executeList();
 	}
 	
 	public List<Object> darProductoPorNombre (PersistenceManager pm, String nombre) 
@@ -65,4 +80,33 @@ class SQLProducto {
 		Query q = pm.newQuery(SQL, "SELECT nombre FROM " + pp.darTablaProducto ());
 		return (List<String>) q.executeList();
 	}
+	
+	public List<Long> darIdProductoPorTipoProducto (PersistenceManager pm, long id_TipoProducto) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT idLote FROM " + pp.darTablaProducto () + " WHERE id_TipoProducto = ?");
+		q.setParameters(id_TipoProducto);
+		return q.executeList();
+	}
+	
+	public List<Integer> darSBProductoPorTipoProducto (PersistenceManager pm, long id_TipoProducto) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT stockBodega FROM " + pp.darTablaProducto () + " WHERE id_TipoProducto = ?");
+		q.setParameters(id_TipoProducto);
+		return q.executeList();
+	}
+	
+	public List<Integer> darSEProductoPorTipoProducto (PersistenceManager pm, long id_TipoProducto) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT stockEstante FROM " + pp.darTablaProducto () + " WHERE id_TipoProducto = ?");
+		q.setParameters(id_TipoProducto);
+		return q.executeList();
+	}
+	
+	public List<Object> darIdProductos (PersistenceManager pm) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT idLote FROM " + pp.darTablaProducto ());
+		return q.executeList();
+	}
+	
+	
 }

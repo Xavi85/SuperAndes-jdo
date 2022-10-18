@@ -12,6 +12,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,9 +37,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import uniandes.isis2304.SuperAndes.negocio.Proveedor;
 import uniandes.isis2304.SuperAndes.negocio.SuperAndes;
 import uniandes.isis2304.SuperAndes.negocio.VOBodega;
 import uniandes.isis2304.SuperAndes.negocio.VOEstante;
+import uniandes.isis2304.SuperAndes.negocio.VOOrdenPedido;
+import uniandes.isis2304.SuperAndes.negocio.VOOrdenPedidoProducto;
 import uniandes.isis2304.SuperAndes.negocio.VOProducto;
 import uniandes.isis2304.SuperAndes.negocio.VOPromocion;
 import uniandes.isis2304.SuperAndes.negocio.VOPromocionProducto;
@@ -659,6 +665,103 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 		}
     }
     
+    public void abastecerEstante( )
+    {
+    	try
+    	{
+    		List<Object> idEstantes = superAndes.darIdEstantes();
+    		
+    		String[] opcIdEstantes = new String[idEstantes.size()];
+    		for(int i = 0; i < idEstantes.size(); i++) {
+    			opcIdEstantes[i] = idEstantes.get(i).toString();
+    		}
+			JComboBox opcionesIdEstantes = new JComboBox(opcIdEstantes);
+			JOptionPane.showMessageDialog(null, opcionesIdEstantes, "Seleccione el Estante para aprovisionar", JOptionPane.QUESTION_MESSAGE);
+			long id_Estante = Long.parseLong(opcionesIdEstantes.getSelectedItem().toString());
+			
+			
+			long id_TipoProducto = Long.parseLong(superAndes.darTipoProductoId(id_Estante).get(0).toString());
+			int nAbastecimiento = Integer.parseInt(superAndes.darNAbastecimientoId(id_Estante).get(0).toString());
+			System.out.println(id_TipoProducto);
+			System.out.println(nAbastecimiento);
+			
+			List<Long> id_Productos = superAndes.darIdProductoPorTipoProducto(id_TipoProducto);
+			List<Integer> sb_Productos = superAndes.darSBProductoPorTipoProducto(id_TipoProducto);
+			List<Integer> se_Productos = superAndes.darSEProductoPorTipoProducto(id_TipoProducto);
+			
+			List<Integer> new_sb_Productos = new ArrayList<Integer>();
+			List<Integer> new_se_Productos = new ArrayList<Integer>();
+			
+			for(int i = 0; i < id_Productos.size(); i++) {
+				new_sb_Productos.add(sb_Productos.get(i).intValue());
+				new_se_Productos.add(se_Productos.get(i).intValue());
+			}
+			
+			System.out.println(id_Productos);
+			System.out.println(new_sb_Productos);
+			System.out.println(new_se_Productos);
+			
+			/*
+			for(int i = 0; i < id_Productos.size(); i++) {
+
+				for(int j = 0; j < 100; i++) {
+				
+					sb_Productos.set(i, Long.sum(sb_Productos.get(i), 1));
+					sb_Productos.set(i, Long. (sb_Productos.get(i), 1));
+					
+					se_Productos.add(i, se_Productos.get(i).longValue() + 1);
+					
+					System.out.println(sb_Productos);
+					System.out.println(se_Productos);
+					
+					wait(1000);
+					
+				}
+				
+			}
+    		
+
+			
+			
+/*
+			for(int i = 0; i < producto.size(); i++) {
+				
+				System.out.println(producto.get(i).getNombre());
+			}
+
+    		*/
+    		
+    		/*
+    		
+    		List<Object> ordenPedidoProducto = superAndes.darProductoPorIdOrdenPedido(id_OrdenPedido);
+    		List<Object> ordenPedidoCantCompra = superAndes.darCantCompraPorIdOrdenPedido(id_OrdenPedido);
+    		System.out.println(ordenPedidoProducto.get(0).toString());
+    		System.out.println(ordenPedidoCantCompra.get(0).toString());
+    		
+			if (ordenPedidoProducto != null && !Objects.isNull(id_OrdenPedido) ) {
+				
+				
+				for(int i = 0; i < ordenPedidoProducto.size(); i++) {
+					
+					superAndes.cambiarStock(Integer.parseInt(ordenPedidoCantCompra.get(i).toString()), Long.parseLong(ordenPedidoProducto.get(i).toString()));
+				}
+				
+				superAndes.cambiarEsatdo("despachado", id_OrdenPedido);
+
+    			panelDatos.actualizarInterfaz("Se registro la llegada del Pedido y se actualizaron los inventarios");
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}*/
+		} 
+    	catch (Exception e) 
+    	{
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
     
     /* ****************************************************************
 	 * 			CRUD de Proveedor
@@ -839,9 +942,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			for(int i = 0; i < cantProd; i++) {
 				
 				JComboBox opcionesNombreProdutos = new JComboBox(opcNombreProdutos);
-				JOptionPane.showMessageDialog(null, opcionesNombreProdutos, "Seleccione el Prodcuto: " + (i+1), JOptionPane.QUESTION_MESSAGE);
+				JOptionPane.showMessageDialog(null, opcionesNombreProdutos, "Seleccione el Producto: " + (i+1), JOptionPane.QUESTION_MESSAGE);
 				String tempString = superAndes.darProductoPorNombre(opcionesNombreProdutos.getSelectedItem().toString()).toString();
-				System.out.println(tempString.substring(1,tempString.length()-1));
 				id_Producto[i] = Long.parseLong(tempString.substring(1,tempString.length()-1));
 				stock[i] = Integer.parseInt(JOptionPane.showInputDialog (this, "Stock Inical del producto " + (i+1), JOptionPane.QUESTION_MESSAGE));
 			}
@@ -858,7 +960,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     			resultado1 += "\n Operación terminada";
     			panelDatos.actualizarInterfaz(resultado1);
     			
-    			JOptionPane.showMessageDialog(null, "Ahora se vinculara los productos con la promocion", "Accediendo a la Sucursal:", JOptionPane.INFORMATION_MESSAGE);
+    			JOptionPane.showMessageDialog(null, "Ahora se vinculara los productos con la promocion", "Adicionar Promocion", JOptionPane.INFORMATION_MESSAGE);
     			VOPromocionProducto tb2 = null;
     			for(int i = 0; i < cantProd; i++) {
     				
@@ -887,75 +989,87 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 	 * 			CRUD de OrdenPedido
 	 *****************************************************************/
     
-    public void adicionarOrdenPedido( )
+	public void adicionarOrdenPedido( )
     {
-    	try 
+    	try
     	{
+    		long vTotal = 0;
     		
-    		int result = JOptionPane.showConfirmDialog(this, "Va a registrar el pedido para un nuevo producto?", "Adicionar Orden Pedido", JOptionPane.YES_NO_OPTION);
-    		if(result == JOptionPane.YES_OPTION) {
+    		String fCompra = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+    		JOptionPane.showMessageDialog(null, "La fecha de la orden sera la siguiente: " + fCompra, "Adicionar Orden Pedido", JOptionPane.INFORMATION_MESSAGE);
+
+    		int resultProveedor = JOptionPane.showConfirmDialog(this, "Va a registrar un nuevo Proveedor?", "Adicionar Orden Pedido", JOptionPane.YES_NO_OPTION);
+    		if(resultProveedor == JOptionPane.YES_OPTION) {
+    			adicionarProveedor();
+    		}
+    		
+    		List<Proveedor> proveedores = superAndes.darProveedores();
+    		String[] opcNombreProveedores = new String[proveedores.size()];
+    		for(int i = 0; i < proveedores.size(); i++) {
+    			opcNombreProveedores[i] = proveedores.get(i).getNombre();
+    		}
+			JComboBox opcionesNombreProveedores = new JComboBox(opcNombreProveedores);
+			JOptionPane.showMessageDialog(null, opcionesNombreProveedores, "Seleccione el Proveedor", JOptionPane.QUESTION_MESSAGE);
+    		long id_Proveedor = proveedores.get(opcionesNombreProveedores.getSelectedIndex()).getId();
+
+    		long id_Sucursal = id_Sucursal_U;
+    		String estado = "pendiente";
+    		
+    		int resultProducto = JOptionPane.showConfirmDialog(this, "Va a registrar el pedido para un nuevo producto?", "Adicionar Orden Pedido", JOptionPane.YES_NO_OPTION);
+    		if(resultProducto == JOptionPane.YES_OPTION) {
     			adicionarProducto();
     		}
     		
-    		System.out.println("Sigue");
+    		int cantProd = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad de Productos de la Orden de Pedido", "Adicionar Orden Pedido", JOptionPane.QUESTION_MESSAGE));
+    		long[] id_Producto = new long[cantProd];
+    		long[] cantPorProd = new long[cantProd];
+    		long[] precioPorProd = new long[cantProd];
     		
-    		/*
-    		
-    		String fVencimiento;
-    		
-    		String codigoBarra = JOptionPane.showInputDialog (this, "Codigo de Barra", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
-    		String nombre = JOptionPane.showInputDialog (this, "Nombre del Producto", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
-    		String marca = JOptionPane.showInputDialog (this, "Marca del Producto", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
-    		int pVenta = Integer.parseInt(JOptionPane.showInputDialog (this, "Precio de Venta", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));	
-    		String presentacion = JOptionPane.showInputDialog (this, "Presentacion del Prducto", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
-    		int pUnidadMedida = Integer.parseInt(JOptionPane.showInputDialog (this, "Precio por Unidad de Medida", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
-    		int cantPPT = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad en la Presentacion", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
-    		String unidadMedida = JOptionPane.showInputDialog (this, "Unidad de Medida", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
-    		int espEmpPeso = Integer.parseInt(JOptionPane.showInputDialog (this, "Especificacion de Peso del Empacado", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
-    		int espEmpVol = Integer.parseInt(JOptionPane.showInputDialog (this, "Especificacion de Volumen del Empacado", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
-    		
-    		String bool[] = {"true","false"};
-			JComboBox opcionesBool = new JComboBox(bool);
-			JOptionPane.showMessageDialog(this, opcionesBool, "Es Perecedero?", JOptionPane.QUESTION_MESSAGE);
-			String esPerecedero = (String) opcionesBool.getSelectedItem();
-    		
-    		if(esPerecedero.equals("true")) {
-    			fVencimiento = JOptionPane.showInputDialog (this, "Fecha Vencimiento (dd/MM/yyyy)", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE);
-    		} else { fVencimiento = null; }
-    		
-    		int nReorden = Integer.parseInt(JOptionPane.showInputDialog (this, "Numero de Reordenamiento", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
-    		int stockBodega = Integer.parseInt(JOptionPane.showInputDialog (this, "Stock en Bodega", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
-    		int stockEstante = Integer.parseInt(JOptionPane.showInputDialog (this, "Stock en Estantes", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
-    		int stockTotal = Integer.parseInt(JOptionPane.showInputDialog (this, "Stock Total", "Adicionar Producto", JOptionPane.QUESTION_MESSAGE));
-    		
-    		List tiposProdutos = superAndes.darNombreTiposProductos();
-    		String[] opcTiposProdutos = new String[tiposProdutos.size()];
-    		for(int i = 0; i < tiposProdutos.size(); i++) {
-    			opcTiposProdutos[i] = tiposProdutos.get(i).toString();
+    		List nombreProductos = superAndes.darNombreProductos();
+    		String[] opcNombreProdutos = new String[nombreProductos.size()];
+    		for(int i = 0; i < nombreProductos.size(); i++) {
+    			opcNombreProdutos[i] = nombreProductos.get(i).toString();
     		}
-			JComboBox opcionesTiposProdutos = new JComboBox(opcTiposProdutos);
-			JOptionPane.showMessageDialog(null, opcionesTiposProdutos, "Seleccione el tipo de Producto", JOptionPane.QUESTION_MESSAGE);
-			long id_TipoProducto = superAndes.darIdPorTipoProducto(opcTiposProdutos[opcionesTiposProdutos.getSelectedIndex()]).getId();
-
-    		if (codigoBarra != null && nombre != null && marca != null && !Objects.isNull(pVenta) && presentacion != null && 
-    				!Objects.isNull(pUnidadMedida) && !Objects.isNull(cantPPT) && unidadMedida != null && !Objects.isNull(espEmpPeso) && 
-    				!Objects.isNull(espEmpVol) && !Objects.isNull(esPerecedero) && !Objects.isNull(nReorden) && !Objects.isNull(stockBodega) && 
-    				!Objects.isNull(stockEstante) && !Objects.isNull(stockTotal) && !Objects.isNull(id_TipoProducto)) {
+    		
+			for(int i = 0; i < cantProd; i++) {
+				
+				JComboBox opcionesNombreProdutos = new JComboBox(opcNombreProdutos);
+				JOptionPane.showMessageDialog(null, opcionesNombreProdutos, "Seleccione el Producto: " + (i+1), JOptionPane.QUESTION_MESSAGE);
+				String tempString = superAndes.darProductoPorNombre(opcionesNombreProdutos.getSelectedItem().toString()).toString();
+				id_Producto[i] = Long.parseLong(tempString.substring(1,tempString.length()-1));
+				cantPorProd[i] = Long.parseLong(JOptionPane.showInputDialog (this, "Cantidad a Pedir " + (i+1), JOptionPane.QUESTION_MESSAGE));
+				precioPorProd[i] = Long.parseLong(JOptionPane.showInputDialog (this, "Precio de Compra por unidad " + (i+1), JOptionPane.QUESTION_MESSAGE));
+				vTotal += cantPorProd[i] * precioPorProd[i];	
+			}
+    		
+			if (!Objects.isNull(id_Proveedor) && !Objects.isNull(id_Sucursal) && id_Producto != null && cantPorProd != null && precioPorProd != null) {
     			
-        		VOProducto tb = superAndes.adicionarProducto(codigoBarra, nombre, marca, pVenta, presentacion, pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero, fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto);
-        		if (tb == null)
+        		VOOrdenPedido tb1 = superAndes.adicionarOrdenPedido(fCompra, vTotal, estado, id_Proveedor, id_Sucursal);
+        		if (tb1 == null)
         		{
-        			throw new Exception ("No se pudo crear el Producto");
+        			throw new Exception ("No se pudo crear la Orden de Pedido");
         		}
-        		String resultado = "En adicionar Producto\n\n";
-        		resultado += "Producto adicionado exitosamente: " + tb;
-    			resultado += "\n Operación terminada";
-    			panelDatos.actualizarInterfaz(resultado);
+        		String resultado1 = "En adicionar Orden de Pedido\n\n";
+        		resultado1 += "Orden de Pedido adicionada exitosamente: " + tb1;
+    			resultado1 += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado1);
+    			
+    			JOptionPane.showMessageDialog(null, "Ahora se vinculara los productos con la Orden de Pedido", "Adicionar Orden Pedido", JOptionPane.INFORMATION_MESSAGE);
+    			VOOrdenPedidoProducto tb2 = null;
+    			for(int i = 0; i < cantProd; i++) {
+    				
+    				tb2 = superAndes.adicionarOrdenPedidoProducto(tb1.getId(), id_Producto[i], cantPorProd[i], precioPorProd[i]);
+    			}
+    			if (tb2 == null)
+        		{
+        			throw new Exception ("No se pudo crear la OrdenPedidoProducto");
+        		}
+    			panelDatos.actualizarInterfaz("Se agregaron todas las referncias");
     		}
     		else
     		{
     			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
-    		}*/
+    		}
 		} 
     	catch (Exception e) 
     	{
@@ -964,6 +1078,48 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 		}
     }
     
+	
+	public void registrarOrdenPedido( )
+    {
+    	try
+    	{
+    		List<Object> ordenPedidos = superAndes.darOrdenesPedidosPorSucursalYEstado(id_Sucursal_U, "pendiente");
+    		String[] opcOrdenPedidos = new String[ordenPedidos.size()];
+    		for(int i = 0; i < ordenPedidos.size(); i++) {
+    			opcOrdenPedidos[i] = ordenPedidos.get(i).toString();
+    		}
+			JComboBox opcionesOrdenPedidos = new JComboBox(opcOrdenPedidos);
+			JOptionPane.showMessageDialog(null, opcionesOrdenPedidos, "Seleccione el Proveedor", JOptionPane.QUESTION_MESSAGE);
+    		long id_OrdenPedido = Long.parseLong(opcionesOrdenPedidos.getSelectedItem().toString());
+    		
+    		List<Object> ordenPedidoProducto = superAndes.darProductoPorIdOrdenPedido(id_OrdenPedido);
+    		List<Object> ordenPedidoCantCompra = superAndes.darCantCompraPorIdOrdenPedido(id_OrdenPedido);
+    		System.out.println(ordenPedidoProducto.get(0).toString());
+    		System.out.println(ordenPedidoCantCompra.get(0).toString());
+    		
+			if (ordenPedidoProducto != null && !Objects.isNull(id_OrdenPedido) ) {
+				
+				
+				for(int i = 0; i < ordenPedidoProducto.size(); i++) {
+					
+					superAndes.cambiarStock(Integer.parseInt(ordenPedidoCantCompra.get(i).toString()), Long.parseLong(ordenPedidoProducto.get(i).toString()));
+				}
+				
+				superAndes.cambiarEsatdo("despachado", id_OrdenPedido);
+
+    			panelDatos.actualizarInterfaz("Se registro la llegada del Pedido y se actualizaron los inventarios");
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
 
     /* ****************************************************************
 	 * 			Requerimientos funcionales de consulta

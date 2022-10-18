@@ -18,7 +18,7 @@ class SQLOrdenPedidoProducto {
 		this.pp = pp;
 	}
 
-	public long adicionarOrdenPedidoProducto (PersistenceManager pm, long id_OrdenPedido, long id_Producto, int cantCompra, int pCompra) 
+	public long adicionarOrdenPedidoProducto (PersistenceManager pm, long id_OrdenPedido, long id_Producto, long cantCompra, long pCompra) 
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaOrdenPedidoProducto () + "(id_OrdenPedido, id_Producto, cantCompra, pCompra) values (?, ?, ?, ?)");
         q.setParameters(id_OrdenPedido, id_Producto, cantCompra, pCompra);
@@ -32,12 +32,18 @@ class SQLOrdenPedidoProducto {
         return (long) q.executeUnique();
 	}
 
-	public OrdenPedidoProducto darOrdenPedidoProductoPorIdOrdenPedido (PersistenceManager pm, long id_OrdenPedido) 
+	public List<Object> darProductoPorIdOrdenPedido (PersistenceManager pm, long id_OrdenPedido) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaOrdenPedidoProducto () + " WHERE id_OrdenPedido = ?");
-		q.setResultClass(OrdenPedidoProducto.class);
+		Query q = pm.newQuery(SQL, "SELECT id_Producto FROM " + pp.darTablaOrdenPedidoProducto () + " WHERE id_OrdenPedido = ?");
 		q.setParameters(id_OrdenPedido);
-		return (OrdenPedidoProducto) q.executeUnique();
+		return q.executeList();
+	}
+	
+	public List<Object> darCantCompraPorIdOrdenPedido (PersistenceManager pm, long id_OrdenPedido) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT cantCompra FROM " + pp.darTablaOrdenPedidoProducto () + " WHERE id_OrdenPedido = ?");
+		q.setParameters(id_OrdenPedido);
+		return q.executeList();
 	}
 
 	public List<OrdenPedidoProducto> darOrdenesPedidosProductos (PersistenceManager pm)

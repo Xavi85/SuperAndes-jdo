@@ -31,6 +31,20 @@ class SQLEstante {
         q.setParameters(id);
         return (long) q.executeUnique();
 	}
+	
+	public List<Object> darNAbastecimientoId (PersistenceManager pm, long id) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT nAbastecimiento FROM " + pp.darTablaEstante () + " WHERE id = ?");
+		q.setParameters(id);
+		return q.executeList();
+	}
+	
+	public List<Object> darTipoProductoId (PersistenceManager pm, long id) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT id_TipoProducto FROM " + pp.darTablaEstante () + " WHERE id = ?");
+		q.setParameters(id);
+		return q.executeList();
+	}
 
 	public Estante darEstantePorId (PersistenceManager pm, long id) 
 	{
@@ -40,11 +54,10 @@ class SQLEstante {
 		return (Estante) q.executeUnique();
 	}
 
-	public List<Estante> darEstantes (PersistenceManager pm)
+	public List<Object> darIdEstantes (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaEstante ());
-		q.setResultClass(Estante.class);
-		return (List<Estante>) q.executeList();
+		Query q = pm.newQuery(SQL, "SELECT id FROM " + pp.darTablaEstante ());
+		return q.executeList();
 	}
 	
 	public List<Object[]> darEstantesReq3 (PersistenceManager pm, long id_sucursal)

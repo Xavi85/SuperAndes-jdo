@@ -6,7 +6,9 @@ public interface VOOrdenPedido {
 
 	public String getfCompra();
 
-	public int getvTotal();
+	public long getvTotal();
+	
+	public String getEstado();
 
 	public long getId_Proveedor();
 

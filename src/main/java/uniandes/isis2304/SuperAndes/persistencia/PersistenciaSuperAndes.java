@@ -325,10 +325,20 @@ public class PersistenciaSuperAndes {
 		
 		return sqlEstante.darEstantePorId (pmf.getPersistenceManager(), id);
 	}
-
-	public List<Estante> darEstantes () {
+	
+	public List<Object> darIdEstantes () {
 		
-		return sqlEstante.darEstantes (pmf.getPersistenceManager());
+		return sqlEstante.darIdEstantes (pmf.getPersistenceManager());
+	}
+	
+	public List<Object> darNAbastecimientoId (long id) {
+		
+		return sqlEstante.darNAbastecimientoId(pmf.getPersistenceManager(), id);
+	}
+	
+	public List<Object> darTipoProductoId (long id) {
+		
+		return sqlEstante.darTipoProductoId(pmf.getPersistenceManager(), id);
 	}
 	
 	
@@ -405,19 +415,19 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las OrdenesPedidos
 	 *****************************************************************/
 
-	public OrdenPedido adicionarOrdenPedido (String fCompra, int vTotal, long id_Proveedor, long id_Sucursal) {
+	public OrdenPedido adicionarOrdenPedido (String fCompra, long vTotal, String estado, long id_Proveedor, long id_Sucursal) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try {
             tx.begin();
             long id = nextval ();
-            long tuplasInsertadas = sqlOrdenPedido.adicionarOrdenPedido(pm, id, fCompra, vTotal, id_Proveedor, id_Sucursal);
+            long tuplasInsertadas = sqlOrdenPedido.adicionarOrdenPedido(pm, id, fCompra, vTotal, estado, id_Proveedor, id_Sucursal);
             tx.commit();
             
             log.trace ("Inserción de OrdenPedido: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new OrdenPedido (id, fCompra, vTotal, id_Proveedor, id_Sucursal);
+            return new OrdenPedido (id, fCompra, vTotal, estado, id_Proveedor, id_Sucursal);
         }
         catch (Exception e) {
         	
@@ -459,6 +469,32 @@ public class PersistenciaSuperAndes {
         }
 	}
 	
+	public long cambiarEstado (String estado, long id)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlOrdenPedido.cambiarEstado(pm, estado, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
 	public OrdenPedido darOrdenPedidoPorId (long id) {
 		
 		return sqlOrdenPedido.darOrdenPedidoPorId (pmf.getPersistenceManager(), id);
@@ -469,12 +505,16 @@ public class PersistenciaSuperAndes {
 		return sqlOrdenPedido.darOrdenesPedidos (pmf.getPersistenceManager());
 	}
 	
+	public List<Object> darOrdenesPedidosPorSucursalYEstado (long id_Sucursal, String estado) {
+		
+		return sqlOrdenPedido.darOrdenesPedidosPorSucursalYEstado (pmf.getPersistenceManager(), id_Sucursal, estado);
+	}
 	
 	/* ****************************************************************
 	 * 			Métodos para manejar las OrdenesPedidosProductos
 	 *****************************************************************/
 
-	public OrdenPedidoProducto adicionarOrdenPedidoProducto (long id_OrdenPedido, long id_Producto, int cantCompra, int pCompra) {
+	public OrdenPedidoProducto adicionarOrdenPedidoProducto (long id_OrdenPedido, long id_Producto, long cantCompra, long pCompra) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -527,9 +567,14 @@ public class PersistenciaSuperAndes {
         }
 	}
 	
-	public OrdenPedidoProducto darOrdenPedidoProductoPorIdOrdenPedido (long id_OrdenPedido) {
+	public List<Object> darProductoPorIdOrdenPedido (long id_OrdenPedido) {
 		
-		return sqlOrdenPedidoProducto.darOrdenPedidoProductoPorIdOrdenPedido (pmf.getPersistenceManager(), id_OrdenPedido);
+		return sqlOrdenPedidoProducto.darProductoPorIdOrdenPedido (pmf.getPersistenceManager(), id_OrdenPedido);
+	}
+	
+	public List<Object> darCantCompraPorIdOrdenPedido (long id_OrdenPedido) {
+		
+		return sqlOrdenPedidoProducto.darCantCompraPorIdOrdenPedido (pmf.getPersistenceManager(), id_OrdenPedido);
 	}
 
 	public List<OrdenPedidoProducto> darOrdenesPedidosProductos () {
@@ -602,9 +647,40 @@ public class PersistenciaSuperAndes {
         }
 	}
 	
+	public long cambiarStocks (int stock, long idLote)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlProducto.cambiarStocks(pm, stock, idLote);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
 	public Producto darProductoPorId (long idLote) {
 		
 		return sqlProducto.darProductoPorId (pmf.getPersistenceManager(), idLote);
+	}
+	
+	public List<Producto> darProductoPorTipoProducto (long id_TipoProducto) {
+		
+		return sqlProducto.darProductoPorTipoProducto (pmf.getPersistenceManager(), id_TipoProducto);
 	}
 	
 	public List<Object> darProductoPorNombre (String nombre) {
@@ -620,6 +696,26 @@ public class PersistenciaSuperAndes {
 	public List<String> darNombreProductos () {
 		
 		return sqlProducto.darNombreProductos (pmf.getPersistenceManager());
+	}
+	
+	public List<Object> darIdProductos () {
+		
+		return sqlProducto.darIdProductos (pmf.getPersistenceManager());
+	}
+	
+	public List<Long> darIdProductoPorTipoProducto (long id_TipoProducto) {
+		
+		return sqlProducto.darIdProductoPorTipoProducto (pmf.getPersistenceManager(), id_TipoProducto);
+	}
+	
+	public List<Integer> darSBProductoPorTipoProducto (long id_TipoProducto) {
+		
+		return sqlProducto.darSBProductoPorTipoProducto (pmf.getPersistenceManager(), id_TipoProducto);
+	}
+	
+	public List<Integer> darSEProductoPorTipoProducto (long id_TipoProducto) {
+		
+		return sqlProducto.darSEProductoPorTipoProducto (pmf.getPersistenceManager(), id_TipoProducto);
 	}
 
 	
