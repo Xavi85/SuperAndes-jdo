@@ -1230,7 +1230,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     	if(dialogoReq1.getFechaIncio() != null)
     	{
     		String resultado = "";//"Fecha inicio: " + dialogoReq1.getFechaIncio().toString() + ", Fecha fin: " + dialogoReq1.getFechaFin().toString();
-    		List<Object[]> sucursales = superAndes.darSucursalesReq1();
+    		List<Object[]> sucursales = superAndes.darSucursalesReq1();;;;
     		
     		for(int i = 0; i < sucursales.size(); i++)
     		{

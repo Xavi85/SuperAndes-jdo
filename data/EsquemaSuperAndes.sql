@@ -99,13 +99,11 @@ CREATE TABLE ORDEN_PEDIDO(
     id NUMBER,
     fCompra DATE NOT NULL,
     vTotal NUMBER NOT NULL,
-    estado VARCHAR2(255 BYTE) NOT NULL,
     id_Proveedor NUMBER NOT NULL,
     id_Sucursal NUMBER NOT NULL,
 	CONSTRAINT PK_id_ordenPedido PRIMARY KEY (id),
     CONSTRAINT FK_ordenPedido_id_Proveedor FOREIGN KEY(id_Proveedor) REFERENCES PROVEEDOR(id),
-    CONSTRAINT FK_ordenPedido_id_Sucursal FOREIGN KEY(id_Sucursal) REFERENCES SUCURSAL(id),
-    CONSTRAINT CHECK_estado CHECK(estado IN ('pendiente', 'despachado'))
+    CONSTRAINT FK_ordenPedido_id_Sucursal FOREIGN KEY(id_Sucursal) REFERENCES SUCURSAL(id)
 );
 --------------------------------------------------------------------------------
 -- Creacion tabla ORDEN_PEDIDO_PRODUCTO
@@ -240,10 +238,10 @@ INSERT INTO SUPERMERCADO(id, nit, nombre) VALUES (1, 778889991, 'Exito');
 COMMIT;
 
 -- Creacion tuplas SUCURSAL
-INSERT INTO SUCURSAL(id, nombre, pais, ciudad, direccion, id_Supermercado) VALUES (1, 'Exito Country', 'Colombia', 'Bogotï¿½', 'Carrera 7c #127A-46', 1);
-INSERT INTO SUCURSAL(id, nombre, pais, ciudad, direccion, id_Supermercado) VALUES (2, 'Exito Unicentro', 'Colombia', 'Bogotï¿½', 'Calle 127 #14-46', 1);
-INSERT INTO SUCURSAL(id, nombre, pais, ciudad, direccion, id_Supermercado) VALUES (3, 'Exito La Colina', 'Colombia', 'Bogotï¿½', 'Avenida Boyacï¿½, Carrera 72 No. 146B', 1);
-INSERT INTO SUCURSAL(id, nombre, pais, ciudad, direccion, id_Supermercado) VALUES (4, 'Exito Calle 80', 'Colombia', 'Bogotï¿½', 'Carrera 59A No. 79 - 30', 1);
+INSERT INTO SUCURSAL(id, nombre, pais, ciudad, direccion, id_Supermercado) VALUES (1, 'Exito Country', 'Colombia', 'Bogot?', 'Carrera 7c #127A-46', 1);
+INSERT INTO SUCURSAL(id, nombre, pais, ciudad, direccion, id_Supermercado) VALUES (2, 'Exito Unicentro', 'Colombia', 'Bogot?', 'Calle 127 #14-46', 1);
+INSERT INTO SUCURSAL(id, nombre, pais, ciudad, direccion, id_Supermercado) VALUES (3, 'Exito La Colina', 'Colombia', 'Bogot?', 'Avenida Boyac?, Carrera 72 No. 146B', 1);
+INSERT INTO SUCURSAL(id, nombre, pais, ciudad, direccion, id_Supermercado) VALUES (4, 'Exito Calle 80', 'Colombia', 'Bogot?', 'Carrera 59A No. 79 - 30', 1);
 COMMIT;
 
 -- Creacion tuplas TIPO_USUARIO
@@ -256,14 +254,14 @@ INSERT INTO TIPO_USUARIO(id, tipo) VALUES (6, 'Cliente');
 COMMIT;
 
 -- Creacion tuplas USUARIO
-INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (1, '1195954', 'Cedula Extranjeria', 'Javier Serrano', 'serranor@gmail.com', 'Colombia', 'BogotÃ¡', 'Carrera 7c #127A-46', null, 6, null);
-INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (2, '63743682', 'Cedula Ciudadania', 'Alvaro Serrano', 'aserrano@grupoexito', 'Colombia', 'BogotÃ¡', 'Carrera 8 #132-57', null, 3, null);
-INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (3, '1189865', 'Cedula Extranjeria', 'Ana Varela', 'avarela@grupoexito', 'Colombia', 'BogotÃ¡', 'Carrera 8 #132-57', null, 3, 2);
-INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (4, '88991122', 'Cedula Ciudadania', 'Lindsay Pinto', 'lpinto@gmail.com', 'Colombia', 'BogotÃ¡', 'Carrera 68F #66-10', null, 1, 2);
-INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (5, '77665544', 'Cedula Ciudadania', 'Andrï¿½s Arango', 'aarango@gmail.com', 'Colombia', 'BogotÃ¡', 'Britalia', null, 5, 1);
-INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (6, '19162027', 'Cedula Ciudadania', 'Victor Pinto', 'vpinto@gmail.com', 'Colombia', 'Bogotï¿½', 'transversal 74 # 63a-26', null, 6, null);
-INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (7, '51958372', 'Cedula Ciudadania', 'Josï¿½ Morales', 'moralesj@hotmail.com', 'Colombia', 'Bogotï¿½', 'carrera 58 sur # 15-73', null, 6, null);
-INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (8, '35427532', 'Cedula Ciudadania', 'Edna Marulanda', 'Emarulandaj@hotmail.com', 'Colombia', 'Bogotï¿½', 'carrera 58 sur # 15-74', null, 6, null);
+INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (1, '1195954', 'Cedula Extranjeria', 'Javier Serrano', 'serranor@gmail.com', 'Colombia', 'Bogotá', 'Carrera 7c #127A-46', null, 6, null);
+INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (2, '63743682', 'Cedula Ciudadania', 'Alvaro Serrano', 'aserrano@grupoexito', 'Colombia', 'Bogotá', 'Carrera 8 #132-57', null, 3, null);
+INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (3, '1189865', 'Cedula Extranjeria', 'Ana Varela', 'avarela@grupoexito', 'Colombia', 'Bogotá', 'Carrera 8 #132-57', null, 3, 2);
+INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (4, '88991122', 'Cedula Ciudadania', 'Lindsay Pinto', 'lpinto@gmail.com', 'Colombia', 'Bogotá', 'Carrera 68F #66-10', null, 1, 2);
+INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (5, '77665544', 'Cedula Ciudadania', 'Andr?s Arango', 'aarango@gmail.com', 'Colombia', 'Bogotá', 'Britalia', null, 5, 1);
+INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (6, '19162027', 'Cedula Ciudadania', 'Victor Pinto', 'vpinto@gmail.com', 'Colombia', 'Bogot?', 'transversal 74 # 63a-26', null, 6, null);
+INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (7, '51958372', 'Cedula Ciudadania', 'Jos? Morales', 'moralesj@hotmail.com', 'Colombia', 'Bogot?', 'carrera 58 sur # 15-73', null, 6, null);
+INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (8, '35427532', 'Cedula Ciudadania', 'Edna Marulanda', 'Emarulandaj@hotmail.com', 'Colombia', 'Bogot?', 'carrera 58 sur # 15-74', null, 6, null);
 COMMIT;
 
 -- Creacion tuplas PRODUCTO
