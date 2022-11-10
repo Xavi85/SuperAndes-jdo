@@ -25,7 +25,7 @@ import uniandes.isis2304.SuperAndes.negocio.TipoProducto;
 import uniandes.isis2304.SuperAndes.negocio.TipoUsuario;
 import uniandes.isis2304.SuperAndes.negocio.Usuario;
 import uniandes.isis2304.SuperAndes.negocio.Venta;
-import uniandes.isis2304.SuperAndes.negocio.VentaProducto;
+import uniandes.isis2304.SuperAndes.negocio.CarritoCompra;
 import uniandes.isis2304.SuperAndes.negocio.FacturaElectronica;
 import uniandes.isis2304.SuperAndes.negocio.OrdenPedido;
 import uniandes.isis2304.SuperAndes.negocio.OrdenPedidoProducto;
@@ -55,7 +55,7 @@ public class PersistenciaSuperAndes {
 	private SQLTipoUsuario sqlTipoUsuario;
 	private SQLUsuario sqlUsuario;
 	private SQLVenta sqlVenta;
-	private SQLVentaProducto sqlVentaProducto;
+	private SQLCarritoCompra sqlCarritoCompra;
 	
 	
 	/* ****************************************************************
@@ -153,7 +153,7 @@ public class PersistenciaSuperAndes {
 		sqlUsuario = new SQLUsuario(this);
 		sqlUtil = new SQLUtil(this);
 		sqlVenta = new SQLVenta(this);
-		sqlVentaProducto = new SQLVentaProducto(this);	
+		sqlCarritoCompra = new SQLCarritoCompra(this);	
 		
 	}
 
@@ -173,7 +173,7 @@ public class PersistenciaSuperAndes {
 	public String darTablaTipoUsuario() { return tablas.get(13); }
 	public String darTablaUsuario() { return tablas.get(14); }
 	public String darTablaVenta() { return tablas.get(15); }
-	public String darTablaVentaProducto() { return tablas.get(16); }
+	public String darTablaCarritoCompra() { return tablas.get(16); }
 
 	private long nextval () {
 		
@@ -1393,21 +1393,21 @@ public class PersistenciaSuperAndes {
 	
 	
 	/* ****************************************************************
-	 * 			Métodos para manejar las VentasProductos
+	 * 			Métodos para manejar las CarritoCompra
 	 *****************************************************************/
 
-	public VentaProducto adicionarVentaProducto (long id_Venta, long id_Producto, int pVentaH, int cantidad) {
+	public CarritoCompra adicionarCarritoCompra (long id_Venta, long id_Producto, int pVentaH, int cantidad) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try {
             tx.begin();
-            long tuplasInsertadas = sqlVentaProducto.adicionarVentaProducto(pm, id_Venta, id_Producto, pVentaH, cantidad);
+            long tuplasInsertadas = sqlCarritoCompra.adicionarCarritoCompra(pm, id_Venta, id_Producto, pVentaH, cantidad);
             tx.commit();
             
             log.trace ("Inserción de VentaProducto: " + id_Venta + id_Producto + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new VentaProducto (id_Venta, id_Producto, pVentaH, cantidad);
+            return new CarritoCompra (id_Venta, id_Producto, pVentaH, cantidad);
         }
         catch (Exception e) {
         	
@@ -1424,13 +1424,13 @@ public class PersistenciaSuperAndes {
         }
 	}
 
-	public long eliminarVentaProductoPorIdVenta (long id_Venta) {
+	public long eliminarCarritoCompraPorIdVenta (long id_Venta) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try {
             tx.begin();
-            long resp = sqlVentaProducto.eliminarVentaProductoPorIdVenta(pm, id_Venta);
+            long resp = sqlCarritoCompra.eliminarCarritoCompraPorIdVenta(pm, id_Venta);
             tx.commit();
             return resp;
         }
@@ -1449,14 +1449,14 @@ public class PersistenciaSuperAndes {
         }
 	}
 	
-	public VentaProducto darVentaProductoPorIdVenta (long id_Venta) {
+	public CarritoCompra darCarritoCompraPorIdVenta (long id_Venta) {
 		
-		return sqlVentaProducto.darVentaProductoPorIdVenta (pmf.getPersistenceManager(), id_Venta);
+		return sqlCarritoCompra.darCarritoCompraPorIdVenta (pmf.getPersistenceManager(), id_Venta);
 	}
 
-	public List<VentaProducto> darVentasProductos () {
+	public List<CarritoCompra> darCarritosCompras () {
 		
-		return sqlVentaProducto.darVentasProductos (pmf.getPersistenceManager());
+		return sqlCarritoCompra.darCarritosCompras (pmf.getPersistenceManager());
 	}
 	
 	/* ****************************************************************

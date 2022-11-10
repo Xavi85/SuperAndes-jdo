@@ -944,10 +944,10 @@ public List<Object> darNombreUsuarioConDocumentoIdTipoUsuario (long nDocumento, 
 	 * 			Métodos para manejar las Ventas de Productos
 	 *****************************************************************/
 
-	public VentaProducto adicionarVentaProducto (long id_Venta, long id_Producto, int pVentaH, int cantidad) {
+	public CarritoCompra adicionarVentaProducto (long id_Venta, long id_Producto, int pVentaH, int cantidad) {
 		
 		log.info ("Adicionando Venta de Producto: " + id_Venta + ", " + id_Producto + ", " + pVentaH + ", "  + cantidad);
-		VentaProducto ventaProducto = pp.adicionarVentaProducto (id_Venta, id_Producto, pVentaH, cantidad);
+		CarritoCompra ventaProducto = pp.adicionarCarritoCompra (id_Venta, id_Producto, pVentaH, cantidad);
         log.info ("Adicionando Venta de Producto: " + ventaProducto);
         return ventaProducto;
 	}
@@ -955,37 +955,37 @@ public List<Object> darNombreUsuarioConDocumentoIdTipoUsuario (long nDocumento, 
 	public long eliminarVentaProductoPorIdVenta (long id_Venta) {
 		
         log.info ("Eliminando Venta de Producto por id: " + id_Venta);
-        long resp = pp.eliminarVentaProductoPorIdVenta (id_Venta);
+        long resp = pp.eliminarCarritoCompraPorIdVenta (id_Venta);
         log.info ("Eliminando Venta de Producto por id: " + resp + " tuplas eliminadas");
         return resp;
 	}
 	
-	public VentaProducto darVentaProductoPorIdVenta (long id_Venta)
+	public CarritoCompra darVentaProductoPorIdVenta (long id_Venta)
 	{
         log.info ("Dar información de una Venta de Producto por id: " + id_Venta);
-        VentaProducto ventaProducto = pp.darVentaProductoPorIdVenta (id_Venta);
+        CarritoCompra ventaProducto = pp.darCarritoCompraPorIdVenta (id_Venta);
         log.info ("Buscando VentaProducto por Id: " + ventaProducto != null ? ventaProducto : "NO EXISTE");
         return ventaProducto;
 	}
 
-	public List<VentaProducto> darVentasProductos () {
+	public List<CarritoCompra> darVentasProductos () {
 		
         log.info ("Consultando Ventas de Productos");
-        List<VentaProducto> ventaProducto = pp.darVentasProductos ();	
+        List<CarritoCompra> ventaProducto = pp.darCarritosCompras ();	
         log.info ("Consultando Ventas de Productos: " + ventaProducto.size() + " Ventas de Productos existentes");
         return ventaProducto;
 	}
 
-	public List<VOVentaProducto> darVOVentasProductos () {
+	public List<VOCarritoCompra> darVOCarritosCompras () {
 		
-		log.info ("Generando los VO de las Ventas de Productos");       
-        List<VOVentaProducto> voVentasProductos = new LinkedList<VOVentaProducto> ();
-        for (VentaProducto ventp : pp.darVentasProductos ())
+		log.info ("Generando los VO de los Carritos de Compra");       
+        List<VOCarritoCompra> voCarritosCompras = new LinkedList<VOCarritoCompra> ();
+        for (CarritoCompra ventp : pp.darCarritosCompras ())
         {
-        	voVentasProductos.add (ventp);
+        	voCarritosCompras.add (ventp);
         }
-        log.info ("Generando los VO de las Ventas de Productos: " + voVentasProductos.size() + " existentes");
-        return voVentasProductos;
+        log.info ("Generando los VO de los Carritos de Compra: " + voCarritosCompras.size() + " existentes");
+        return voCarritosCompras;
 	}
 
 	

@@ -1,6 +1,6 @@
 package uniandes.isis2304.SuperAndes.negocio;
 
-public interface VOVentaProducto {
+public interface VOCarritoCompra {
 
 	public long getId_Venta();
 

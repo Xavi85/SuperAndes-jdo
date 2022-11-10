@@ -92,7 +92,7 @@ class SQLUtil
         Query qTipoUsuario = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaTipoUsuario());
         Query qUsuario = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaUsuario());
         Query qVenta = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaVenta());
-        Query qVentaProducto = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaVentaProducto());
+        Query qCarritoCompra = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaCarritoCompra());
 
         long bodegaEliminados = (long) qBodega.executeUnique ();
         long estanteEliminados = (long) qEstante.executeUnique ();
@@ -109,11 +109,11 @@ class SQLUtil
         long tipoUsuarioEliminados = (long) qTipoUsuario.executeUnique ();
         long usuarioEliminados = (long) qUsuario.executeUnique ();
         long ventaEliminados = (long) qVenta.executeUnique ();
-        long ventaProductoEliminados = (long) qVentaProducto.executeUnique ();
+        long carritoCompraEliminados = (long) qCarritoCompra.executeUnique ();
         return new long[] {bodegaEliminados, estanteEliminados, facturaElectronicaEliminadas, ordenPedidoEliminadas, 
         		ordenPedidoProductoEliminados, productoEliminados, promocionEliminados, promocionProductoEliminados, 
         		proveedorEliminados, sucursalEliminados, supermercadoEliminados, tipoProductoEliminados, tipoUsuarioEliminados, 
-        		usuarioEliminados, ventaEliminados, ventaProductoEliminados};
+        		usuarioEliminados, ventaEliminados, carritoCompraEliminados};
 	}
 
 }

@@ -19,6 +19,6 @@
 		"TIPO_USUARIO",
 		"USUARIO",
 		"VENTA",
-		"VENTA_PRODUCTO"
+		"CARRITO_COMPRA"
 	]
 }

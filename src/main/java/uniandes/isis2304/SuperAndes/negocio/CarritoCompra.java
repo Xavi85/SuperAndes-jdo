@@ -1,13 +1,13 @@
 package uniandes.isis2304.SuperAndes.negocio;
 
-public class VentaProducto implements VOVentaProducto {
+public class CarritoCompra implements VOCarritoCompra {
 	
 	private long id_Venta;
 	private long id_Producto;
 	private int pVentaH;
 	private int cantidad;
 	
-	public VentaProducto() {
+	public CarritoCompra() {
 
 		this.id_Venta = 0;
 		this.id_Producto = 0;
@@ -15,7 +15,7 @@ public class VentaProducto implements VOVentaProducto {
 		this.cantidad = 0;
 	}
 	
-	public VentaProducto(long id_Venta, long id_Producto, int pVentaH, int cantidad) {
+	public CarritoCompra(long id_Venta, long id_Producto, int pVentaH, int cantidad) {
 
 		this.id_Venta = id_Venta;
 		this.id_Producto = id_Producto;
