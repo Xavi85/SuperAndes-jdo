@@ -77,7 +77,9 @@ class SQLUtil
 	 */
 	public long [] limpiarSuperAndes (PersistenceManager pm)
 	{
-        Query qBodega = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBodega());          
+        Query qBodega = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBodega());
+        Query qCarritoCompra = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaCarritoCompra());
+        Query qCarritoCompraProducto = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaCarritoCompraProducto());
         Query qEstante = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaEstante());
         Query qFacturaElectronica = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaFacturaElectronica());
         Query qOrdenPedido = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaOrdenPedido());
@@ -92,9 +94,10 @@ class SQLUtil
         Query qTipoUsuario = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaTipoUsuario());
         Query qUsuario = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaUsuario());
         Query qVenta = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaVenta());
-        Query qCarritoCompra = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaCarritoCompra());
-
+        
         long bodegaEliminados = (long) qBodega.executeUnique ();
+        long carritoCompraEliminados = (long) qCarritoCompra.executeUnique ();
+        long carritoCompraProductoEliminados = (long) qCarritoCompraProducto.executeUnique ();
         long estanteEliminados = (long) qEstante.executeUnique ();
         long facturaElectronicaEliminadas = (long) qFacturaElectronica.executeUnique ();
         long ordenPedidoEliminadas = (long) qOrdenPedido.executeUnique ();
@@ -109,11 +112,10 @@ class SQLUtil
         long tipoUsuarioEliminados = (long) qTipoUsuario.executeUnique ();
         long usuarioEliminados = (long) qUsuario.executeUnique ();
         long ventaEliminados = (long) qVenta.executeUnique ();
-        long carritoCompraEliminados = (long) qCarritoCompra.executeUnique ();
-        return new long[] {bodegaEliminados, estanteEliminados, facturaElectronicaEliminadas, ordenPedidoEliminadas, 
-        		ordenPedidoProductoEliminados, productoEliminados, promocionEliminados, promocionProductoEliminados, 
+        return new long[] {bodegaEliminados, carritoCompraEliminados, carritoCompraProductoEliminados, estanteEliminados, facturaElectronicaEliminadas, 
+        		ordenPedidoEliminadas,ordenPedidoProductoEliminados, productoEliminados, promocionEliminados, promocionProductoEliminados, 
         		proveedorEliminados, sucursalEliminados, supermercadoEliminados, tipoProductoEliminados, tipoUsuarioEliminados, 
-        		usuarioEliminados, ventaEliminados, carritoCompraEliminados};
+        		usuarioEliminados, ventaEliminados};
 	}
 
 }

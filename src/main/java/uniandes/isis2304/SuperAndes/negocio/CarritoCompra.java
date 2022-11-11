@@ -2,70 +2,70 @@ package uniandes.isis2304.SuperAndes.negocio;
 
 public class CarritoCompra implements VOCarritoCompra {
 	
-	private long id_Venta;
-	private long id_Producto;
-	private int pVentaH;
-	private int cantidad;
+	private long id;
+	private long id_Cliente;
+	private String fCarrito;
+	private String estado;
 	
 	public CarritoCompra() {
 
-		this.id_Venta = 0;
-		this.id_Producto = 0;
-		this.pVentaH = 0;
-		this.cantidad = 0;
-	}
-	
-	public CarritoCompra(long id_Venta, long id_Producto, int pVentaH, int cantidad) {
-
-		this.id_Venta = id_Venta;
-		this.id_Producto = id_Producto;
-		this.pVentaH = pVentaH;
-		this.cantidad = cantidad;
+		this.id = 0;
+		this.id_Cliente = 0;
+		this.fCarrito = "";
+		this.estado = "";
 	}
 
-	public long getId_Venta() {
-		return id_Venta;
+	public CarritoCompra(long id, long id_Cliente, String fCarrito, String estado) {
+		super();
+		this.id = id;
+		this.id_Cliente = id_Cliente;
+		this.fCarrito = fCarrito;
+		this.estado = estado;
 	}
 
-	public void setId_Venta(long id_Venta) {
-		this.id_Venta = id_Venta;
+	public long getId() {
+		return id;
 	}
 
-	public long getId_Producto() {
-		return id_Producto;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public void setId_Producto(long id_Producto) {
-		this.id_Producto = id_Producto;
+	public long getId_Cliente() {
+		return id_Cliente;
 	}
 
-	public int getpVentaH() {
-		return pVentaH;
+	public void setId_Cliente(long id_Cliente) {
+		this.id_Cliente = id_Cliente;
 	}
 
-	public void setpVentaH(int pVentaH) {
-		this.pVentaH = pVentaH;
+	public String getfCarrito() {
+		return fCarrito;
 	}
 
-	public int getCantidad() {
-		return cantidad;
+	public void setfCarrito(String fCarrito) {
+		this.fCarrito = fCarrito;
 	}
 
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("VentaProducto [id_Venta=");
-		builder.append(id_Venta);
-		builder.append(", id_Producto=");
-		builder.append(id_Producto);
-		builder.append(", pVentaH=");
-		builder.append(pVentaH);
-		builder.append(", cantidad=");
-		builder.append(cantidad);
+		builder.append("CarritoCompra [id=");
+		builder.append(id);
+		builder.append(", id_Cliente=");
+		builder.append(id_Cliente);
+		builder.append(", fCarrito=");
+		builder.append(fCarrito);
+		builder.append(", estado=");
+		builder.append(estado);
 		builder.append("]");
 		return builder.toString();
 	}

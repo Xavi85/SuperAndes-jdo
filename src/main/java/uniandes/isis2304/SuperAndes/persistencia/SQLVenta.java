@@ -1,6 +1,5 @@
 package uniandes.isis2304.SuperAndes.persistencia;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -19,10 +18,10 @@ class SQLVenta {
 		this.pp = pp;
 	}
 
-	public long adicionarVenta (PersistenceManager pm, long id, Date fVenta, int pTotal, long id_Sucursal, long id_Cajero) 
+	public long adicionarVenta (PersistenceManager pm, long id, String fVenta, int pTotal, long id_Sucursal, long id_Cajero, long id_Cliente, long id_CarritoCompra) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaVenta () + "(id, fVenta, pTotal, id_Sucursal, id_Cajero) values (?, ?, ?, ?, ?)");
-        q.setParameters(id, fVenta, pTotal, id_Sucursal, id_Cajero);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaVenta () + "(id, fVenta, pTotal, id_Sucursal, id_Cajero, id_Cliente, id_CarritoCompra) values (?, ?, ?, ?, ?)");
+        q.setParameters(id, fVenta, pTotal, id_Sucursal, id_Cajero, id_Cliente, id_CarritoCompra);
         return (long) q.executeUnique();
 	}
 

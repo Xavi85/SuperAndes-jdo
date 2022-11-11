@@ -1,6 +1,5 @@
 package uniandes.isis2304.SuperAndes.persistencia;
 
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,6 +25,7 @@ import uniandes.isis2304.SuperAndes.negocio.TipoUsuario;
 import uniandes.isis2304.SuperAndes.negocio.Usuario;
 import uniandes.isis2304.SuperAndes.negocio.Venta;
 import uniandes.isis2304.SuperAndes.negocio.CarritoCompra;
+import uniandes.isis2304.SuperAndes.negocio.CarritoCompraProducto;
 import uniandes.isis2304.SuperAndes.negocio.FacturaElectronica;
 import uniandes.isis2304.SuperAndes.negocio.OrdenPedido;
 import uniandes.isis2304.SuperAndes.negocio.OrdenPedidoProducto;
@@ -41,6 +41,8 @@ public class PersistenciaSuperAndes {
 	private List <String> tablas;
 	private SQLUtil sqlUtil;
 	private SQLBodega sqlBodega;
+	private SQLCarritoCompra sqlCarritoCompra;
+	private SQLCarritoCompraProducto sqlCarritoCompraProducto;
 	private SQLEstante sqlEstante;
 	private SQLFacturaElectronica sqlFacturaElectronica;
 	private SQLOrdenPedido sqlOrdenPedido;
@@ -55,7 +57,6 @@ public class PersistenciaSuperAndes {
 	private SQLTipoUsuario sqlTipoUsuario;
 	private SQLUsuario sqlUsuario;
 	private SQLVenta sqlVenta;
-	private SQLCarritoCompra sqlCarritoCompra;
 	
 	
 	/* ****************************************************************
@@ -71,6 +72,8 @@ public class PersistenciaSuperAndes {
 		tablas = new LinkedList<String> ();
 		tablas.add ("SuperAndes_sequence");
 		tablas.add ("BODEGA");
+		tablas.add ("CARRITO_COMPRA");
+		tablas.add ("CARRITO_COMPRA_PRODUCTO");
 		tablas.add ("ESTANTE");
 		tablas.add ("FACTURA_ELECTRONICA");
 		tablas.add ("ORDEN_PEDIDO");
@@ -85,7 +88,6 @@ public class PersistenciaSuperAndes {
 		tablas.add ("TIPO_USUARIO");
 		tablas.add ("USUARIO");
 		tablas.add ("VENTA");
-		tablas.add ("VENTA_PRODUCTO");
 	}
 
 	private PersistenciaSuperAndes (JsonObject tableConfig) {
@@ -138,6 +140,8 @@ public class PersistenciaSuperAndes {
 	private void crearClasesSQL () {
 				
 		sqlBodega = new SQLBodega(this);
+		sqlCarritoCompra = new SQLCarritoCompra(this);	
+		sqlCarritoCompraProducto = new SQLCarritoCompraProducto(this);	
 		sqlEstante = new SQLEstante(this);
 		sqlFacturaElectronica = new SQLFacturaElectronica(this);
 		sqlOrdenPedido = new SQLOrdenPedido(this);
@@ -153,27 +157,27 @@ public class PersistenciaSuperAndes {
 		sqlUsuario = new SQLUsuario(this);
 		sqlUtil = new SQLUtil(this);
 		sqlVenta = new SQLVenta(this);
-		sqlCarritoCompra = new SQLCarritoCompra(this);	
 		
 	}
 
 	public String darSeqSuperAndes() { return tablas.get(0); }
 	public String darTablaBodega() { return tablas.get(1); }
-	public String darTablaEstante()	{ return tablas.get(2); }
-	public String darTablaFacturaElectronica() { return tablas.get(3); }
-	public String darTablaOrdenPedido()	{ return tablas.get(4);	}
-	public String darTablaOrdenPedidoProducto()	{ return tablas.get(5);	}
-	public String darTablaProducto() { return tablas.get(6); }
-	public String darTablaPromocion() { return tablas.get(7); }
-	public String darTablaPromocionProducto() { return tablas.get(8); }
-	public String darTablaProveedor() { return tablas.get(9); }
-	public String darTablaSucursal() { return tablas.get(10); }
-	public String darTablaSupermercado() { return tablas.get(11); }
-	public String darTablaTipoProducto() { return tablas.get(12); }
-	public String darTablaTipoUsuario() { return tablas.get(13); }
-	public String darTablaUsuario() { return tablas.get(14); }
-	public String darTablaVenta() { return tablas.get(15); }
-	public String darTablaCarritoCompra() { return tablas.get(16); }
+	public String darTablaCarritoCompra() { return tablas.get(2); }
+	public String darTablaCarritoCompraProducto() { return tablas.get(3); }
+	public String darTablaEstante()	{ return tablas.get(4); }
+	public String darTablaFacturaElectronica() { return tablas.get(5); }
+	public String darTablaOrdenPedido()	{ return tablas.get(6);	}
+	public String darTablaOrdenPedidoProducto()	{ return tablas.get(7);	}
+	public String darTablaProducto() { return tablas.get(8); }
+	public String darTablaPromocion() { return tablas.get(9); }
+	public String darTablaPromocionProducto() { return tablas.get(10); }
+	public String darTablaProveedor() { return tablas.get(11); }
+	public String darTablaSucursal() { return tablas.get(12); }
+	public String darTablaSupermercado() { return tablas.get(13); }
+	public String darTablaTipoProducto() { return tablas.get(14); }
+	public String darTablaTipoUsuario() { return tablas.get(15); }
+	public String darTablaUsuario() { return tablas.get(16); }
+	public String darTablaVenta() { return tablas.get(17); }
 
 	private long nextval () {
 		
@@ -1327,19 +1331,19 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las Ventas
 	 *****************************************************************/
 
-	public Venta adicionarVenta (Date fVenta, int pTotal, long id_Sucursal, long id_Cajero) {
+	public Venta adicionarVenta (String fVenta, int pTotal, long id_Sucursal, long id_Cajero, long id_Cliente, long id_CarritoCompra) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try {
             tx.begin();
             long id = nextval ();
-            long tuplasInsertadas = sqlVenta.adicionarVenta(pm, id, fVenta, pTotal, id_Sucursal, id_Cajero);
+            long tuplasInsertadas = sqlVenta.adicionarVenta(pm, id, fVenta, pTotal, id_Sucursal, id_Cajero, id_Cliente, id_CarritoCompra);
             tx.commit();
             
             log.trace ("Inserción de Venta: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Venta (id, fVenta, pTotal, id_Sucursal, id_Cajero);
+            return new Venta (id, fVenta, pTotal, id_Sucursal, id_Cajero, id_Cliente, id_CarritoCompra);
         }
         catch (Exception e) {
         	
@@ -1393,21 +1397,21 @@ public class PersistenciaSuperAndes {
 	
 	
 	/* ****************************************************************
-	 * 			Métodos para manejar las CarritoCompra
+	 * 			Métodos para manejar las CarritoCompraProducto
 	 *****************************************************************/
 
-	public CarritoCompra adicionarCarritoCompra (long id_Venta, long id_Producto, int pVentaH, int cantidad) {
+	public CarritoCompraProducto adicionarCarritoCompraProducto (long id_CarritoCompra, long id_Producto, int pVentaH, int cantidad) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try {
             tx.begin();
-            long tuplasInsertadas = sqlCarritoCompra.adicionarCarritoCompra(pm, id_Venta, id_Producto, pVentaH, cantidad);
+            long tuplasInsertadas = sqlCarritoCompraProducto.adicionarCarritoCompraProducto(pm, id_CarritoCompra, id_Producto, pVentaH, cantidad);
             tx.commit();
             
-            log.trace ("Inserción de VentaProducto: " + id_Venta + id_Producto + ": " + tuplasInsertadas + " tuplas insertadas");
+            log.trace ("Inserción de CarritoCompraProducto: " + id_CarritoCompra + id_Producto + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new CarritoCompra (id_Venta, id_Producto, pVentaH, cantidad);
+            return new CarritoCompraProducto (id_CarritoCompra, id_Producto, pVentaH, cantidad);
         }
         catch (Exception e) {
         	
@@ -1424,13 +1428,51 @@ public class PersistenciaSuperAndes {
         }
 	}
 
-	public long eliminarCarritoCompraPorIdVenta (long id_Venta) {
+	public List<CarritoCompraProducto> darCarritosComprasProductos () {
+		
+		return sqlCarritoCompraProducto.darCarritosComprasProductos (pmf.getPersistenceManager());
+	}
+	
+	
+	/* ****************************************************************
+	 * 			Métodos para manejar las CarritoCompra
+	 *****************************************************************/
+
+	public CarritoCompra adicionarCarritoCompra (long id, long id_Cliente, String fCarrito, String estado) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try {
             tx.begin();
-            long resp = sqlCarritoCompra.eliminarCarritoCompraPorIdVenta(pm, id_Venta);
+            long tuplasInsertadas = sqlCarritoCompra.adicionarCarritoCompra(pm, id, id_Cliente, fCarrito, estado);
+            tx.commit();
+            
+            log.trace ("Inserción de CarritoCompraProducto: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new CarritoCompra (id, id_Cliente, fCarrito, estado);
+        }
+        catch (Exception e) {
+        	
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally {
+        	
+            if (tx.isActive()) {
+            	
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+	public long eliminarCarritoCompraPorId (long id) {
+		
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try {
+            tx.begin();
+            long resp = sqlCarritoCompra.eliminarCarritoCompraPorId(pm, id);
             tx.commit();
             return resp;
         }
@@ -1449,9 +1491,9 @@ public class PersistenciaSuperAndes {
         }
 	}
 	
-	public CarritoCompra darCarritoCompraPorIdVenta (long id_Venta) {
+	public CarritoCompra darCarritoCompraPorId (long id) {
 		
-		return sqlCarritoCompra.darCarritoCompraPorIdVenta (pmf.getPersistenceManager(), id_Venta);
+		return sqlCarritoCompra.darCarritoCompraPorId (pmf.getPersistenceManager(), id);
 	}
 
 	public List<CarritoCompra> darCarritosCompras () {

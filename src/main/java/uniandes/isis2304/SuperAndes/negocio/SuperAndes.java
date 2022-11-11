@@ -1,6 +1,5 @@
 package uniandes.isis2304.SuperAndes.negocio;
 
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -895,10 +894,10 @@ public List<Object> darNombreUsuarioConDocumentoIdTipoUsuario (long nDocumento, 
 	 * 			Métodos para manejar las Ventas
 	 *****************************************************************/
 
-	public Venta adicionarVenta (Date fVenta, int pTotal, long id_Sucursal, long id_Cajero) {
+	public Venta adicionarVenta (String fVenta, int pTotal, long id_Sucursal, long id_Cajero, long id_Cliente, long id_CarritoCompra) {
 		
-		log.info ("Adicionando Venta: " + fVenta + ", " + pTotal + ", " + id_Sucursal + ", "  + id_Cajero);
-		Venta venta = pp.adicionarVenta (fVenta, pTotal, id_Sucursal, id_Cajero);
+		log.info ("Adicionando Venta: " + fVenta + ", " + pTotal + ", " + id_Sucursal + ", "  + id_Cajero + ", "  + id_Cliente + ", "  + id_CarritoCompra);
+		Venta venta = pp.adicionarVenta (fVenta, pTotal, id_Sucursal, id_Cajero, id_Cliente, id_CarritoCompra);
         log.info ("Adicionando Venta: " + venta);
         return venta;
 	}
@@ -941,53 +940,85 @@ public List<Object> darNombreUsuarioConDocumentoIdTipoUsuario (long nDocumento, 
 
 	
 	/* ****************************************************************
-	 * 			Métodos para manejar las Ventas de Productos
+	 * 			Métodos para manejar las Carritos de Compra
 	 *****************************************************************/
 
-	public CarritoCompra adicionarVentaProducto (long id_Venta, long id_Producto, int pVentaH, int cantidad) {
+	public CarritoCompra adicionarCarritoCompra (long id, long id_Cliente, String fCarrito, String estado) {
 		
-		log.info ("Adicionando Venta de Producto: " + id_Venta + ", " + id_Producto + ", " + pVentaH + ", "  + cantidad);
-		CarritoCompra ventaProducto = pp.adicionarCarritoCompra (id_Venta, id_Producto, pVentaH, cantidad);
-        log.info ("Adicionando Venta de Producto: " + ventaProducto);
-        return ventaProducto;
+		log.info ("Adicionando Carrito de Compra: " + id + ", " + id_Cliente + ", " + fCarrito + ", "  + estado);
+		CarritoCompra carritoCompra = pp.adicionarCarritoCompra (id, id_Cliente, fCarrito, estado);
+        log.info ("Adicionando Carrito de Compra: " + carritoCompra);
+        return carritoCompra;
 	}
 
-	public long eliminarVentaProductoPorIdVenta (long id_Venta) {
+	public long eliminarCarritoCompraPorId (long id) {
 		
-        log.info ("Eliminando Venta de Producto por id: " + id_Venta);
-        long resp = pp.eliminarCarritoCompraPorIdVenta (id_Venta);
-        log.info ("Eliminando Venta de Producto por id: " + resp + " tuplas eliminadas");
+        log.info ("Eliminando Carrito de Compra por id: " + id);
+        long resp = pp.eliminarCarritoCompraPorId (id);
+        log.info ("Eliminando Carrito de Compra por id: " + resp + " tuplas eliminadas");
         return resp;
 	}
 	
-	public CarritoCompra darVentaProductoPorIdVenta (long id_Venta)
+	public CarritoCompra darCarritoCompraPorId (long id)
 	{
-        log.info ("Dar información de una Venta de Producto por id: " + id_Venta);
-        CarritoCompra ventaProducto = pp.darCarritoCompraPorIdVenta (id_Venta);
-        log.info ("Buscando VentaProducto por Id: " + ventaProducto != null ? ventaProducto : "NO EXISTE");
-        return ventaProducto;
+        log.info ("Dar información de un Carrito de Compra por id: " + id);
+        CarritoCompra carritoCompra = pp.darCarritoCompraPorId (id);
+        log.info ("Buscando Carrito de Compra por Id: " + carritoCompra != null ? carritoCompra : "NO EXISTE");
+        return carritoCompra;
 	}
 
-	public List<CarritoCompra> darVentasProductos () {
+	public List<CarritoCompra> darCarritosCompras () {
 		
-        log.info ("Consultando Ventas de Productos");
-        List<CarritoCompra> ventaProducto = pp.darCarritosCompras ();	
-        log.info ("Consultando Ventas de Productos: " + ventaProducto.size() + " Ventas de Productos existentes");
-        return ventaProducto;
+        log.info ("Consultando Carrito de Compra:");
+        List<CarritoCompra> carritoCompra = pp.darCarritosCompras ();	
+        log.info ("Consultando Carrito de Compra: " + carritoCompra.size() + " Carritos de Compras existentes");
+        return carritoCompra;
 	}
 
 	public List<VOCarritoCompra> darVOCarritosCompras () {
 		
 		log.info ("Generando los VO de los Carritos de Compra");       
         List<VOCarritoCompra> voCarritosCompras = new LinkedList<VOCarritoCompra> ();
-        for (CarritoCompra ventp : pp.darCarritosCompras ())
+        for (CarritoCompra carritoc : pp.darCarritosCompras ())
         {
-        	voCarritosCompras.add (ventp);
+        	voCarritosCompras.add (carritoc);
         }
         log.info ("Generando los VO de los Carritos de Compra: " + voCarritosCompras.size() + " existentes");
         return voCarritosCompras;
 	}
 
+	
+	/* ****************************************************************
+	 * 			Métodos para manejar las Carritos de Compra Producto
+	 *****************************************************************/
+
+	public CarritoCompraProducto adicionarCarritoCompraProducto (long id_CarritoCompra, long id_Producto, int pVentaH, int cantidad) {
+		
+		log.info ("Adicionando Carrito de Compra Producto: " + id_CarritoCompra + ", " + id_Producto + ", " + pVentaH + ", "  + cantidad);
+		CarritoCompraProducto carritoCompraProducto = pp.adicionarCarritoCompraProducto (id_CarritoCompra, id_Producto, pVentaH, cantidad);
+        log.info ("Adicionando Carrito de Compra Producto: " + carritoCompraProducto);
+        return carritoCompraProducto;
+	}
+
+	public List<CarritoCompraProducto> darCarritosComprasProductos () {
+		
+        log.info ("Consultando Carrito de Compra Producto:");
+        List<CarritoCompraProducto> carritoCompraProducto = pp.darCarritosComprasProductos ();	
+        log.info ("Consultando Carrito de Compra Producto: " + carritoCompraProducto.size() + " Carritos de Compras existentes");
+        return carritoCompraProducto;
+	}
+
+	public List<VOCarritoCompraProducto> darVOCarritosComprasProductos () {
+		
+		log.info ("Generando los VO de los Carritos de Compra Producto");       
+        List<VOCarritoCompraProducto> voCarritosComprasProductos = new LinkedList<VOCarritoCompraProducto> ();
+        for (CarritoCompraProducto carritocp : pp.darCarritosComprasProductos ())
+        {
+        	voCarritosComprasProductos.add (carritocp);
+        }
+        log.info ("Generando los VO de los Carritos de Compra Producto: " + voCarritosComprasProductos.size() + " existentes");
+        return voCarritosComprasProductos;
+	}
 	
 	/* ****************************************************************
 	 * 			Métodos para administración

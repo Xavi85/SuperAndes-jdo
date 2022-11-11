@@ -2,13 +2,13 @@ package uniandes.isis2304.SuperAndes.negocio;
 
 public interface VOCarritoCompra {
 
-	public long getId_Venta();
+	public long getId();
 
-	public long getId_Producto();
+	public long getId_Cliente();
 
-	public int getpVentaH();
+	public String getfCarrito();
 
-	public int getCantidad();
+	public String getEstado();
 
 	@Override
 	public String toString();

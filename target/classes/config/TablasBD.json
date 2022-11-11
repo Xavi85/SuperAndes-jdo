@@ -5,6 +5,8 @@
 	[
 		"SuperAndes_sequence",
 		"BODEGA",
+		"CARRITO_COMPRA",
+		"CARRITO_COMPRA_PRODUCTO",
 		"ESTANTE",
 		"FACTURA_ELECTRONICA",
 		"ORDEN_PEDIDO",
@@ -18,7 +20,6 @@
 		"TIPO_PRODUCTO",
 		"TIPO_USUARIO",
 		"USUARIO",
-		"VENTA",
-		"CARRITO_COMPRA"
+		"VENTA"
 	]
 }

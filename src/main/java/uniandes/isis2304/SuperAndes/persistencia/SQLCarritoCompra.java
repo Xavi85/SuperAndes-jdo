@@ -18,25 +18,25 @@ class SQLCarritoCompra {
 		this.pp = pp;
 	}
 
-	public long adicionarCarritoCompra (PersistenceManager pm, long id_Venta, long id_Producto, int pVentaH, int cantidad) 
+	public long adicionarCarritoCompra (PersistenceManager pm, long id, long id_Cliente, String fCarrito, String estado) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaCarritoCompra () + "(id_Venta, id_Producto, pVentaH, cantidad) values (?, ?, ?, ?)");
-        q.setParameters(id_Venta, id_Producto, pVentaH, cantidad);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaCarritoCompra () + "(id, id_Cliente, fCarrito, estado) values (?, ?, ?, ?)");
+        q.setParameters(id, id_Cliente, fCarrito, estado);
         return (long) q.executeUnique();
 	}
 
-	public long eliminarCarritoCompraPorIdVenta (PersistenceManager pm, long id_Venta)
+	public long eliminarCarritoCompraPorId (PersistenceManager pm, long id)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaCarritoCompra () + " WHERE id_Venta = ?");
-        q.setParameters(id_Venta);
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaCarritoCompra () + " WHERE id = ?");
+        q.setParameters(id);
         return (long) q.executeUnique();
 	}
 
-	public CarritoCompra darCarritoCompraPorIdVenta (PersistenceManager pm, long id_Venta) 
+	public CarritoCompra darCarritoCompraPorId (PersistenceManager pm, long id) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaCarritoCompra () + " WHERE id_Venta = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaCarritoCompra () + " WHERE id = ?");
 		q.setResultClass(CarritoCompra.class);
-		q.setParameters(id_Venta);
+		q.setParameters(id);
 		return (CarritoCompra) q.executeUnique();
 	}
 

@@ -1,31 +1,34 @@
 package uniandes.isis2304.SuperAndes.negocio;
 
-import java.util.Date;
-
 public class Venta implements VOVenta {
 	
 	private long id;
-	Date fVenta;
+	private String fVenta;
 	private int pTotal;
 	private long id_Sucursal;
 	private long id_Cajero;
+	private long id_Cliente;
+	private long id_CarritoCompra;
 	
 	public Venta() {
 
 		this.id = 0;
-		this.fVenta = new Date() ;
+		this.fVenta = "";
 		this.pTotal = 0;
 		this.id_Sucursal = 0;
 		this.id_Cajero = 0;
 	}
-	
-	public Venta(long id, Date fVenta, int pTotal, long id_Sucursal, long id_Cajero) {
 
+	public Venta(long id, String fVenta, int pTotal, long id_Sucursal, long id_Cajero, long id_Cliente,
+			long id_CarritoCompra) {
+		super();
 		this.id = id;
 		this.fVenta = fVenta;
 		this.pTotal = pTotal;
 		this.id_Sucursal = id_Sucursal;
 		this.id_Cajero = id_Cajero;
+		this.id_Cliente = id_Cliente;
+		this.id_CarritoCompra = id_CarritoCompra;
 	}
 
 	public long getId() {
@@ -36,11 +39,11 @@ public class Venta implements VOVenta {
 		this.id = id;
 	}
 
-	public Date getfVenta() {
+	public String getfVenta() {
 		return fVenta;
 	}
 
-	public void setfVenta(Date fVenta) {
+	public void setfVenta(String fVenta) {
 		this.fVenta = fVenta;
 	}
 
@@ -68,6 +71,22 @@ public class Venta implements VOVenta {
 		this.id_Cajero = id_Cajero;
 	}
 
+	public long getId_Cliente() {
+		return id_Cliente;
+	}
+
+	public void setId_Cliente(long id_Cliente) {
+		this.id_Cliente = id_Cliente;
+	}
+
+	public long getId_CarritoCompra() {
+		return id_CarritoCompra;
+	}
+
+	public void setId_CarritoCompra(long id_CarritoCompra) {
+		this.id_CarritoCompra = id_CarritoCompra;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -81,6 +100,10 @@ public class Venta implements VOVenta {
 		builder.append(id_Sucursal);
 		builder.append(", id_Cajero=");
 		builder.append(id_Cajero);
+		builder.append(", id_Cliente=");
+		builder.append(id_Cliente);
+		builder.append(", id_CarritoCompra=");
+		builder.append(id_CarritoCompra);
 		builder.append("]");
 		return builder.toString();
 	}
