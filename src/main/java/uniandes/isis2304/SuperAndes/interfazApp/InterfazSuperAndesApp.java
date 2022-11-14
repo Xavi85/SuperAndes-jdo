@@ -15,6 +15,7 @@ import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,6 +38,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import uniandes.isis2304.SuperAndes.negocio.CarritoCompra;
 import uniandes.isis2304.SuperAndes.negocio.Proveedor;
 import uniandes.isis2304.SuperAndes.negocio.SuperAndes;
 import uniandes.isis2304.SuperAndes.negocio.VOBodega;
@@ -53,6 +55,7 @@ import uniandes.isis2304.SuperAndes.negocio.VOSucursal;
 import uniandes.isis2304.SuperAndes.negocio.VOTipoProducto;
 import uniandes.isis2304.SuperAndes.negocio.VOTipoUsuario;
 import uniandes.isis2304.SuperAndes.negocio.VOUsuario;
+import uniandes.isis2304.SuperAndes.negocio.VOVenta;
 
 @SuppressWarnings("serial")
 public class InterfazSuperAndesApp extends JFrame implements ActionListener {
@@ -65,7 +68,6 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 	private static final String CONFIG_INTERFAZ = "./src/main/resources/config/interfaceConfigApp";
 	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD.json";
 	
-	@SuppressWarnings("unused")
 	private static long id_CarritoCompra;
 	private static long nDocumento;
 	
@@ -84,6 +86,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
     private SuperAndes superAndes;
     private boolean permitirIngreso;
     private long id_Sucursal_U;
+    private long id_Cliente_U;
     private JsonObject guiConfig;
     private PanelDatos panelDatos;
     private JMenuBar menuBar;
@@ -1142,12 +1145,13 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 	 * 			CRUD de CarritoCompra
 	 *****************************************************************/
 	
-	public void solicitarCarrito( )
+	public void solicitarCarrito()
     {
 		try 
     	{
     		Long id_Sucursal = null;
     		long id_Cliente = Long.parseLong(superAndes.darIdUsuarioPorNDocumento(nDocumento).get(0).toString());
+    		id_Cliente_U = id_Cliente;
     		String fCarrito = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
     			
 			List sucursales = superAndes.darNombreSucursales();
@@ -1158,6 +1162,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			JComboBox opcionesSucursales = new JComboBox(opcSucursales);
 			JOptionPane.showMessageDialog(null, opcionesSucursales, "Seleccione la Sucursales", JOptionPane.QUESTION_MESSAGE);
 			id_Sucursal = superAndes.darIdPorSucursal(opcSucursales[opcionesSucursales.getSelectedIndex()]).getId();
+			id_Sucursal_U = id_Sucursal;
 
 			if (!Objects.isNull(nDocumento) && !Objects.isNull(id_Sucursal) && fCarrito != null) {
     			
@@ -1186,66 +1191,222 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 	
 	public void adicionarAlCarrito( )
     {
-		int cantProd = 0;
-		System.out.println(id_CarritoCompra);
+		if(!(id_CarritoCompra == 0))
+		{
+			int cantProd = 0;
+			try 
+			{
+				List nombreProductos = superAndes.darNombreProductos();
+				String[] opcNombreProdutos = new String[nombreProductos.size()];
+				for(int i = 0; i < nombreProductos.size(); i++) {
+					opcNombreProdutos[i] = nombreProductos.get(i).toString();
+				}
+				JComboBox opcionesNombreProdutos = new JComboBox(opcNombreProdutos);
+				JOptionPane.showMessageDialog(null, opcionesNombreProdutos, "Seleccione un Producto: ", JOptionPane.QUESTION_MESSAGE);		
+				String aux_idLote = superAndes.darProductoPorNombre(opcionesNombreProdutos.getSelectedItem().toString()).toString();
+				String idLote = aux_idLote.substring(1, aux_idLote.length() - 1);
+				String aux_pVenta = superAndes.darPrecioPorId(Long.parseLong(idLote)).toString();
+				String pVenta = aux_pVenta.substring(1, aux_pVenta.length() - 1);
+				cantProd = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad a llevar", JOptionPane.QUESTION_MESSAGE));
+				
+				if (idLote != null && pVenta != null && !Objects.isNull(cantProd)) {
+					
+		    		VOCarritoCompraProducto tb1 = superAndes.adicionarCarritoCompraProducto(id_CarritoCompra, Long.parseLong(idLote), Integer.parseInt(pVenta), cantProd);
+		    		if (tb1 == null)
+		    		{
+		    			throw new Exception ("No se pudo adicionar producto al Carrito de Compra");
+		    		}
+		    		superAndes.actualizarStockEstante(-cantProd, Long.parseLong(idLote));
+					prod.add(idLote);
+					cant.add(cantProd);
+					pVentaH.add(Integer.parseInt(pVenta));
+		    		String resultado = "En adicionar producto al Carrito de Compra\n\n";
+		    		resultado += "Producto adicinado exitosamente y stock del estante actualizado: " + tb1;
+					resultado += "\n Operación terminada";
+					panelDatos.actualizarInterfaz(resultado);
+				}
+				else
+				{
+					panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+				}
+			}
+			catch (Exception e)
+			{
+				String resultado = generarMensajeError(e);
+				panelDatos.actualizarInterfaz(resultado);
+			}
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "No se ha solicitado ningun Carrito", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
 		
-		try 
-    	{
-    		List nombreProductos = superAndes.darNombreProductos();
-    		String[] opcNombreProdutos = new String[nombreProductos.size()];
-    		for(int i = 0; i < nombreProductos.size(); i++) {
-    			opcNombreProdutos[i] = nombreProductos.get(i).toString();
-    		}
-			JComboBox opcionesNombreProdutos = new JComboBox(opcNombreProdutos);
-			JOptionPane.showMessageDialog(null, opcionesNombreProdutos, "Seleccione un Producto: ", JOptionPane.QUESTION_MESSAGE);
+	public void devolverDelCarrito( )
+	{
+		if(!(id_CarritoCompra == 0))
+		{
+			if(!prod.isEmpty())
+			{
+				try 
+				{
+					String[] opcNombreProdutos = new String[prod.size()];
+					for(int i = 0; i < prod.size(); i++) {
+						String aux = superAndes.darNombrePorId(Long.parseLong(prod.get(i))).toString();    			
+						opcNombreProdutos[i] = aux.substring(1, aux.length() - 1);
+					}
+					JComboBox opcionesNombreProdutos = new JComboBox(opcNombreProdutos);
+					JOptionPane.showMessageDialog(null, opcionesNombreProdutos, "Seleccione Producto a Devolver: ", JOptionPane.QUESTION_MESSAGE);
+					
+					if (!Objects.isNull(id_CarritoCompra) && !Objects.isNull(prod.get(opcionesNombreProdutos.getSelectedIndex()))) {
 			
-			String aux_idLote = superAndes.darProductoPorNombre(opcionesNombreProdutos.getSelectedItem().toString()).toString();
-			String idLote = aux_idLote.substring(1, aux_idLote.length() - 1);
-			System.out.println(idLote);
-			
-			String aux_pVenta = superAndes.darPrecioPorId(Long.parseLong(idLote)).toString();
-			String pVenta = aux_pVenta.substring(1, aux_pVenta.length() - 1);
-			System.out.println(pVenta);
-			
-			cantProd = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad de Productos que incluye el Paquete", "Paquete de Productos", JOptionPane.QUESTION_MESSAGE));
-			System.out.println(cantProd);
-			
-			if (idLote != null && pVenta != null && !Objects.isNull(cantProd)) {
-    			
-        		VOCarritoCompraProducto tb1 = superAndes.adicionarCarritoCompraProducto(id_CarritoCompra, Long.parseLong(idLote), Integer.parseInt(pVenta), cantProd);
-        		if (tb1 == null)
-        		{
-        			throw new Exception ("No se pudo adicionar producto al Carrito de Compra");
-        		}
-        		superAndes.actualizarStockEstante(-cantProd, Long.parseLong(idLote));
-        		String resultado = "En adicionar producto al Carrito de Compra\n\n";
-        		resultado += "Producto adicinado exitosamente y stock del estante actualizado: " + tb1;
+						long tbEliminados = superAndes.eliminarCarritoCompraProductoPorIds(id_CarritoCompra, Long.parseLong(prod.get(opcionesNombreProdutos.getSelectedIndex())));
+						String resultado = "En eliminar Producto del Carrito\n\n";
+						resultado += tbEliminados + " Producto eliminado\n";
+						resultado += "\n Operación terminada";
+						panelDatos.actualizarInterfaz(resultado);
+						superAndes.actualizarStockEstante(cant.get(opcionesNombreProdutos.getSelectedIndex()), Long.parseLong(prod.get(opcionesNombreProdutos.getSelectedIndex())));
+						prod.remove(opcionesNombreProdutos.getSelectedIndex());
+						cant.remove(opcionesNombreProdutos.getSelectedIndex());
+						pVentaH.remove(opcionesNombreProdutos.getSelectedIndex());
+					}
+					else
+					{
+						panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+					}			
+					
+				} catch (Exception e)
+				{
+					String resultado = generarMensajeError(e);
+					panelDatos.actualizarInterfaz(resultado);
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "El Carrito esta vacio", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "No se ha solicitado ningun Carrito", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public void pagarCompra( )
+	{
+		if(!(id_CarritoCompra == 0))
+		{
+			if(!prod.isEmpty())
+			{
+				try 
+		    	{
+		    		int totalCompra = 0;
+		    		long tbEliminadosS = 0;
+		    		
+		    		for(int i = 0; i < prod.size(); i++) {
+		    			totalCompra =+ (pVentaH.get(i)*cant.get(i));
+		    		}
+		    		
+		    		int resultPagar = JOptionPane.showConfirmDialog(this, "El Total de la Compra es: " + totalCompra, "Pagar Compra?", JOptionPane.YES_NO_OPTION);
+		    		if(resultPagar == JOptionPane.YES_OPTION) {
+		    			
+		        		for(int i = 0; i < prod.size(); i++) {
+		        			tbEliminadosS =+ superAndes.actualizarStockTotal(-cant.get(i), Long.parseLong(prod.get(i)));
+		        		}
+		        		
+		        		long tbActualizadosC = superAndes.actualizarEstadoCarrito(id_CarritoCompra, "Ejecutado");
+		        		
+		        		// Valor aleatorio para escojer el cajero (entre M y N, ambos incluidos)
+		        		int M = 0;
+		        		int N = superAndes.darCajerosPorSucursal(id_Sucursal_U).size()-1;
+		        		Double index = Math.floor(Math.random()*(N-M+1)+M);
+		        		System.out.println(index);
+		        		List<Object> pruebaList = superAndes.darCajerosPorSucursal(id_Sucursal_U);
+		        		String id_Cajero = pruebaList.get(index.intValue()).toString();
+		        		System.out.println(id_Cajero);
+		        		String fVenta = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+		        		
+		        		System.out.println(fVenta);
+		        		System.out.println(totalCompra);
+		        		System.out.println(id_Sucursal_U);
+		        		System.out.println(id_Cajero);
+		        		System.out.println(id_Cliente_U);
+		        		System.out.println(id_CarritoCompra);
+		        		
+		        		VOVenta tb1 = superAndes.adicionarVenta(fVenta, totalCompra, id_Sucursal_U, Long.parseLong(id_Cajero), id_Cliente_U, id_CarritoCompra);
+		        		if (tb1 == null)
+		        		{
+		        			throw new Exception ("No se pudo venta");
+		        		}
+		
+						String resultado = "Actualizando Stock Total y estado del Carrito:\n\n";
+		    			resultado += tbEliminadosS + " Stocks actualizados\n";
+		    			resultado += tbActualizadosC + " Estado del Carrito actualizado\n\n";
+		    			resultado += "Adicionando Venta:\n\n";
+		    			resultado += "Venta adicinada exitosamente: " + tb1;
+		    			resultado += "\n\n Operación terminada";
+		    			panelDatos.actualizarInterfaz(resultado);
+		    		}
+		    		else
+		    		{
+		    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+		    		}			
+		    	} catch (Exception e)
+				{
+					String resultado = generarMensajeError(e);
+					panelDatos.actualizarInterfaz(resultado);
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "El Carrito esta vacio", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "No se ha solicitado ningun Carrito", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public void abandonarCarrito( )
+	{
+		if(!(id_CarritoCompra == 0))
+		{
+			try
+			{
+				long tbActualizados = superAndes.actualizarEstadoCarrito(id_CarritoCompra, "Abandonado");
+				String resultado = "Actualizando estado del Carrito:\n\n";
+    			resultado += tbActualizados + " Estado del Carrito actualizado\n";
     			resultado += "\n Operación terminada";
     			panelDatos.actualizarInterfaz(resultado);
-    		}
-    		else
-    		{
-    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
-    		}
-			/*
-			prod.add(idLote);
-			cant.add(cantProd);
-			pVentaH.add(Integer.parseInt(pVenta));
-			
-			for(int i = 0; i < prod.size(); i++)
-			{
-				System.out.println(prod.get(i) + ", " + cant.get(i) + ", " + pVentaH.get(i));
+				
+			} catch (Exception e) {
+				String resultado = generarMensajeError(e);
+				panelDatos.actualizarInterfaz(resultado);
 			}
-			*/
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "No se ha solicitado ningun Carrito", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public void recolectarCarritosAbandonados( )
+	{
+		try	{
+			List<CarritoCompra> carritos = superAndes.darCarritosCompras();
+			for(int i = 0; i < carritos.size(); i++) {
+				if(carritos.get(i).getId_Sucursal() == id_Sucursal_U) {
+					
+				}
+			
+				
+			}
+				
 
-    	}
-		catch (Exception e)
-		{
+			
+			
+			
+		} catch (Exception e) {
 			String resultado = generarMensajeError(e);
 			panelDatos.actualizarInterfaz(resultado);
 		}
-    }
-
+		
+	}
 
     /* ****************************************************************
 	 * 			Requerimientos funcionales de consulta

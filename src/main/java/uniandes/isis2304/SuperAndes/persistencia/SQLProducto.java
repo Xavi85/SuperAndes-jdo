@@ -88,6 +88,13 @@ class SQLProducto {
 		q.setParameters(idLote);
 		return q.executeList();
 	}
+	
+	public List<Object> darNombrePorId (PersistenceManager pm, long idLote) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT nombre FROM " + pp.darTablaProducto () + " WHERE idLote = ?");
+		q.setParameters(idLote);
+		return q.executeList();
+	}
 
 	public List<Producto> darProductos (PersistenceManager pm)
 	{

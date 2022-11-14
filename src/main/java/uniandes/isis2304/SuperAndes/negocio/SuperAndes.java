@@ -425,6 +425,14 @@ public class SuperAndes {
         return producto;
 	}
 	
+	public List<Object> darNombrePorId (long idLote)
+	{
+        log.info ("Dar Nombre de un Producto por id: " + idLote);
+        List<Object> producto = pp.darNombrePorId (idLote);
+        log.info ("Buscando Nombre de un Producto por id: " + producto != null ? producto : "NO EXISTE");
+        return producto;
+	}
+	
 	public List<VOProducto> darVOProductos () {
 		
 		log.info ("Generando los VO de los Productos");       
@@ -918,6 +926,14 @@ public class SuperAndes {
         log.info ("Consultando Nombres de los Usuarios: " + nombreUsuarios.size() + " Nombre Usuarios existentes");
         return nombreUsuarios;
 	}
+	
+	public List<Object> darCajerosPorSucursal (long id_Sucursal) {
+		
+        log.info ("Consultando Cajeros de Sucursal id: " + id_Sucursal);
+        List<Object> cajeros = pp.darCajerosPorSucursal (id_Sucursal);	
+        log.info ("Consultando Cajeros de Sucursal: " + cajeros.size() + " Cajeros existentes");
+        return cajeros;
+	}
 
 	
 	/* ****************************************************************
@@ -1016,6 +1032,13 @@ public class SuperAndes {
         log.info ("Generando los VO de los Carritos de Compra: " + voCarritosCompras.size() + " existentes");
         return voCarritosCompras;
 	}
+	
+	public long actualizarEstadoCarrito (long id, String estado)
+	{
+        log.info ("Actualizando estado de Carrito: " + id);
+        long cambios = pp.actualizarEstadoCarrito(id, estado);
+        return cambios;
+	}
 
 	
 	/* ****************************************************************
@@ -1048,6 +1071,14 @@ public class SuperAndes {
         }
         log.info ("Generando los VO de los Carritos de Compra Producto: " + voCarritosComprasProductos.size() + " existentes");
         return voCarritosComprasProductos;
+	}
+	
+	public long eliminarCarritoCompraProductoPorIds (long id_CarritoCompra, long id_Producto)
+	{
+		log.info ("Eliminando Producto del Carrito de Compra por id: " + id_Producto);
+        long resp = pp.eliminarCarritoCompraProductoPorIds (id_CarritoCompra, id_Producto);		
+        log.info ("\"Eliminando Producto del Carrito de Compra por id: " + resp + " tuplas eliminadas");
+        return resp;
 	}
 	
 	/* ****************************************************************

@@ -13,8 +13,20 @@
 					"event": "solicitarCarrito"
 				},
 				{
-					"label": "RF16 - Adicionar al Carrito",
+					"label": "RF16 - Adicionar Producto al Carrito",
 					"event": "adicionarAlCarrito"
+				},
+				{
+					"label": "RF17 - Devolver Producto del Carrito",
+					"event": "devolverDelCarrito"
+				},
+				{
+					"label": "RF18 - Pagar la Compra",
+					"event": "pagarCompra"
+				},
+				{
+					"label": "RF19 - Abandonar Carrito",
+					"event": "abandonarCarrito"
 				}
 			]
 		},

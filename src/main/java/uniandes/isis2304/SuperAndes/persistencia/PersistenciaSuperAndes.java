@@ -748,6 +748,11 @@ public class PersistenciaSuperAndes {
 		
 		return sqlProducto.darPrecioPorId (pmf.getPersistenceManager(), idLote);
 	}
+	
+	public List<Object> darNombrePorId (long idLote) {
+		
+		return sqlProducto.darNombrePorId (pmf.getPersistenceManager(), idLote);
+	}
 
 	public List<Producto> darProductos () {
 		
@@ -1388,6 +1393,11 @@ public class PersistenciaSuperAndes {
 		return sqlUsuario.darNombreUsuarioConDocumentoIdTipoUsuario (pmf.getPersistenceManager(), nDocumento, id_TipoUsuario);
 	}
 	
+	public List<Object> darCajerosPorSucursal (long id_Sucursal) {
+		
+		return sqlUsuario.darCajerosPorSucursal (pmf.getPersistenceManager(), id_Sucursal);
+	}
+	
 		
 	/* ****************************************************************
 	 * 			Métodos para manejar las Ventas
@@ -1495,6 +1505,32 @@ public class PersistenciaSuperAndes {
 		return sqlCarritoCompraProducto.darCarritosComprasProductos (pmf.getPersistenceManager());
 	}
 	
+	public long eliminarCarritoCompraProductoPorIds (long id_CarritoCompra, long id_Producto)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlCarritoCompraProducto.eliminarCarritoCompraProductoPorIds(pm, id_CarritoCompra, id_Producto);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
 	
 	/* ****************************************************************
 	 * 			Métodos para manejar las CarritoCompra
@@ -1562,6 +1598,32 @@ public class PersistenciaSuperAndes {
 	public List<CarritoCompra> darCarritosCompras () {
 		
 		return sqlCarritoCompra.darCarritosCompras (pmf.getPersistenceManager());
+	}
+	
+	public long actualizarEstadoCarrito (long id, String estado) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlCarritoCompra.actualizarEstadoCarrito(pm, id, estado);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
 	}
 	
 	/* ****************************************************************

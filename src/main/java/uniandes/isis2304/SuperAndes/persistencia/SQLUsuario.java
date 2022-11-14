@@ -84,4 +84,11 @@ class SQLUsuario {
 		q.setParameters(nDocumento, id_TipoUsuario);
 		return q.executeList();
 	}
+	
+	public List<Object> darCajerosPorSucursal (PersistenceManager pm, long id_Sucursal)
+	{
+		Query q = pm.newQuery(SQL, "SELECT id FROM " + pp.darTablaUsuario () + " WHERE id_Sucursal = ? AND id_TipoUsuario = 5");
+		q.setParameters(id_Sucursal);
+		return q.executeList();
+	}
 }

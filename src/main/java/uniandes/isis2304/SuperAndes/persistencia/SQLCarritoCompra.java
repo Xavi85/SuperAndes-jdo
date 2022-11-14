@@ -46,4 +46,11 @@ class SQLCarritoCompra {
 		q.setResultClass(CarritoCompra.class);
 		return (List<CarritoCompra>) q.executeList();
 	}
+	
+	public long actualizarEstadoCarrito (PersistenceManager pm, long id, String estado) 
+	{
+		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaCarritoCompra () + " SET estado = ? WHERE id = ?");
+	     q.setParameters(estado, id);
+	     return (long) q.executeUnique();            
+	}
 }

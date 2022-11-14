@@ -154,7 +154,7 @@ CREATE TABLE CARRITO_COMPRA(
 	CONSTRAINT PK_id_carritoCompra PRIMARY KEY (id),
     CONSTRAINT FK_carritoCompra_id_Cliente FOREIGN KEY(id_Cliente) REFERENCES USUARIO(id),
     CONSTRAINT FK_carritoCompra_id_Sucursal FOREIGN KEY(id_Sucursal) REFERENCES SUCURSAL(id),
-    CONSTRAINT CHECK_carritoCompra_estado CHECK(estado IN ('EnProceso', 'Abandonado', 'Ejecutado'))
+    CONSTRAINT CHECK_carritoCompra_estado CHECK(estado IN ('EnProceso', 'Abandonado', 'Ejecutado', 'Recolectado'))
 );
 --------------------------------------------------------------------------------
 -- Creacion tabla VENTA
@@ -274,7 +274,7 @@ COMMIT;
 INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (1, '101010', 'Cedula Extranjeria', 'Javier Serrano', 'serranor@gmail.com', 'Colombia', 'Bogotá', 'Carrera 7c #127A-46', null, 1, null);
 INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (2, '202020', 'Cedula Ciudadania', 'Alvaro Serrano', 'aserrano@grupoexito', 'Colombia', 'Bogotá', 'Carrera 8 #132-57', null, 2, null);
 INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (3, '303030', 'Cedula Extranjeria', 'Ana Varela', 'avarela@grupoexito', 'Colombia', 'Bogotá', 'Carrera 8 #132-57', null, 3, 2);
-INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (4, '404040', 'Cedula Ciudadania', 'Lindsay Pinto', 'lpinto@gmail.com', 'Colombia', 'Bogotá', 'Carrera 68F #66-10', null, 4, 2);
+INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (4, '404040', 'Cedula Ciudadania', 'Lindsay Pinto', 'lpinto@gmail.com', 'Colombia', 'Bogotá', 'Carrera 68F #66-10', null, 4, 4);
 INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (5, '505050', 'Cedula Ciudadania', 'Andres Arango', 'aarango@gmail.com', 'Colombia', 'Bogotá', 'Britalia', null, 5, 1);
 INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (6, '616161', 'Cedula Ciudadania', 'Victor Pinto', 'vpinto@gmail.com', 'Colombia', 'Bogotá', 'transversal 74 # 63a-26', null, 6, null);
 INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad, direccion, puntos, id_TipoUsuario, id_Sucursal) VALUES (7, '626262', 'Cedula Ciudadania', 'Jose Morales', 'moralesj@hotmail.com', 'Colombia', 'Bogotá', 'carrera 58 sur # 15-73', null, 6, null);
@@ -282,7 +282,7 @@ INSERT INTO USUARIO(id, nDocumento, tipoDocumento, nombre, correo, pais, ciudad,
 COMMIT;
 
 -- Creacion tuplas PRODUCTO
-INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion, pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero, fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto) VALUES (1, '3c34eb12', 'Galletas 1', 'Arcor', 1000, 'Paquete', 10, 100, 'gramos', 100, 45, 'true', DATE '2024-12-31', 10000, 5000, 5000, 55000, 1);
+INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion, pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero, fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto) VALUES (1, '3c34eb12', 'Galletas 1', 'Arcor', 1000, 'Paquete', 10, 100, 'gramos', 100, 45, 'true', DATE '2024-12-31', 10000, 50000, 5000, 55000, 1);
 INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion, pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero, fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto) VALUES (2, '3c34eb13', 'Galletas el mordisco', 'Noel', 1500, 'Paquetex2', 15, 100, 'gramos', 150, 60, 'true', DATE '2025-03-03', 3000, 5000, 5000, 10000, 1);
 INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion, pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero, fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto) VALUES (3, '79450fa0', 'Frijol bola roja', 'Diana', 8500, 'Bolsa',17, 500, 'gramos', 500, 60, 'false', null, 2000, 5000, 1000, 6000, 2);
 INSERT INTO PRODUCTO(idLote, codigoBarra, nombre, marca, pVenta, presentacion, pUnidadMedida, cantPPT, unidadMedida, espEmpPeso, espEmpVol, esPerecedero, fVencimiento, nReorden, stockBodega, stockEstante, stockTotal, id_TipoProducto) VALUES (4, 'f07aa3c7', 'Desinfectante con cloro', 'Blancox', 5400, 'Botella',18, 300, 'mililitros', 300, 80, 'false', null, 1500, 55000, 100, 55100, 3);
