@@ -31,10 +31,24 @@ class SQLProducto {
         return (long) q.executeUnique();
 	}
 
-	public long cambiarStocks (PersistenceManager pm, int stock, long idLote) 
+	public long actualizarStockBodega (PersistenceManager pm, int stock, long idLote) 
 	{
 		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaProducto () + " SET stockBodega = stockBodega + ?, stockTotal = stockTotal + ? WHERE idLote = ?");
 	     q.setParameters(stock, stock, idLote);
+	     return (long) q.executeUnique();            
+	}
+	
+	public long actualizarStockEstante (PersistenceManager pm, int stock, long idLote) 
+	{
+		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaProducto () + " SET stockEstante = stockEstante + ? WHERE idLote = ?");
+	     q.setParameters(stock, idLote);
+	     return (long) q.executeUnique();            
+	}
+	
+	public long actualizarStockTotal (PersistenceManager pm, int stock, long idLote) 
+	{
+		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaProducto () + " SET stockTotal = stockTotal + ? WHERE idLote = ?");
+	     q.setParameters(stock, idLote);
 	     return (long) q.executeUnique();            
 	}
 
@@ -65,6 +79,13 @@ class SQLProducto {
 	{
 		Query q = pm.newQuery(SQL, "SELECT idLote FROM " + pp.darTablaProducto () + " WHERE nombre = ?");
 		q.setParameters(nombre);
+		return q.executeList();
+	}
+	
+	public List<Object> darPrecioPorId (PersistenceManager pm, long idLote) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT pVenta FROM " + pp.darTablaProducto () + " WHERE idLote = ?");
+		q.setParameters(idLote);
 		return q.executeList();
 	}
 

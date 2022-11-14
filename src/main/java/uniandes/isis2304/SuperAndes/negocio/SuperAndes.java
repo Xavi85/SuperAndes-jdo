@@ -316,10 +316,24 @@ public class SuperAndes {
         return producto;
 	}
 
-	public long cambiarStock (int stock, long idLote)
+	public long actualizarStockBodega (int stock, long idLote)
 	{
         log.info ("Cambiando stock de producto: " + idLote);
-        long cambios = pp.cambiarStocks(stock, idLote);
+        long cambios = pp.actualizarStockBodega(stock, idLote);
+        return cambios;
+	}
+	
+	public long actualizarStockEstante (int stock, long idLote)
+	{
+        log.info ("Cambiando stock de producto: " + idLote);
+        long cambios = pp.actualizarStockEstante(stock, idLote);
+        return cambios;
+	}
+	
+	public long actualizarStockTotal (int stock, long idLote)
+	{
+        log.info ("Cambiando stock de producto: " + idLote);
+        long cambios = pp.actualizarStockTotal(stock, idLote);
         return cambios;
 	}
 	
@@ -403,6 +417,14 @@ public class SuperAndes {
         return producto;
 	}
 
+	public List<Object> darPrecioPorId (long idLote)
+	{
+        log.info ("Dar Precio de un Producto por id: " + idLote);
+        List<Object> producto = pp.darPrecioPorId (idLote);
+        log.info ("Buscando Precio de un Producto por id: " + producto != null ? producto : "NO EXISTE");
+        return producto;
+	}
+	
 	public List<VOProducto> darVOProductos () {
 		
 		log.info ("Generando los VO de los Productos");       
@@ -837,6 +859,14 @@ public class SuperAndes {
         return usuario;
 	}
 	
+	public List<Object> darIdUsuarioPorNDocumento (long nDocumento)
+	{
+        log.info ("Dar información de una Usuario por nDocumento: " + nDocumento);
+        List<Object> id_Usuario = pp.darIdUsuarioPorNDocumento (nDocumento);
+        log.info ("Buscando Usuario por nDocumento: " + id_Usuario != null ? id_Usuario : "NO EXISTE");
+        return id_Usuario;
+	}
+	
 	public Usuario darIdPorUsuario (String nombre)
 	{
         log.info ("Dar un id por el nombre de un Usuario: " + nombre);
@@ -881,7 +911,7 @@ public class SuperAndes {
         return idSucursal;
 	}
 	
-public List<Object> darNombreUsuarioConDocumentoIdTipoUsuario (long nDocumento, long id_TipoUsuario) {
+	public List<Object> darNombreUsuarioConDocumentoIdTipoUsuario (long nDocumento, long id_TipoUsuario) {
 		
         log.info ("Consultando Nombres de los Usuarios");
         List<Object> nombreUsuarios = pp.darNombreUsuarioConDocumentoIdTipoUsuario (nDocumento, id_TipoUsuario);	
@@ -943,10 +973,10 @@ public List<Object> darNombreUsuarioConDocumentoIdTipoUsuario (long nDocumento, 
 	 * 			Métodos para manejar las Carritos de Compra
 	 *****************************************************************/
 
-	public CarritoCompra adicionarCarritoCompra (long id, long id_Cliente, String fCarrito, String estado) {
+	public CarritoCompra adicionarCarritoCompra (long id_Cliente, long id_Sucursal, String fCarrito, String estado) {
 		
-		log.info ("Adicionando Carrito de Compra: " + id + ", " + id_Cliente + ", " + fCarrito + ", "  + estado);
-		CarritoCompra carritoCompra = pp.adicionarCarritoCompra (id, id_Cliente, fCarrito, estado);
+		log.info ("Adicionando Carrito de Compra: " + id_Cliente + ", " + id_Sucursal + ", " + fCarrito + ", "  + estado);
+		CarritoCompra carritoCompra = pp.adicionarCarritoCompra (id_Cliente, id_Sucursal, fCarrito, estado);
         log.info ("Adicionando Carrito de Compra: " + carritoCompra);
         return carritoCompra;
 	}

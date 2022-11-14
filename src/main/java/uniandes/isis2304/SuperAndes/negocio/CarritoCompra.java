@@ -4,6 +4,7 @@ public class CarritoCompra implements VOCarritoCompra {
 	
 	private long id;
 	private long id_Cliente;
+	private long id_Sucursal;
 	private String fCarrito;
 	private String estado;
 	
@@ -11,14 +12,16 @@ public class CarritoCompra implements VOCarritoCompra {
 
 		this.id = 0;
 		this.id_Cliente = 0;
+		this.id_Sucursal = 0;
 		this.fCarrito = "";
 		this.estado = "";
 	}
 
-	public CarritoCompra(long id, long id_Cliente, String fCarrito, String estado) {
+	public CarritoCompra(long id, long id_Cliente, long id_Sucursal, String fCarrito, String estado) {
 		super();
 		this.id = id;
 		this.id_Cliente = id_Cliente;
+		this.id_Sucursal = id_Sucursal;
 		this.fCarrito = fCarrito;
 		this.estado = estado;
 	}
@@ -37,6 +40,14 @@ public class CarritoCompra implements VOCarritoCompra {
 
 	public void setId_Cliente(long id_Cliente) {
 		this.id_Cliente = id_Cliente;
+	}
+	
+	public long getId_Sucursal() {
+		return id_Sucursal;
+	}
+
+	public void setId_Sucursal(long id_Sucursal) {
+		this.id_Sucursal = id_Sucursal;
 	}
 
 	public String getfCarrito() {
@@ -62,6 +73,8 @@ public class CarritoCompra implements VOCarritoCompra {
 		builder.append(id);
 		builder.append(", id_Cliente=");
 		builder.append(id_Cliente);
+		builder.append(", id_Sucursal=");
+		builder.append(id_Sucursal);
 		builder.append(", fCarrito=");
 		builder.append(fCarrito);
 		builder.append(", estado=");

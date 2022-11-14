@@ -43,6 +43,13 @@ class SQLUsuario {
 		return (Usuario) q.executeUnique();
 	}
 	
+	public List<Object> darIdUsuarioPorNDocumento (PersistenceManager pm, long nDocumento) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT id FROM " + pp.darTablaUsuario () + " WHERE nDocumento = ?");
+		q.setParameters(nDocumento);
+		return q.executeList();
+	}
+	
 	public Usuario darIdPorUsuario (PersistenceManager pm, String nombre) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaUsuario () + " WHERE nombre = ?");

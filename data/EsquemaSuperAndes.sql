@@ -128,7 +128,7 @@ CREATE TABLE TIPO_USUARIO(
 -- Creacion tabla USUARIO
 CREATE TABLE USUARIO(
     id NUMBER,
-    nDocumento NUMBER NOT NULL,
+    nDocumento NUMBER NOT NULL UNIQUE,
     tipoDocumento VARCHAR2(255 BYTE) NOT NULL,
     nombre VARCHAR2(255 BYTE) NOT NULL,
     correo VARCHAR2(255 BYTE) NOT NULL UNIQUE,
@@ -148,10 +148,12 @@ CREATE TABLE USUARIO(
 CREATE TABLE CARRITO_COMPRA(
     id NUMBER,
     id_Cliente NUMBER NOT NULL,
+    id_Sucursal NUMBER NOT NULL,
     fCarrito DATE NOT NULL,
     estado  VARCHAR2(255 BYTE) NOT NULL,
 	CONSTRAINT PK_id_carritoCompra PRIMARY KEY (id),
     CONSTRAINT FK_carritoCompra_id_Cliente FOREIGN KEY(id_Cliente) REFERENCES USUARIO(id),
+    CONSTRAINT FK_carritoCompra_id_Sucursal FOREIGN KEY(id_Sucursal) REFERENCES SUCURSAL(id),
     CONSTRAINT CHECK_carritoCompra_estado CHECK(estado IN ('EnProceso', 'Abandonado', 'Ejecutado'))
 );
 --------------------------------------------------------------------------------
@@ -302,15 +304,15 @@ INSERT INTO ESTANTE(id, volMax, pesoMax, tipoAlmacen, nAbastecimiento, id_Sucurs
 COMMIT;
 
 -- Creacion tuplas CARRITO_COMPRA
-INSERT INTO CARRITO_COMPRA(id, id_Cliente, fCarrito, estado) VALUES (1, 6, DATE '2021-09-15', 'EnProceso');
-INSERT INTO CARRITO_COMPRA(id, id_Cliente, fCarrito, estado) VALUES (2, 7, DATE '2022-03-15', 'Abandonado');
-INSERT INTO CARRITO_COMPRA(id, id_Cliente, fCarrito, estado) VALUES (3, 8, DATE '2022-04-15', 'Ejecutado');
-INSERT INTO CARRITO_COMPRA(id, id_Cliente, fCarrito, estado) VALUES (4, 6, DATE '2021-04-28', 'EnProceso');
-INSERT INTO CARRITO_COMPRA(id, id_Cliente, fCarrito, estado) VALUES (5, 7, DATE '2021-05-21', 'Abandonado');
-INSERT INTO CARRITO_COMPRA(id, id_Cliente, fCarrito, estado) VALUES (6, 8, DATE '2021-02-14', 'Ejecutado');
-INSERT INTO CARRITO_COMPRA(id, id_Cliente, fCarrito, estado) VALUES (7, 6, DATE '2020-11-28', 'EnProceso');
-INSERT INTO CARRITO_COMPRA(id, id_Cliente, fCarrito, estado) VALUES (8, 7, DATE '2020-11-04', 'Abandonado');
-INSERT INTO CARRITO_COMPRA(id, id_Cliente, fCarrito, estado) VALUES (9, 8, DATE '2020-04-25', 'Ejecutado');
+INSERT INTO CARRITO_COMPRA(id, id_Cliente, id_Sucursal, fCarrito, estado) VALUES (1, 6, 1, DATE '2021-09-15', 'EnProceso');
+INSERT INTO CARRITO_COMPRA(id, id_Cliente, id_Sucursal, fCarrito, estado) VALUES (2, 7, 2, DATE '2022-03-15', 'Abandonado');
+INSERT INTO CARRITO_COMPRA(id, id_Cliente, id_Sucursal, fCarrito, estado) VALUES (3, 8, 3, DATE '2022-04-15', 'Ejecutado');
+INSERT INTO CARRITO_COMPRA(id, id_Cliente, id_Sucursal, fCarrito, estado) VALUES (4, 6, 4, DATE '2021-04-28', 'EnProceso');
+INSERT INTO CARRITO_COMPRA(id, id_Cliente, id_Sucursal, fCarrito, estado) VALUES (5, 7, 1, DATE '2021-05-21', 'Abandonado');
+INSERT INTO CARRITO_COMPRA(id, id_Cliente, id_Sucursal, fCarrito, estado) VALUES (6, 8, 2, DATE '2021-02-14', 'Ejecutado');
+INSERT INTO CARRITO_COMPRA(id, id_Cliente, id_Sucursal, fCarrito, estado) VALUES (7, 6, 3, DATE '2020-11-28', 'EnProceso');
+INSERT INTO CARRITO_COMPRA(id, id_Cliente, id_Sucursal, fCarrito, estado) VALUES (8, 7, 4, DATE '2020-11-04', 'Abandonado');
+INSERT INTO CARRITO_COMPRA(id, id_Cliente, id_Sucursal, fCarrito, estado) VALUES (9, 8, 1, DATE '2020-04-25', 'Ejecutado');
 COMMIT;
 
 -- Creacion tuplas VENTA

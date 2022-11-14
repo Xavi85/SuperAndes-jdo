@@ -18,10 +18,10 @@ class SQLCarritoCompra {
 		this.pp = pp;
 	}
 
-	public long adicionarCarritoCompra (PersistenceManager pm, long id, long id_Cliente, String fCarrito, String estado) 
+	public long adicionarCarritoCompra (PersistenceManager pm, long id, long id_Cliente, long id_Sucursal, String fCarrito, String estado) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaCarritoCompra () + "(id, id_Cliente, fCarrito, estado) values (?, ?, ?, ?)");
-        q.setParameters(id, id_Cliente, fCarrito, estado);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaCarritoCompra () + "(id, id_Cliente, id_Sucursal, fCarrito, estado) values (?, ?, ?, TO_DATE(?, 'dd/MM/yyyy'), ?)");
+        q.setParameters(id, id_Cliente, id_Sucursal, fCarrito, estado);
         return (long) q.executeUnique();
 	}
 

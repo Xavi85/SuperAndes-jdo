@@ -5,6 +5,8 @@ public interface VOCarritoCompra {
 	public long getId();
 
 	public long getId_Cliente();
+	
+	public long getId_Sucursal();
 
 	public String getfCarrito();
 

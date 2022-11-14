@@ -40,6 +40,8 @@ import com.google.gson.stream.JsonReader;
 import uniandes.isis2304.SuperAndes.negocio.Proveedor;
 import uniandes.isis2304.SuperAndes.negocio.SuperAndes;
 import uniandes.isis2304.SuperAndes.negocio.VOBodega;
+import uniandes.isis2304.SuperAndes.negocio.VOCarritoCompra;
+import uniandes.isis2304.SuperAndes.negocio.VOCarritoCompraProducto;
 import uniandes.isis2304.SuperAndes.negocio.VOEstante;
 import uniandes.isis2304.SuperAndes.negocio.VOOrdenPedido;
 import uniandes.isis2304.SuperAndes.negocio.VOOrdenPedidoProducto;
@@ -61,7 +63,17 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 
 	private static Logger log = Logger.getLogger(InterfazSuperAndesApp.class.getName());
 	private static final String CONFIG_INTERFAZ = "./src/main/resources/config/interfaceConfigApp";
-	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD.json"; 
+	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD.json";
+	
+	@SuppressWarnings("unused")
+	private static long id_CarritoCompra;
+	private static long nDocumento;
+	
+	//Constantes Adicionar al Carrro
+	private static ArrayList<String> prod = new ArrayList();
+	private static ArrayList<Integer> cant = new ArrayList();
+	private static ArrayList<Integer> pVentaH = new ArrayList();
+
 	
 	
 	/* ****************************************************************
@@ -89,7 +101,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 		JComboBox combo = new JComboBox(rol);
 		JOptionPane.showMessageDialog(null, combo, "Tipos", JOptionPane.QUESTION_MESSAGE);
 
-		long nDocumento = 0;
+		
 		try {
 			nDocumento = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese su ID:", "Abrir sesión", JOptionPane.INFORMATION_MESSAGE));
 		} catch (NumberFormatException e) {
@@ -124,6 +136,10 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 		{
 			json += "Cajero.json";
 		}
+		else if(rolActual.equals(rol[5]))
+		{
+			json += "Cliente.json";
+		}
     	
         guiConfig = openConfig ("Interfaz", json);
         
@@ -138,7 +154,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
         
         List aux;
         
-        if(!rolActual.equals("Administrador") && !rolActual.equals("Gerente General")) {
+        if(!rolActual.equals("Administrador") && !rolActual.equals("Gerente General") && !rolActual.equals("Cliente")) {
         	aux = superAndes.darIdSucursalUsuarioConDocumentoIdTipoUsuario(nDocumento, superAndes.darIdPorTipoUsuario(rolActual).getId());
         	id_Sucursal_U = Long.parseLong(aux.get(0).toString());
         } else {
@@ -152,7 +168,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
  			JOptionPane.showMessageDialog(null, "El usuario con ID: " + nDocumento + " NO exite en la base de datos\n o el ID: " + nDocumento + " NO está asociado al rol: " + rolActual, "ERROR", JOptionPane.ERROR_MESSAGE);
  		}
  		
- 		if(!rolActual.equals("Administrador") && !rolActual.equals("Gerente General")) {
+ 		if(!rolActual.equals("Administrador") && !rolActual.equals("Gerente General") && !rolActual.equals("Cliente")) {
  			JOptionPane.showMessageDialog(null, superAndes.darSucursalPorId(id_Sucursal_U).getNombre(), "Accediendo a la Sucursal:", JOptionPane.INFORMATION_MESSAGE);
  		}
         
@@ -1102,7 +1118,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 				
 				for(int i = 0; i < ordenPedidoProducto.size(); i++) {
 					
-					superAndes.cambiarStock(Integer.parseInt(ordenPedidoCantCompra.get(i).toString()), Long.parseLong(ordenPedidoProducto.get(i).toString()));
+					superAndes.actualizarStockBodega(Integer.parseInt(ordenPedidoCantCompra.get(i).toString()), Long.parseLong(ordenPedidoProducto.get(i).toString()));
 				}
 				
 				superAndes.cambiarEsatdo("despachado", id_OrdenPedido);
@@ -1120,10 +1136,121 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+	
+	
+	/* ****************************************************************
+	 * 			CRUD de CarritoCompra
+	 *****************************************************************/
+	
+	public void solicitarCarrito( )
+    {
+		try 
+    	{
+    		Long id_Sucursal = null;
+    		long id_Cliente = Long.parseLong(superAndes.darIdUsuarioPorNDocumento(nDocumento).get(0).toString());
+    		String fCarrito = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+    			
+			List sucursales = superAndes.darNombreSucursales();
+			String[] opcSucursales = new String[sucursales.size()];
+			for(int i = 0; i < sucursales.size(); i++) {
+				opcSucursales[i] = sucursales.get(i).toString();
+			}
+			JComboBox opcionesSucursales = new JComboBox(opcSucursales);
+			JOptionPane.showMessageDialog(null, opcionesSucursales, "Seleccione la Sucursales", JOptionPane.QUESTION_MESSAGE);
+			id_Sucursal = superAndes.darIdPorSucursal(opcSucursales[opcionesSucursales.getSelectedIndex()]).getId();
+
+			if (!Objects.isNull(nDocumento) && !Objects.isNull(id_Sucursal) && fCarrito != null) {
+    			
+        		VOCarritoCompra tb1 = superAndes.adicionarCarritoCompra(id_Cliente, id_Sucursal, fCarrito, "EnProceso");
+        		if (tb1 == null)
+        		{
+        			throw new Exception ("No se pudo solicitar el Carrito de Compra");
+        		}
+        		String resultado = "En solicitar el Carrito de Compra\n\n";
+        		resultado += "Carrito de Compra solicitado exitosamente: " + tb1;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    			id_CarritoCompra = tb1.getId();
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+    	}
+		catch (Exception e) 
+    	{
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	
+	public void adicionarAlCarrito( )
+    {
+		int cantProd = 0;
+		System.out.println(id_CarritoCompra);
+		
+		try 
+    	{
+    		List nombreProductos = superAndes.darNombreProductos();
+    		String[] opcNombreProdutos = new String[nombreProductos.size()];
+    		for(int i = 0; i < nombreProductos.size(); i++) {
+    			opcNombreProdutos[i] = nombreProductos.get(i).toString();
+    		}
+			JComboBox opcionesNombreProdutos = new JComboBox(opcNombreProdutos);
+			JOptionPane.showMessageDialog(null, opcionesNombreProdutos, "Seleccione un Producto: ", JOptionPane.QUESTION_MESSAGE);
+			
+			String aux_idLote = superAndes.darProductoPorNombre(opcionesNombreProdutos.getSelectedItem().toString()).toString();
+			String idLote = aux_idLote.substring(1, aux_idLote.length() - 1);
+			System.out.println(idLote);
+			
+			String aux_pVenta = superAndes.darPrecioPorId(Long.parseLong(idLote)).toString();
+			String pVenta = aux_pVenta.substring(1, aux_pVenta.length() - 1);
+			System.out.println(pVenta);
+			
+			cantProd = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad de Productos que incluye el Paquete", "Paquete de Productos", JOptionPane.QUESTION_MESSAGE));
+			System.out.println(cantProd);
+			
+			if (idLote != null && pVenta != null && !Objects.isNull(cantProd)) {
+    			
+        		VOCarritoCompraProducto tb1 = superAndes.adicionarCarritoCompraProducto(id_CarritoCompra, Long.parseLong(idLote), Integer.parseInt(pVenta), cantProd);
+        		if (tb1 == null)
+        		{
+        			throw new Exception ("No se pudo adicionar producto al Carrito de Compra");
+        		}
+        		superAndes.actualizarStockEstante(-cantProd, Long.parseLong(idLote));
+        		String resultado = "En adicionar producto al Carrito de Compra\n\n";
+        		resultado += "Producto adicinado exitosamente y stock del estante actualizado: " + tb1;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+			/*
+			prod.add(idLote);
+			cant.add(cantProd);
+			pVentaH.add(Integer.parseInt(pVenta));
+			
+			for(int i = 0; i < prod.size(); i++)
+			{
+				System.out.println(prod.get(i) + ", " + cant.get(i) + ", " + pVentaH.get(i));
+			}
+			*/
+
+    	}
+		catch (Exception e)
+		{
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
 
     /* ****************************************************************
 	 * 			Requerimientos funcionales de consulta
 	 *****************************************************************/
+
     public void requerimientoFuncional1()
     {
     	ReqFuncionalDlg1 dialogoReq1 = new ReqFuncionalDlg1();

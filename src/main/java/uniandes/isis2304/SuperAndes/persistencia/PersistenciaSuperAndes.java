@@ -651,14 +651,66 @@ public class PersistenciaSuperAndes {
         }
 	}
 	
-	public long cambiarStocks (int stock, long idLote)
+	public long actualizarStockBodega (int stock, long idLote)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            long resp = sqlProducto.cambiarStocks(pm, stock, idLote);
+            long resp = sqlProducto.actualizarStockBodega(pm, stock, idLote);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long actualizarStockEstante (int stock, long idLote)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlProducto.actualizarStockEstante(pm, stock, idLote);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long actualizarStockTotal (int stock, long idLote)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlProducto.actualizarStockTotal(pm, stock, idLote);
             tx.commit();
             return resp;
         }
@@ -690,6 +742,11 @@ public class PersistenciaSuperAndes {
 	public List<Object> darProductoPorNombre (String nombre) {
 		
 		return sqlProducto.darProductoPorNombre (pmf.getPersistenceManager(), nombre);
+	}
+	
+	public List<Object> darPrecioPorId (long idLote) {
+		
+		return sqlProducto.darPrecioPorId (pmf.getPersistenceManager(), idLote);
 	}
 
 	public List<Producto> darProductos () {
@@ -1300,6 +1357,11 @@ public class PersistenciaSuperAndes {
 		
 		return sqlUsuario.darUsuarioPorId (pmf.getPersistenceManager(), id);
 	}
+	
+	public List<Object> darIdUsuarioPorNDocumento (long nDocumento) {
+		
+		return sqlUsuario.darIdUsuarioPorNDocumento (pmf.getPersistenceManager(), nDocumento);
+	}
 
 	public Usuario darIdPorUsuario (String nombre) {
 		
@@ -1438,18 +1500,19 @@ public class PersistenciaSuperAndes {
 	 * 			Métodos para manejar las CarritoCompra
 	 *****************************************************************/
 
-	public CarritoCompra adicionarCarritoCompra (long id, long id_Cliente, String fCarrito, String estado) {
+	public CarritoCompra adicionarCarritoCompra (long id_Cliente, long id_Sucursal, String fCarrito, String estado) {
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try {
             tx.begin();
-            long tuplasInsertadas = sqlCarritoCompra.adicionarCarritoCompra(pm, id, id_Cliente, fCarrito, estado);
+            long id = nextval ();
+            long tuplasInsertadas = sqlCarritoCompra.adicionarCarritoCompra(pm, id, id_Cliente, id_Sucursal, fCarrito, estado);
             tx.commit();
             
             log.trace ("Inserción de CarritoCompraProducto: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new CarritoCompra (id, id_Cliente, fCarrito, estado);
+            return new CarritoCompra (id, id_Cliente, id_Sucursal, fCarrito, estado);
         }
         catch (Exception e) {
         	
