@@ -38,4 +38,18 @@ class SQLCarritoCompraProducto {
         q.setParameters(id_CarritoCompra, id_Producto);
         return (long) q.executeUnique();
 	}
+	
+	public List<Object> darProdPorIdCarrito (PersistenceManager pm, long id_CarritoCompra)
+	{
+		Query q = pm.newQuery(SQL, "SELECT id_Producto FROM " + pp.darTablaCarritoCompraProducto () + " WHERE id_CarritoCompra = ?");
+        q.setParameters(id_CarritoCompra);
+		return q.executeList();
+	}
+	
+	public List<Object> darCantPorIdCarrito (PersistenceManager pm, long id_CarritoCompra)
+	{
+		Query q = pm.newQuery(SQL, "SELECT cantidad FROM " + pp.darTablaCarritoCompraProducto () + " WHERE id_CarritoCompra = ?");
+        q.setParameters(id_CarritoCompra);
+		return q.executeList();
+	}
 }

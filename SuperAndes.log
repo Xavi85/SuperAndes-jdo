@@ -1572,3 +1572,193 @@ ORA-02291: restricción de integridad (ISIS2304A33202220.FK_CARRITOCOMPRA_ID_CLI
 18:26:34,151 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar Precio de un Producto por id: 1
 18:26:34,173 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - [1000]
 18:27:08,459 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Actualizando estado de Carrito: 49
+19:26:03,471 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:26:03,472 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:26:03,507 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:26:07,626 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Administrador
+19:26:07,844 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=1, tipo=Administrador]
+19:26:07,845 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios
+19:26:07,876 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Nombres de los Usuarios: 0 Nombre Usuarios existentes
+19:27:16,331 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:27:16,331 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:27:16,366 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:27:21,673 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+19:27:22,152 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+19:27:22,153 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+19:27:22,400 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+19:27:22,400 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+19:27:22,599 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+19:27:32,513 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito de Compra:
+19:27:32,837 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito de Compra: 0 Carritos de Compras existentes
+19:27:41,562 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito de Compra:
+19:27:41,749 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito de Compra: 0 Carritos de Compras existentes
+19:28:33,940 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:28:33,943 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:28:33,980 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:28:39,160 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:28:39,161 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:28:39,229 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:28:39,378 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+19:28:39,611 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+19:28:39,612 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+19:28:39,643 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+19:28:39,643 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+19:28:39,814 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+19:29:39,716 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:29:39,717 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:29:39,744 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:29:51,946 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+19:29:52,213 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+19:29:52,214 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+19:29:52,319 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+19:29:52,319 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+19:29:52,349 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+19:30:12,360 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito de Compra:
+19:30:15,564 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito de Compra: 0 Carritos de Compras existentes
+19:34:09,270 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:34:09,271 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:34:09,302 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:34:15,382 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+19:34:15,783 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+19:34:15,783 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+19:34:15,894 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+19:34:15,895 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+19:34:16,018 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+19:34:19,696 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito de Compra:
+19:34:19,731 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito de Compra: 0 Carritos de Compras existentes
+19:37:32,398 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:37:32,399 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:37:32,437 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:37:47,018 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+19:37:47,481 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+19:37:47,482 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+19:37:47,592 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+19:37:47,592 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+19:37:48,060 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+19:37:56,511 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito de Compra:
+19:37:58,661 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito de Compra: 0 Carritos de Compras existentes
+19:43:47,202 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:43:47,203 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:43:47,240 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:43:53,427 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+19:43:53,764 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+19:43:53,765 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+19:43:54,031 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+19:43:54,032 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+19:43:55,097 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+19:43:58,259 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito de Compra:
+19:43:58,877 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito de Compra: 0 Carritos de Compras existentes
+19:53:35,910 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:53:35,911 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:53:35,960 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:53:40,072 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+19:53:40,230 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+19:53:40,230 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+19:53:40,256 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+19:53:40,256 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+19:53:40,286 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+19:53:43,487 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito en la sucursal 4 que se encuentren abandonados
+19:53:43,612 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 3 existentes
+20:24:13,729 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+20:24:13,731 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+20:24:13,793 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:24:19,850 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+20:24:20,027 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+20:24:20,028 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+20:24:20,130 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+20:24:20,131 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+20:24:20,178 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+20:24:24,895 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito en la sucursal 4 que se encuentren abandonados
+20:24:25,033 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 3 existentes
+20:24:25,034 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:24:25,238 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 0 existentes
+20:25:26,503 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+20:25:26,504 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+20:25:26,535 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:25:41,729 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+20:25:42,126 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+20:25:42,126 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+20:25:42,430 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+20:25:42,430 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+20:25:42,628 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+20:25:46,580 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito en la sucursal 4 que se encuentren abandonados
+20:25:46,629 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 3 existentes
+20:26:16,339 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:26:16,845 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 0 existentes
+20:28:50,681 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+20:28:50,682 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+20:28:50,717 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:29:04,305 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+20:29:04,577 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+20:29:04,577 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+20:29:04,597 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+20:29:04,597 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+20:29:04,730 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+20:29:08,488 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito en la sucursal 4 que se encuentren abandonados
+20:29:08,510 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 3 existentes
+20:29:21,530 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:29:21,931 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 0 existentes
+20:30:05,412 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:30:05,586 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 0 existentes
+20:33:32,219 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+20:33:32,220 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+20:33:32,254 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:33:45,080 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+20:33:45,210 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+20:33:45,210 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+20:33:45,239 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+20:33:45,239 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+20:33:45,267 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+20:33:49,778 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito en la sucursal 4 que se encuentren abandonados
+20:33:49,936 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 3 existentes
+20:33:58,728 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:33:59,586 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 0 existentes
+20:34:03,501 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:34:03,990 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 0 existentes
+20:35:09,895 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+20:35:09,896 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+20:35:09,950 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:35:23,664 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+20:35:23,887 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+20:35:23,887 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+20:35:24,566 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+20:35:24,567 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+20:35:24,603 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+20:35:27,883 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito en la sucursal 4 que se encuentren abandonados
+20:35:28,476 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 3 existentes
+20:35:33,376 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:35:33,703 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 0 existentes
+20:35:36,340 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:35:36,858 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 0 existentes
+20:40:30,857 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+20:40:30,859 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+20:40:30,910 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:41:02,071 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+20:41:02,072 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+20:41:02,106 (main) INFO  [uniandes.isis2304.SuperAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:41:17,243 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar un id por un Tipo de Usuario: Operador
+20:41:17,776 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - TipoUsuario [id=4, tipo=Operador]
+20:41:17,776 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios
+20:41:18,266 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando id Sucursal de los Usuarios: 1 id de Sucursal existentes
+20:41:18,267 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Dar información de una Sucursal por id: 4
+20:41:18,900 (main) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Sucursal [id=4, nombre=Exito Calle 80, pais=Colombia, ciudad=Bogot?, direccion=Carrera 59A No. 79 - 30, id_Supermercado=1]
+20:41:23,110 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carrito en la sucursal 4 que se encuentren abandonados
+20:41:23,599 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 3 existentes
+20:41:30,198 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:41:30,426 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 0 existentes
+20:41:31,327 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:41:31,682 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 0 existentes
+20:41:57,022 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Actualizando estado de Carrito: 49
+20:42:34,839 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:42:35,155 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 1 existentes
+20:42:35,155 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:42:35,265 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 1 existentes
+20:42:35,266 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Cambiando stock de producto: 3
+20:42:35,876 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Actualizando estado de Carrito: 8
+20:43:25,656 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:43:26,213 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 2 existentes
+20:43:54,575 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos
+20:43:55,028 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Consultando Carritos: 2 existentes
+20:44:22,980 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Cambiando stock de producto: 1
+20:44:32,698 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Cambiando stock de producto: 2
+20:44:50,409 (AWT-EventQueue-0) INFO  [uniandes.isis2304.SuperAndes.negocio.SuperAndes] - Actualizando estado de Carrito: 54

@@ -44,7 +44,14 @@ class SQLCarritoCompra {
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaCarritoCompra ());
 		q.setResultClass(CarritoCompra.class);
-		return (List<CarritoCompra>) q.executeList();
+		return q.executeList();
+	}
+	
+	public List<Object> darCarritosComprasPorSucursalYEstado (PersistenceManager pm, long id_Sucursal, String estado) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT id FROM " + pp.darTablaCarritoCompra () + " WHERE id_Sucursal = ? AND estado = ?");
+	    q.setParameters(id_Sucursal, estado);
+		return q.executeList();
 	}
 	
 	public long actualizarEstadoCarrito (PersistenceManager pm, long id, String estado) 

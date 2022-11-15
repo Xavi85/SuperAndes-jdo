@@ -1531,6 +1531,16 @@ public class PersistenciaSuperAndes {
         }
 	}
 	
+	public List<Object> darProdPorIdCarrito (long id_CarritoCompra) {
+		
+		return sqlCarritoCompraProducto.darProdPorIdCarrito (pmf.getPersistenceManager(), id_CarritoCompra);
+	}
+	
+	public List<Object> darCantPorIdCarrito (long id_CarritoCompra) {
+		
+		return sqlCarritoCompraProducto.darCantPorIdCarrito (pmf.getPersistenceManager(), id_CarritoCompra);
+	}
+	
 	
 	/* ****************************************************************
 	 * 			Métodos para manejar las CarritoCompra
@@ -1624,6 +1634,11 @@ public class PersistenciaSuperAndes {
             }
             pm.close();
         }
+	}
+	
+	public List<Object> darCarritosComprasPorSucursalYEstado(long id_Sucursal, String estado) {
+		
+		return sqlCarritoCompra.darCarritosComprasPorSucursalYEstado(pmf.getPersistenceManager(), id_Sucursal, estado);
 	}
 	
 	/* ****************************************************************

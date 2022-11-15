@@ -1039,6 +1039,14 @@ public class SuperAndes {
         long cambios = pp.actualizarEstadoCarrito(id, estado);
         return cambios;
 	}
+	
+	public List<Object> darCarritosComprasPorSucursalYEstado(long id_Sucursal, String estado) {
+		
+        log.info ("Consultando Carrito en la sucursal " + id_Sucursal + " que se encuentren abandonados");
+        List<Object> carritos = pp.darCarritosComprasPorSucursalYEstado (id_Sucursal, estado);	
+        log.info ("Consultando Carritos: " + carritos.size() + " existentes");
+        return carritos;
+	}
 
 	
 	/* ****************************************************************
@@ -1079,6 +1087,22 @@ public class SuperAndes {
         long resp = pp.eliminarCarritoCompraProductoPorIds (id_CarritoCompra, id_Producto);		
         log.info ("\"Eliminando Producto del Carrito de Compra por id: " + resp + " tuplas eliminadas");
         return resp;
+	}
+	
+	public List<Object> darProdPorIdCarrito (long id_CarritoCompra) {
+		
+        log.info ("Consultando Carritos");
+        List<Object> prod = pp.darProdPorIdCarrito (id_CarritoCompra);	
+        log.info ("Consultando Carritos: " + prod.size() + " existentes");
+        return prod;
+	}
+	
+	public List<Object> darCantPorIdCarrito (long id_CarritoCompra) {
+		
+        log.info ("Consultando Carritos");
+        List<Object> cant = pp.darCantPorIdCarrito (id_CarritoCompra);	
+        log.info ("Consultando Carritos: " + cant.size() + " existentes");
+        return cant;
 	}
 	
 	/* ****************************************************************

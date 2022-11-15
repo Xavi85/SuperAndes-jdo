@@ -15,7 +15,6 @@ import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -38,7 +37,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
-import uniandes.isis2304.SuperAndes.negocio.CarritoCompra;
 import uniandes.isis2304.SuperAndes.negocio.Proveedor;
 import uniandes.isis2304.SuperAndes.negocio.SuperAndes;
 import uniandes.isis2304.SuperAndes.negocio.VOBodega;
@@ -1388,18 +1386,28 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener {
 	public void recolectarCarritosAbandonados( )
 	{
 		try	{
-			List<CarritoCompra> carritos = superAndes.darCarritosCompras();
-			for(int i = 0; i < carritos.size(); i++) {
-				if(carritos.get(i).getId_Sucursal() == id_Sucursal_U) {
-					
+			List<Object> carritos = superAndes.darCarritosComprasPorSucursalYEstado(id_Sucursal_U, "Abandonado");
+			
+			for (int i = 0; i < carritos.size(); i++) {
+				
+				List<Object> prod = superAndes.darProdPorIdCarrito(Long.parseLong(carritos.get(i).toString()));
+				List<Object> cant = superAndes.darCantPorIdCarrito(Long.parseLong(carritos.get(i).toString()));
+	
+				if(prod.size() != 0)
+				{
+					for (int j = 0; j < prod.size(); j++)
+					{
+						superAndes.actualizarStockEstante(Integer.parseInt(cant.get(j).toString()), Long.parseLong(prod.get(j).toString()));
+					}
 				}
-			
-				
+				superAndes.actualizarEstadoCarrito(Long.parseLong(carritos.get(i).toString()), "Recolectado");
 			}
-				
+			
+			String resultado = "Actualizando estado del los Carrito Abandonados:\n\n";
+			resultado += carritos.size() + " Estado de Carritos actualizados y sus Productos devueltos a los Estantes\n";
+			resultado += "\n Operación terminada";
+			panelDatos.actualizarInterfaz(resultado);
 
-			
-			
 			
 		} catch (Exception e) {
 			String resultado = generarMensajeError(e);

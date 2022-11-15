@@ -15,7 +15,12 @@
 				{
 					"label": "RF13 - Aprovisionar un Estante",
 					"event": "abastecerEstante"
+				},
+				{
+					"label": "RF20 - Recolectar Prodcutos Abandonados",
+					"event": "recolectarCarritosAbandonados"
 				}
+				
 			]
 		},
 		{ "menuTitle": "Mantenimiento",
